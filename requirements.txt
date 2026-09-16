@@ -1,0 +1,17 @@
+# EvidenceTrace 依赖清单
+#
+# 本项目【零 GPU】—— 全部在 CPU 上跑。
+
+# ---------- 已用（当前进度）----------
+matplotlib>=3.5          # 出图
+
+# ---------- 待用（后续块）----------
+# requests               # 取 DailyMed 数据（也可用标准库 urllib，当前探针就是这么写的）
+# python-dotenv          # 读 .env 里的 DeepSeek API key
+# rank-bm25              # ⚠️ 不装——检索器是自己写的（可复用 ToolHorizon 的 search_retriever）
+# numpy                  # 向量检索用
+# scipy                  # Bootstrap / McNemar 检验
+
+# ---------- 复用 ----------
+# 检索器：直接复用 ToolHorizon/scripts/search_retriever.py 的 BM25 打分逻辑
+#        （本机实测该实现是英文 tokenizer `[a-z0-9]+`，正好适配 DailyMed 英文语料）

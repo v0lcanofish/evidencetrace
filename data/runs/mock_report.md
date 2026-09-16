@@ -1,0 +1,1 @@
+Ibuprofen interacts with warfarin and may increase bleeding risk [5a709591-2fab-98e7-e063-6394a90ac50a#34073-7]. Ibuprofen is contraindicated in patients with a history of asthma [5a709591-2fab-98e7-e063-6394a90ac50a#34070-3].

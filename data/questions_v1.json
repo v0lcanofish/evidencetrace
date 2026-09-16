@@ -1,0 +1,285 @@
+{
+  "n": 15,
+  "questions": [
+    {
+      "qid": "q01",
+      "question": "Can I take metformin if I have kidney disease?",
+      "difficulty": "single_hop",
+      "gold": [
+        {
+          "drug": "metformin",
+          "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+          "loinc": "34070-3",
+          "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+          "why": "禁忌节明确写了肾功能不全者禁用"
+        }
+      ]
+    },
+    {
+      "qid": "q02",
+      "question": "What conditions is lisinopril approved to treat?",
+      "difficulty": "single_hop",
+      "gold": [
+        {
+          "drug": "lisinopril",
+          "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+          "loinc": "34067-9",
+          "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34067-9",
+          "why": "适应症节列了高血压/心衰/心梗"
+        }
+      ]
+    },
+    {
+      "qid": "q03",
+      "question": "Is warfarin safe to take during pregnancy?",
+      "difficulty": "single_hop",
+      "gold": [
+        {
+          "drug": "warfarin",
+          "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+          "loinc": "34070-3",
+          "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+          "why": "禁忌节第一条就是妊娠"
+        }
+      ]
+    },
+    {
+      "qid": "q04",
+      "question": "What is the usual dose of omeprazole for an active duodenal ulcer?",
+      "difficulty": "single_hop",
+      "gold": [
+        {
+          "drug": "omeprazole",
+          "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+          "loinc": "34068-7",
+          "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+          "why": "用法用量节"
+        }
+      ]
+    },
+    {
+      "qid": "q05",
+      "question": "Who should NOT be given levothyroxine?",
+      "difficulty": "single_hop",
+      "gold": [
+        {
+          "drug": "levothyroxine",
+          "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+          "loinc": "34070-3",
+          "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+          "why": "禁忌：未纠正的肾上腺皮质功能不全"
+        }
+      ]
+    },
+    {
+      "qid": "q06",
+      "question": "My patient has type 2 diabetes and impaired kidney function. Can they still take metformin, and what is the main danger if they do?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "metformin",
+          "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+          "loinc": "34070-3",
+          "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+          "why": "肾功能不全禁用"
+        },
+        {
+          "drug": "metformin",
+          "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+          "loinc": "34071-1",
+          "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34071-1",
+          "why": "乳酸酸中毒是主要风险（该标签用 34071-1 而非 43685-7）"
+        }
+      ]
+    },
+    {
+      "qid": "q07",
+      "question": "I take atorvastatin. What are the serious muscle-related risks, and which co-administered drugs make them more likely?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "atorvastatin",
+          "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+          "loinc": "43685-7",
+          "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#43685-7",
+          "why": "肌病/横纹肌溶解"
+        },
+        {
+          "drug": "atorvastatin",
+          "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+          "loinc": "34073-7",
+          "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7",
+          "why": "哪些药会加重"
+        }
+      ]
+    },
+    {
+      "qid": "q08",
+      "question": "I am pregnant. Can I take warfarin, and is there any exception for women with a mechanical heart valve?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "warfarin",
+          "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+          "loinc": "34070-3",
+          "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+          "why": "妊娠禁用 + 机械瓣例外"
+        },
+        {
+          "drug": "warfarin",
+          "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+          "loinc": "43685-7",
+          "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#43685-7",
+          "why": "胎儿危害"
+        }
+      ]
+    },
+    {
+      "qid": "q09",
+      "question": "I have been prescribed lisinopril. Which other medicines should I avoid or use cautiously, and are any of them contraindicated outright?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "lisinopril",
+          "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+          "loinc": "34073-7",
+          "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+          "why": "NSAID/利尿剂/锂盐等"
+        },
+        {
+          "drug": "lisinopril",
+          "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+          "loinc": "34070-3",
+          "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+          "why": "与阿利吉仑合用是禁忌"
+        }
+      ]
+    },
+    {
+      "qid": "q10",
+      "question": "My patient is starting omeprazole. Which other drugs interact with it, and what is omeprazole actually approved to treat?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "omeprazole",
+          "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+          "loinc": "34073-7",
+          "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34073-7",
+          "why": "抗逆转录病毒药等"
+        },
+        {
+          "drug": "omeprazole",
+          "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+          "loinc": "34067-9",
+          "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34067-9",
+          "why": "适应症：溃疡/H.pylori/反流"
+        }
+      ]
+    },
+    {
+      "qid": "q11",
+      "question": "A patient has a history of angioedema. Can they take lisinopril, and what is the risk of adding an NSAID for their arthritis?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "lisinopril",
+          "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+          "loinc": "34070-3",
+          "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+          "why": "血管性水肿史禁用"
+        },
+        {
+          "drug": "lisinopril",
+          "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+          "loinc": "34073-7",
+          "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+          "why": "NSAID → 肾损伤 + 降压效果下降"
+        }
+      ]
+    },
+    {
+      "qid": "q12",
+      "question": "I take metformin and my doctor wants to add glyburide. What does the label say about combining them, and how is that dosed?",
+      "difficulty": "multi_hop",
+      "gold": [
+        {
+          "drug": "metformin",
+          "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+          "loinc": "34073-7",
+          "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+          "why": "与格列本脲的相互作用研究"
+        },
+        {
+          "drug": "metformin",
+          "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+          "loinc": "34068-7",
+          "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+          "why": "合并磺脲类的用法"
+        }
+      ]
+    },
+    {
+      "qid": "q13",
+      "question": "I am on both atorvastatin and lisinopril. What interactions does each label warn about?",
+      "difficulty": "cross_drug",
+      "gold": [
+        {
+          "drug": "atorvastatin",
+          "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+          "loinc": "34073-7",
+          "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7",
+          "why": "他汀侧：地高辛/避孕药等"
+        },
+        {
+          "drug": "lisinopril",
+          "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+          "loinc": "34073-7",
+          "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+          "why": "普利侧：NSAID/锂盐等"
+        }
+      ]
+    },
+    {
+      "qid": "q14",
+      "question": "My patient has both diabetes and high cholesterol and is asking whether metformin and atorvastatin can be taken together. What should be checked?",
+      "difficulty": "cross_drug",
+      "gold": [
+        {
+          "drug": "metformin",
+          "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+          "loinc": "34070-3",
+          "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+          "why": "先看肾功能能不能用二甲双胍"
+        },
+        {
+          "drug": "atorvastatin",
+          "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+          "loinc": "43685-7",
+          "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#43685-7",
+          "why": "他汀侧的肌肉风险"
+        }
+      ]
+    },
+    {
+      "qid": "q15",
+      "question": "I take warfarin together with omeprazole. What bleeding-related concerns and interactions should I watch for?",
+      "difficulty": "cross_drug",
+      "gold": [
+        {
+          "drug": "warfarin",
+          "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+          "loinc": "34073-7",
+          "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+          "why": "出血风险 + CYP 相关"
+        },
+        {
+          "drug": "omeprazole",
+          "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+          "loinc": "34073-7",
+          "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34073-7",
+          "why": "PPI 侧的相互作用"
+        }
+      ]
+    }
+  ]
+}
