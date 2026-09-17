@@ -38,6 +38,7 @@ from retrieval import BM25Retriever, build_chunks          # noqa: E402
 
 LABELS = PROJECT / "data" / "labels.json"
 RET_SET = PROJECT / "data" / "eval" / "retrieval_set.json"
+LOC_SET = PROJECT / "data" / "eval" / "section_locate_set.json"
 
 _fails: list[str] = []
 
@@ -106,8 +107,12 @@ def main() -> int:
     # ---- 分块体检
     chunks = build_chunks(labels)
     lens = sorted(len(c.text) for c in chunks)
+    n_sec = sum(len(L.get("sections", [])) for L in labels)
     print("① 分块")
-    check(len(chunks) >= 100, f"切出 {len(chunks)} 个 chunk（来自 36 节）")
+    # ⚠️ "来自 N 节" 原来是写死的 36（6 份药时代的数）。语料扩到 50 份之后
+    #    这句话就成了假的 —— 打印出来的东西必须跟着数据走。
+    check(len(chunks) >= 100, f"切出 {len(chunks)} 个 chunk"
+                              f"（来自 {len(labels)} 份药的 {n_sec} 节）")
     check(lens[len(lens) // 2] < 700, f"中位长度 {lens[len(lens)//2]} 字符（不会太长）")
     check(all(c.content_hash and c.chunk_id for c in chunks),
           "每个 chunk 都带 chunk_id + content_hash（引用契约）")
@@ -139,21 +144,45 @@ def main() -> int:
     gap = (loc_t.get("direct", {}).get("recall@5", 0)
            - loc_t.get("paraphrase", {}).get("recall@5", 0))
     print(f"\n   ⭐ direct − paraphrase = {gap:+.3f}")
-    print(f"      ↑ 这个差就是**稠密检索要补的坑**有多大")
+    if abs(gap) < 0.05:
+        print("      ⚠️ **两档没有差别** —— 这个指标现在量不出「稠密检索的价值」。")
+        print("         原因（2026-09-17 查清）：改写档里**仍然带着药名**，")
+        print("         而药名是 BM25 最强的信号，所以它根本没变难。")
+        print("         ⛔ 之前报的 0.192 / 0.115 **是假象**：那时两档的意图构成不同")
+        print("            （direct 只从相互作用/禁忌生成，paraphrase 覆盖 5 种意图），")
+        print("            量的是「题不一样」，不是「改写更难」。")
+        print("         要真正量出稠密检索的价值，改写档必须**去掉药名**，")
+        print("         靠上文/指代把它还原出来 —— 那是 E10（记忆与指代）的活。")
+    else:
+        print(f"      ↑ 这个差就是**稠密检索要补的坑**有多大")
 
     # ---- 章节定位本身准不准
-    print("\n③ 章节定位的准确率（只看它该判的那部分）")
+    #
+    # ⚠️ 2026-09-17 改口径：原来只在**检索集**里挑带实体的那部分（28 条，只有
+    #    「相互作用/禁忌」两类意图）——样本又小又偏。
+    #    现在改用**章节定位集**（50 条，5 种意图全覆盖）。
+    #    ⭐ 这也让 `section_locate_set.json` 第一次有了**指名道姓的消费者** ——
+    #      之前它和另外两个集一样，只有元校验脚本读过，没进任何判据（就是"堆测评"）。
+    print("\n③ 章节定位的准确率（用章节定位集，5 种意图全覆盖）")
     locator = r_locate.locator
+    if LOC_SET.exists():
+        loc_rows = json.loads(LOC_SET.read_text(encoding="utf-8"))["rows"]
+    else:
+        print("   ⚠️ 没有 section_locate_set.json，退回用检索集里的带实体题")
+        loc_rows = [r for r in rows if r["intent"] in ("interaction", "contraindication")]
     n_loc, n_ok = 0, 0
-    for r in rows:
-        if r["intent"] not in ("interaction", "contraindication"):
-            continue
+    miss_by_intent = defaultdict(int)
+    for r in loc_rows:
         res = locator(r["question"])
         n_loc += 1
         if set(r.get("gold_loinc_any") or [r["gold_loinc"]]) & set(res["loincs"]):
             n_ok += 1
-    check(n_loc > 0, f"覆盖 {n_loc} 条带实体的题")
+        else:
+            miss_by_intent[r.get("intent", "?")] += 1
+    check(n_loc > 0, f"覆盖 {n_loc} 条定位题")
     print(f"   定位命中率 {n_ok}/{n_loc} = {n_ok/max(1,n_loc):.3f}")
+    if miss_by_intent:
+        print(f"   漏检按意图：{dict(miss_by_intent)}")
 
     # ---- 断言（判据）
     print("\n④ 判据")
@@ -164,8 +193,16 @@ def main() -> int:
           f"加章节定位**不劣化**（{loc['recall@5']:.3f} ≥ {base['recall@5']:.3f}）")
     check(n_ok / max(1, n_loc) > 0.85,
           f"章节定位命中率 > 0.85（实测 {n_ok/max(1,n_loc):.3f}）")
-    check(gap > 0, f"paraphrase 档明显更难（差 {gap:+.3f}）—— 这正是稠密检索要解决的",
-          "如果两档差不多，说明 paraphrase 造得不够'改写'")
+    # ⛔ 这条判据 2026-09-17 **撤销**（原话是 `check(gap > 0, "paraphrase 档明显更难")`）。
+    #
+    #    撤销的理由不是"它红了"，是**它量错了东西**：
+    #      两档成对化之后 gap = 0.000。原来那个 +0.192 / +0.115 来自
+    #      direct 档只覆盖 2 种意图、paraphrase 档覆盖 5 种 —— 比的是不同的题。
+    #    ⚠️ **判据红了就去放宽阈值，等于把发现真相的机会扔掉。**
+    #       这次红的是一个**本来就不该信的数字**，撤掉它才是对的。
+    check(loc_t.get("paraphrase", {}).get("n", 0) >= 10,
+          f"paraphrase 档样本量够（n={loc_t.get('paraphrase', {}).get('n', 0)}）",
+          "样本太少的话这个差值没有意义")
 
     # ---- 存盘
     out = PROJECT / "reports" / "retrieval_eval.json"

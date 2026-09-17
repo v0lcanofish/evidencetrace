@@ -1,357 +1,45 @@
 {
- "n": 78,
+ "n": 20,
  "note": "多轮指代消解：'它'指谁",
  "rows": [
   {
-   "qid": "int0001",
+   "qid": "int0268",
    "turns": [
-    "I've been prescribed warfarin.",
-    "Is it off-limits for someone with Hemorrhagic tendencies?"
+    "I've been prescribed allopurinol.",
+    "Is it off-limits for someone with hypersensitivity reaction to allopurinol?"
    ],
-   "referent": "warfarin",
+   "referent": "allopurinol",
    "anaphor": "it",
-   "resolved_query": "Is warfarin off-limits for someone with Hemorrhagic tendencies?",
+   "resolved_query": "Is allopurinol off-limits for someone with hypersensitivity reaction to allopurinol?",
    "intent": "contraindication",
    "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'it' → warfarin"
+   "note": "多轮指代消解：'it' → allopurinol"
   },
   {
-   "qid": "int0002",
+   "qid": "int0181",
    "turns": [
-    "I've been prescribed warfarin.",
-    "How much of it should I take?"
+    "I've been prescribed amiodarone.",
+    "Is it off-limits for someone with Amiodarone hydrochloride tablet?"
    ],
-   "referent": "warfarin",
+   "referent": "amiodarone",
    "anaphor": "it",
-   "resolved_query": "How much of warfarin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'it' → warfarin"
-  },
-  {
-   "qid": "int0003",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "What is it actually for?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "it",
-   "resolved_query": "What is warfarin actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'it' → warfarin"
-  },
-  {
-   "qid": "int0004",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "Anything to watch out for with it?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "it",
-   "resolved_query": "Anything to watch out for with warfarin?",
-   "intent": "precaution",
-   "gold_loinc": "43685-7",
-   "note": "多轮指代消解：'it' → warfarin"
-  },
-  {
-   "qid": "int0005",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "Is that off-limits for someone with Hemorrhagic tendencies?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "that",
-   "resolved_query": "Is warfarin off-limits for someone with Hemorrhagic tendencies?",
+   "resolved_query": "Is amiodarone off-limits for someone with Amiodarone hydrochloride tablet?",
    "intent": "contraindication",
    "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'that' → warfarin"
+   "note": "多轮指代消解：'it' → amiodarone"
   },
   {
-   "qid": "int0006",
+   "qid": "int0079",
    "turns": [
-    "I've been prescribed warfarin.",
-    "How much of that should I take?"
+    "I've been prescribed amlodipine.",
+    "Is it off-limits for someone with angioedema?"
    ],
-   "referent": "warfarin",
-   "anaphor": "that",
-   "resolved_query": "How much of warfarin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'that' → warfarin"
-  },
-  {
-   "qid": "int0007",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "What is that actually for?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "that",
-   "resolved_query": "What is warfarin actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'that' → warfarin"
-  },
-  {
-   "qid": "int0008",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "Anything to watch out for with that?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "that",
-   "resolved_query": "Anything to watch out for with warfarin?",
-   "intent": "precaution",
-   "gold_loinc": "43685-7",
-   "note": "多轮指代消解：'that' → warfarin"
-  },
-  {
-   "qid": "int0009",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "Is this medication off-limits for someone with Hemorrhagic tendencies?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "this medication",
-   "resolved_query": "Is warfarin off-limits for someone with Hemorrhagic tendencies?",
+   "referent": "amlodipine",
+   "anaphor": "it",
+   "resolved_query": "Is amlodipine off-limits for someone with angioedema?",
    "intent": "contraindication",
    "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'this medication' → warfarin"
-  },
-  {
-   "qid": "int0010",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "How much of this medication should I take?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "this medication",
-   "resolved_query": "How much of warfarin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'this medication' → warfarin"
-  },
-  {
-   "qid": "int0011",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "What is this medication actually for?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "this medication",
-   "resolved_query": "What is warfarin actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'this medication' → warfarin"
-  },
-  {
-   "qid": "int0012",
-   "turns": [
-    "I've been prescribed warfarin.",
-    "Anything to watch out for with this medication?"
-   ],
-   "referent": "warfarin",
-   "anaphor": "this medication",
-   "resolved_query": "Anything to watch out for with warfarin?",
-   "intent": "precaution",
-   "gold_loinc": "43685-7",
-   "note": "多轮指代消解：'this medication' → warfarin"
-  },
-  {
-   "qid": "int0013",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Is it off-limits for someone with Renal disease?"
-   ],
-   "referent": "metformin",
-   "anaphor": "it",
-   "resolved_query": "Is metformin off-limits for someone with Renal disease?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'it' → metformin"
-  },
-  {
-   "qid": "int0014",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Can I take it together with Glyburide?"
-   ],
-   "referent": "metformin",
-   "anaphor": "it",
-   "resolved_query": "Can I take metformin together with Glyburide?",
-   "intent": "interaction",
-   "gold_loinc": "34073-7",
-   "note": "多轮指代消解：'it' → metformin"
-  },
-  {
-   "qid": "int0015",
-   "turns": [
-    "I've been prescribed metformin.",
-    "How much of it should I take?"
-   ],
-   "referent": "metformin",
-   "anaphor": "it",
-   "resolved_query": "How much of metformin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'it' → metformin"
-  },
-  {
-   "qid": "int0016",
-   "turns": [
-    "I've been prescribed metformin.",
-    "What is it actually for?"
-   ],
-   "referent": "metformin",
-   "anaphor": "it",
-   "resolved_query": "What is metformin actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'it' → metformin"
-  },
-  {
-   "qid": "int0017",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Anything to watch out for with it?"
-   ],
-   "referent": "metformin",
-   "anaphor": "it",
-   "resolved_query": "Anything to watch out for with metformin?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'it' → metformin"
-  },
-  {
-   "qid": "int0018",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Is that off-limits for someone with Renal disease?"
-   ],
-   "referent": "metformin",
-   "anaphor": "that",
-   "resolved_query": "Is metformin off-limits for someone with Renal disease?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'that' → metformin"
-  },
-  {
-   "qid": "int0019",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Can I take that together with Glyburide?"
-   ],
-   "referent": "metformin",
-   "anaphor": "that",
-   "resolved_query": "Can I take metformin together with Glyburide?",
-   "intent": "interaction",
-   "gold_loinc": "34073-7",
-   "note": "多轮指代消解：'that' → metformin"
-  },
-  {
-   "qid": "int0020",
-   "turns": [
-    "I've been prescribed metformin.",
-    "How much of that should I take?"
-   ],
-   "referent": "metformin",
-   "anaphor": "that",
-   "resolved_query": "How much of metformin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'that' → metformin"
-  },
-  {
-   "qid": "int0021",
-   "turns": [
-    "I've been prescribed metformin.",
-    "What is that actually for?"
-   ],
-   "referent": "metformin",
-   "anaphor": "that",
-   "resolved_query": "What is metformin actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'that' → metformin"
-  },
-  {
-   "qid": "int0022",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Anything to watch out for with that?"
-   ],
-   "referent": "metformin",
-   "anaphor": "that",
-   "resolved_query": "Anything to watch out for with metformin?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'that' → metformin"
-  },
-  {
-   "qid": "int0023",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Is this medication off-limits for someone with Renal disease?"
-   ],
-   "referent": "metformin",
-   "anaphor": "this medication",
-   "resolved_query": "Is metformin off-limits for someone with Renal disease?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'this medication' → metformin"
-  },
-  {
-   "qid": "int0024",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Can I take this medication together with Glyburide?"
-   ],
-   "referent": "metformin",
-   "anaphor": "this medication",
-   "resolved_query": "Can I take metformin together with Glyburide?",
-   "intent": "interaction",
-   "gold_loinc": "34073-7",
-   "note": "多轮指代消解：'this medication' → metformin"
-  },
-  {
-   "qid": "int0025",
-   "turns": [
-    "I've been prescribed metformin.",
-    "How much of this medication should I take?"
-   ],
-   "referent": "metformin",
-   "anaphor": "this medication",
-   "resolved_query": "How much of metformin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'this medication' → metformin"
-  },
-  {
-   "qid": "int0026",
-   "turns": [
-    "I've been prescribed metformin.",
-    "What is this medication actually for?"
-   ],
-   "referent": "metformin",
-   "anaphor": "this medication",
-   "resolved_query": "What is metformin actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'this medication' → metformin"
-  },
-  {
-   "qid": "int0027",
-   "turns": [
-    "I've been prescribed metformin.",
-    "Anything to watch out for with this medication?"
-   ],
-   "referent": "metformin",
-   "anaphor": "this medication",
-   "resolved_query": "Anything to watch out for with metformin?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'this medication' → metformin"
+   "note": "多轮指代消解：'it' → amlodipine"
   },
   {
    "qid": "int0028",
@@ -367,160 +55,134 @@
    "note": "多轮指代消解：'it' → atorvastatin"
   },
   {
-   "qid": "int0029",
+   "qid": "int0269",
    "turns": [
-    "I've been prescribed atorvastatin.",
+    "I've been prescribed allopurinol.",
     "How much of it should I take?"
    ],
-   "referent": "atorvastatin",
+   "referent": "allopurinol",
    "anaphor": "it",
-   "resolved_query": "How much of atorvastatin should I take?",
+   "resolved_query": "How much of allopurinol should I take?",
    "intent": "dosage",
    "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'it' → atorvastatin"
+   "note": "多轮指代消解：'it' → allopurinol"
   },
   {
-   "qid": "int0030",
+   "qid": "int0472",
    "turns": [
-    "I've been prescribed atorvastatin.",
+    "I've been prescribed alprazolam.",
+    "How much of it should I take?"
+   ],
+   "referent": "alprazolam",
+   "anaphor": "it",
+   "resolved_query": "How much of alprazolam should I take?",
+   "intent": "dosage",
+   "gold_loinc": "34068-7",
+   "note": "多轮指代消解：'it' → alprazolam"
+  },
+  {
+   "qid": "int0182",
+   "turns": [
+    "I've been prescribed amiodarone.",
+    "How much of it should I take?"
+   ],
+   "referent": "amiodarone",
+   "anaphor": "it",
+   "resolved_query": "How much of amiodarone should I take?",
+   "intent": "dosage",
+   "gold_loinc": "34068-7",
+   "note": "多轮指代消解：'it' → amiodarone"
+  },
+  {
+   "qid": "int0080",
+   "turns": [
+    "I've been prescribed amlodipine.",
+    "How much of it should I take?"
+   ],
+   "referent": "amlodipine",
+   "anaphor": "it",
+   "resolved_query": "How much of amlodipine should I take?",
+   "intent": "dosage",
+   "gold_loinc": "34068-7",
+   "note": "多轮指代消解：'it' → amlodipine"
+  },
+  {
+   "qid": "int0270",
+   "turns": [
+    "I've been prescribed allopurinol.",
     "What is it actually for?"
    ],
-   "referent": "atorvastatin",
+   "referent": "allopurinol",
    "anaphor": "it",
-   "resolved_query": "What is atorvastatin actually for?",
+   "resolved_query": "What is allopurinol actually for?",
    "intent": "indication",
    "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'it' → atorvastatin"
+   "note": "多轮指代消解：'it' → allopurinol"
   },
   {
-   "qid": "int0031",
+   "qid": "int0473",
    "turns": [
-    "I've been prescribed atorvastatin.",
-    "Anything to watch out for with it?"
+    "I've been prescribed alprazolam.",
+    "What is it actually for?"
    ],
-   "referent": "atorvastatin",
+   "referent": "alprazolam",
    "anaphor": "it",
-   "resolved_query": "Anything to watch out for with atorvastatin?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'it' → atorvastatin"
-  },
-  {
-   "qid": "int0032",
-   "turns": [
-    "I've been prescribed atorvastatin.",
-    "Is that off-limits for someone with Acute liver failure?"
-   ],
-   "referent": "atorvastatin",
-   "anaphor": "that",
-   "resolved_query": "Is atorvastatin off-limits for someone with Acute liver failure?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'that' → atorvastatin"
-  },
-  {
-   "qid": "int0033",
-   "turns": [
-    "I've been prescribed atorvastatin.",
-    "How much of that should I take?"
-   ],
-   "referent": "atorvastatin",
-   "anaphor": "that",
-   "resolved_query": "How much of atorvastatin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'that' → atorvastatin"
-  },
-  {
-   "qid": "int0034",
-   "turns": [
-    "I've been prescribed atorvastatin.",
-    "What is that actually for?"
-   ],
-   "referent": "atorvastatin",
-   "anaphor": "that",
-   "resolved_query": "What is atorvastatin actually for?",
+   "resolved_query": "What is alprazolam actually for?",
    "intent": "indication",
    "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'that' → atorvastatin"
+   "note": "多轮指代消解：'it' → alprazolam"
   },
   {
-   "qid": "int0035",
+   "qid": "int0183",
    "turns": [
-    "I've been prescribed atorvastatin.",
-    "Anything to watch out for with that?"
+    "I've been prescribed amiodarone.",
+    "What is it actually for?"
    ],
-   "referent": "atorvastatin",
-   "anaphor": "that",
-   "resolved_query": "Anything to watch out for with atorvastatin?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'that' → atorvastatin"
-  },
-  {
-   "qid": "int0036",
-   "turns": [
-    "I've been prescribed atorvastatin.",
-    "Is this medication off-limits for someone with Acute liver failure?"
-   ],
-   "referent": "atorvastatin",
-   "anaphor": "this medication",
-   "resolved_query": "Is atorvastatin off-limits for someone with Acute liver failure?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'this medication' → atorvastatin"
-  },
-  {
-   "qid": "int0037",
-   "turns": [
-    "I've been prescribed atorvastatin.",
-    "How much of this medication should I take?"
-   ],
-   "referent": "atorvastatin",
-   "anaphor": "this medication",
-   "resolved_query": "How much of atorvastatin should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'this medication' → atorvastatin"
-  },
-  {
-   "qid": "int0038",
-   "turns": [
-    "I've been prescribed atorvastatin.",
-    "What is this medication actually for?"
-   ],
-   "referent": "atorvastatin",
-   "anaphor": "this medication",
-   "resolved_query": "What is atorvastatin actually for?",
+   "referent": "amiodarone",
+   "anaphor": "it",
+   "resolved_query": "What is amiodarone actually for?",
    "intent": "indication",
    "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'this medication' → atorvastatin"
+   "note": "多轮指代消解：'it' → amiodarone"
   },
   {
-   "qid": "int0039",
+   "qid": "int0081",
    "turns": [
-    "I've been prescribed atorvastatin.",
-    "Anything to watch out for with this medication?"
+    "I've been prescribed amlodipine.",
+    "What is it actually for?"
    ],
-   "referent": "atorvastatin",
-   "anaphor": "this medication",
-   "resolved_query": "Anything to watch out for with atorvastatin?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'this medication' → atorvastatin"
-  },
-  {
-   "qid": "int0040",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Is it off-limits for someone with Angioedema?"
-   ],
-   "referent": "lisinopril",
+   "referent": "amlodipine",
    "anaphor": "it",
-   "resolved_query": "Is lisinopril off-limits for someone with Angioedema?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'it' → lisinopril"
+   "resolved_query": "What is amlodipine actually for?",
+   "intent": "indication",
+   "gold_loinc": "34067-9",
+   "note": "多轮指代消解：'it' → amlodipine"
+  },
+  {
+   "qid": "int0317",
+   "turns": [
+    "I've been prescribed escitalopram.",
+    "Can I take it together with Escitalopram tablets and antiplatelet age?"
+   ],
+   "referent": "escitalopram",
+   "anaphor": "it",
+   "resolved_query": "Can I take escitalopram together with Escitalopram tablets and antiplatelet age?",
+   "intent": "interaction",
+   "gold_loinc": "34073-7",
+   "note": "多轮指代消解：'it' → escitalopram"
+  },
+  {
+   "qid": "int0233",
+   "turns": [
+    "I've been prescribed glipizide.",
+    "Can I take it together with fluconazole and glipizide has been demons?"
+   ],
+   "referent": "glipizide",
+   "anaphor": "it",
+   "resolved_query": "Can I take glipizide together with fluconazole and glipizide has been demons?",
+   "intent": "interaction",
+   "gold_loinc": "34073-7",
+   "note": "多轮指代消解：'it' → glipizide"
   },
   {
    "qid": "int0041",
@@ -536,485 +198,69 @@
    "note": "多轮指代消解：'it' → lisinopril"
   },
   {
-   "qid": "int0042",
+   "qid": "int0482",
    "turns": [
-    "I've been prescribed lisinopril.",
-    "How much of it should I take?"
+    "I've been prescribed lorazepam.",
+    "Can I take it together with benzodiazepines and opioids?"
    ],
-   "referent": "lisinopril",
+   "referent": "lorazepam",
    "anaphor": "it",
-   "resolved_query": "How much of lisinopril should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'it' → lisinopril"
-  },
-  {
-   "qid": "int0043",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "What is it actually for?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "it",
-   "resolved_query": "What is lisinopril actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'it' → lisinopril"
-  },
-  {
-   "qid": "int0044",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Anything to watch out for with it?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "it",
-   "resolved_query": "Anything to watch out for with lisinopril?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'it' → lisinopril"
-  },
-  {
-   "qid": "int0045",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Is that off-limits for someone with Angioedema?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "that",
-   "resolved_query": "Is lisinopril off-limits for someone with Angioedema?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'that' → lisinopril"
-  },
-  {
-   "qid": "int0046",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Can I take that together with Diuretics?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "that",
-   "resolved_query": "Can I take lisinopril together with Diuretics?",
+   "resolved_query": "Can I take lorazepam together with benzodiazepines and opioids?",
    "intent": "interaction",
    "gold_loinc": "34073-7",
-   "note": "多轮指代消解：'that' → lisinopril"
+   "note": "多轮指代消解：'it' → lorazepam"
   },
   {
-   "qid": "int0047",
+   "qid": "int0271",
    "turns": [
-    "I've been prescribed lisinopril.",
-    "How much of that should I take?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "that",
-   "resolved_query": "How much of lisinopril should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'that' → lisinopril"
-  },
-  {
-   "qid": "int0048",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "What is that actually for?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "that",
-   "resolved_query": "What is lisinopril actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'that' → lisinopril"
-  },
-  {
-   "qid": "int0049",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Anything to watch out for with that?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "that",
-   "resolved_query": "Anything to watch out for with lisinopril?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'that' → lisinopril"
-  },
-  {
-   "qid": "int0050",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Is this medication off-limits for someone with Angioedema?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "this medication",
-   "resolved_query": "Is lisinopril off-limits for someone with Angioedema?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'this medication' → lisinopril"
-  },
-  {
-   "qid": "int0051",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Can I take this medication together with Diuretics?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "this medication",
-   "resolved_query": "Can I take lisinopril together with Diuretics?",
-   "intent": "interaction",
-   "gold_loinc": "34073-7",
-   "note": "多轮指代消解：'this medication' → lisinopril"
-  },
-  {
-   "qid": "int0052",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "How much of this medication should I take?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "this medication",
-   "resolved_query": "How much of lisinopril should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'this medication' → lisinopril"
-  },
-  {
-   "qid": "int0053",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "What is this medication actually for?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "this medication",
-   "resolved_query": "What is lisinopril actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'this medication' → lisinopril"
-  },
-  {
-   "qid": "int0054",
-   "turns": [
-    "I've been prescribed lisinopril.",
-    "Anything to watch out for with this medication?"
-   ],
-   "referent": "lisinopril",
-   "anaphor": "this medication",
-   "resolved_query": "Anything to watch out for with lisinopril?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'this medication' → lisinopril"
-  },
-  {
-   "qid": "int0055",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "Is it off-limits for someone with uncorrected adrenal insufficiency?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "it",
-   "resolved_query": "Is levothyroxine off-limits for someone with uncorrected adrenal insufficiency?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'it' → levothyroxine"
-  },
-  {
-   "qid": "int0056",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "How much of it should I take?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "it",
-   "resolved_query": "How much of levothyroxine should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'it' → levothyroxine"
-  },
-  {
-   "qid": "int0057",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "What is it actually for?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "it",
-   "resolved_query": "What is levothyroxine actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'it' → levothyroxine"
-  },
-  {
-   "qid": "int0058",
-   "turns": [
-    "I've been prescribed levothyroxine.",
+    "I've been prescribed allopurinol.",
     "Anything to watch out for with it?"
    ],
-   "referent": "levothyroxine",
+   "referent": "allopurinol",
    "anaphor": "it",
-   "resolved_query": "Anything to watch out for with levothyroxine?",
+   "resolved_query": "Anything to watch out for with allopurinol?",
    "intent": "precaution",
    "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'it' → levothyroxine"
+   "note": "多轮指代消解：'it' → allopurinol"
   },
   {
-   "qid": "int0059",
+   "qid": "int0474",
    "turns": [
-    "I've been prescribed levothyroxine.",
-    "Is that off-limits for someone with uncorrected adrenal insufficiency?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "that",
-   "resolved_query": "Is levothyroxine off-limits for someone with uncorrected adrenal insufficiency?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'that' → levothyroxine"
-  },
-  {
-   "qid": "int0060",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "How much of that should I take?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "that",
-   "resolved_query": "How much of levothyroxine should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'that' → levothyroxine"
-  },
-  {
-   "qid": "int0061",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "What is that actually for?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "that",
-   "resolved_query": "What is levothyroxine actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'that' → levothyroxine"
-  },
-  {
-   "qid": "int0062",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "Anything to watch out for with that?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "that",
-   "resolved_query": "Anything to watch out for with levothyroxine?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'that' → levothyroxine"
-  },
-  {
-   "qid": "int0063",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "Is this medication off-limits for someone with uncorrected adrenal insufficiency?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "this medication",
-   "resolved_query": "Is levothyroxine off-limits for someone with uncorrected adrenal insufficiency?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'this medication' → levothyroxine"
-  },
-  {
-   "qid": "int0064",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "How much of this medication should I take?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "this medication",
-   "resolved_query": "How much of levothyroxine should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'this medication' → levothyroxine"
-  },
-  {
-   "qid": "int0065",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "What is this medication actually for?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "this medication",
-   "resolved_query": "What is levothyroxine actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'this medication' → levothyroxine"
-  },
-  {
-   "qid": "int0066",
-   "turns": [
-    "I've been prescribed levothyroxine.",
-    "Anything to watch out for with this medication?"
-   ],
-   "referent": "levothyroxine",
-   "anaphor": "this medication",
-   "resolved_query": "Anything to watch out for with levothyroxine?",
-   "intent": "precaution",
-   "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'this medication' → levothyroxine"
-  },
-  {
-   "qid": "int0067",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "Is it off-limits for someone with hypersensitivity reactions?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "it",
-   "resolved_query": "Is omeprazole off-limits for someone with hypersensitivity reactions?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'it' → omeprazole"
-  },
-  {
-   "qid": "int0068",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "How much of it should I take?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "it",
-   "resolved_query": "How much of omeprazole should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'it' → omeprazole"
-  },
-  {
-   "qid": "int0069",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "What is it actually for?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "it",
-   "resolved_query": "What is omeprazole actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'it' → omeprazole"
-  },
-  {
-   "qid": "int0070",
-   "turns": [
-    "I've been prescribed omeprazole.",
+    "I've been prescribed alprazolam.",
     "Anything to watch out for with it?"
    ],
-   "referent": "omeprazole",
+   "referent": "alprazolam",
    "anaphor": "it",
-   "resolved_query": "Anything to watch out for with omeprazole?",
+   "resolved_query": "Anything to watch out for with alprazolam?",
    "intent": "precaution",
    "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'it' → omeprazole"
+   "note": "多轮指代消解：'it' → alprazolam"
   },
   {
-   "qid": "int0071",
+   "qid": "int0184",
    "turns": [
-    "I've been prescribed omeprazole.",
-    "Is that off-limits for someone with hypersensitivity reactions?"
+    "I've been prescribed amiodarone.",
+    "Anything to watch out for with it?"
    ],
-   "referent": "omeprazole",
-   "anaphor": "that",
-   "resolved_query": "Is omeprazole off-limits for someone with hypersensitivity reactions?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'that' → omeprazole"
-  },
-  {
-   "qid": "int0072",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "How much of that should I take?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "that",
-   "resolved_query": "How much of omeprazole should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'that' → omeprazole"
-  },
-  {
-   "qid": "int0073",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "What is that actually for?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "that",
-   "resolved_query": "What is omeprazole actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'that' → omeprazole"
-  },
-  {
-   "qid": "int0074",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "Anything to watch out for with that?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "that",
-   "resolved_query": "Anything to watch out for with omeprazole?",
+   "referent": "amiodarone",
+   "anaphor": "it",
+   "resolved_query": "Anything to watch out for with amiodarone?",
    "intent": "precaution",
    "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'that' → omeprazole"
+   "note": "多轮指代消解：'it' → amiodarone"
   },
   {
-   "qid": "int0075",
+   "qid": "int0082",
    "turns": [
-    "I've been prescribed omeprazole.",
-    "Is this medication off-limits for someone with hypersensitivity reactions?"
+    "I've been prescribed amlodipine.",
+    "Anything to watch out for with it?"
    ],
-   "referent": "omeprazole",
-   "anaphor": "this medication",
-   "resolved_query": "Is omeprazole off-limits for someone with hypersensitivity reactions?",
-   "intent": "contraindication",
-   "gold_loinc": "34070-3",
-   "note": "多轮指代消解：'this medication' → omeprazole"
-  },
-  {
-   "qid": "int0076",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "How much of this medication should I take?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "this medication",
-   "resolved_query": "How much of omeprazole should I take?",
-   "intent": "dosage",
-   "gold_loinc": "34068-7",
-   "note": "多轮指代消解：'this medication' → omeprazole"
-  },
-  {
-   "qid": "int0077",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "What is this medication actually for?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "this medication",
-   "resolved_query": "What is omeprazole actually for?",
-   "intent": "indication",
-   "gold_loinc": "34067-9",
-   "note": "多轮指代消解：'this medication' → omeprazole"
-  },
-  {
-   "qid": "int0078",
-   "turns": [
-    "I've been prescribed omeprazole.",
-    "Anything to watch out for with this medication?"
-   ],
-   "referent": "omeprazole",
-   "anaphor": "this medication",
-   "resolved_query": "Anything to watch out for with omeprazole?",
+   "referent": "amlodipine",
+   "anaphor": "it",
+   "resolved_query": "Anything to watch out for with amlodipine?",
    "intent": "precaution",
    "gold_loinc": "34069-5",
-   "note": "多轮指代消解：'this medication' → omeprazole"
+   "note": "多轮指代消解：'it' → amlodipine"
   }
  ]
 }

@@ -1,0 +1,655 @@
+{
+ "n": 46,
+ "note": "该命中的章节捞出来了吗；两档之差 = 语义检索的贡献",
+ "rows": [
+  {
+   "qid": "ret0001",
+   "question": "Can I take warfarin if I have Hemorrhagic tendencies?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hemorrhagic tendencies",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0002",
+   "question": "Can I take warfarin if I have Bleeding tendencies associated with certain conditions?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Bleeding tendencies associated with certain conditions",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0003",
+   "question": "Can I take warfarin if I have Hypersensitivity to warfarin?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hypersensitivity to warfarin",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0004",
+   "question": "Can I take warfarin if I have Major regional?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Major regional",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0005",
+   "question": "Can I take warfarin if I have Malignant hypertension?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Malignant hypertension",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0006",
+   "question": "Can I take warfarin if I have Pregnancy Warfarin sodium?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Pregnancy Warfarin sodium",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0007",
+   "question": "Can I take metformin together with Glyburide?",
+   "tier": "direct",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Glyburide",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0008",
+   "question": "Can I take metformin together with Furosemide?",
+   "tier": "direct",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Furosemide",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0009",
+   "question": "Can I take metformin together with Nifedipine?",
+   "tier": "direct",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Nifedipine",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0010",
+   "question": "Can I take metformin if I have Renal disease?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "Renal disease",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0011",
+   "question": "Can I take metformin if I have hypersensitivity to metformin hydrochloride?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "hypersensitivity to metformin hydrochloride",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0012",
+   "question": "Can I take metformin if I have metformin hydrochloride?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "metformin hydrochloride",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0013",
+   "question": "Can I take atorvastatin if I have Acute liver failure?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Acute liver failure",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0014",
+   "question": "Can I take atorvastatin if I have Hypersensitivity to atorvastatin?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Hypersensitivity to atorvastatin",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0015",
+   "question": "Can I take lisinopril together with Diuretics?",
+   "tier": "direct",
+   "intent": "interaction",
+   "drug": "lisinopril",
+   "entity": "Diuretics",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0016",
+   "question": "Can I take lisinopril if I have Angioedema?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Angioedema",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0017",
+   "question": "Can I take lisinopril if I have Hypersensitivity?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Hypersensitivity",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0018",
+   "question": "Can I take levothyroxine if I have uncorrected adrenal insufficiency?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "levothyroxine",
+   "entity": "uncorrected adrenal insufficiency",
+   "gold_cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0019",
+   "question": "Can I take omeprazole if I have hypersensitivity reactions?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "hypersensitivity reactions",
+   "gold_cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0020",
+   "question": "Can I take omeprazole if I have substituted benzimidazoles?",
+   "tier": "direct",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "substituted benzimidazoles",
+   "gold_cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "关键词能匹配上（药名+实体词都出现在原文）"
+  },
+  {
+   "qid": "ret0021",
+   "question": "Is warfarin off-limits for someone with Hemorrhagic tendencies?",
+   "tier": "paraphrase",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hemorrhagic tendencies",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0022",
+   "question": "How many milligrams of warfarin am I supposed to take?",
+   "tier": "paraphrase",
+   "intent": "dosage",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0023",
+   "question": "Why was I put on warfarin?",
+   "tier": "paraphrase",
+   "intent": "indication",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0024",
+   "question": "Anything I should be careful about with warfarin?",
+   "tier": "paraphrase",
+   "intent": "precaution",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0025",
+   "question": "Is metformin off-limits for someone with Renal disease?",
+   "tier": "paraphrase",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "Renal disease",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0026",
+   "question": "Does Glyburide mess with metformin?",
+   "tier": "paraphrase",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Glyburide",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0027",
+   "question": "How many milligrams of metformin am I supposed to take?",
+   "tier": "paraphrase",
+   "intent": "dosage",
+   "drug": "metformin",
+   "entity": "",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0028",
+   "question": "Why was I put on metformin?",
+   "tier": "paraphrase",
+   "intent": "indication",
+   "drug": "metformin",
+   "entity": "",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0029",
+   "question": "Anything I should be careful about with metformin?",
+   "tier": "paraphrase",
+   "intent": "precaution",
+   "drug": "metformin",
+   "entity": "",
+   "gold_cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "34071-1"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0030",
+   "question": "Is atorvastatin off-limits for someone with Acute liver failure?",
+   "tier": "paraphrase",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Acute liver failure",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0031",
+   "question": "How many milligrams of atorvastatin am I supposed to take?",
+   "tier": "paraphrase",
+   "intent": "dosage",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0032",
+   "question": "Why was I put on atorvastatin?",
+   "tier": "paraphrase",
+   "intent": "indication",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0033",
+   "question": "Anything I should be careful about with atorvastatin?",
+   "tier": "paraphrase",
+   "intent": "precaution",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0034",
+   "question": "Is lisinopril off-limits for someone with Angioedema?",
+   "tier": "paraphrase",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Angioedema",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0035",
+   "question": "Does Diuretics mess with lisinopril?",
+   "tier": "paraphrase",
+   "intent": "interaction",
+   "drug": "lisinopril",
+   "entity": "Diuretics",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0036",
+   "question": "How many milligrams of lisinopril am I supposed to take?",
+   "tier": "paraphrase",
+   "intent": "dosage",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0037",
+   "question": "Why was I put on lisinopril?",
+   "tier": "paraphrase",
+   "intent": "indication",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0038",
+   "question": "Anything I should be careful about with lisinopril?",
+   "tier": "paraphrase",
+   "intent": "precaution",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0039",
+   "question": "Is levothyroxine off-limits for someone with uncorrected adrenal insufficiency?",
+   "tier": "paraphrase",
+   "intent": "contraindication",
+   "drug": "levothyroxine",
+   "entity": "uncorrected adrenal insufficiency",
+   "gold_cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0040",
+   "question": "How many milligrams of levothyroxine am I supposed to take?",
+   "tier": "paraphrase",
+   "intent": "dosage",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0041",
+   "question": "Why was I put on levothyroxine?",
+   "tier": "paraphrase",
+   "intent": "indication",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0042",
+   "question": "Anything I should be careful about with levothyroxine?",
+   "tier": "paraphrase",
+   "intent": "precaution",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0043",
+   "question": "Is omeprazole off-limits for someone with hypersensitivity reactions?",
+   "tier": "paraphrase",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "hypersensitivity reactions",
+   "gold_cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0044",
+   "question": "How many milligrams of omeprazole am I supposed to take?",
+   "tier": "paraphrase",
+   "intent": "dosage",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0045",
+   "question": "Why was I put on omeprazole?",
+   "tier": "paraphrase",
+   "intent": "indication",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  },
+  {
+   "qid": "ret0046",
+   "question": "Anything I should be careful about with omeprazole?",
+   "tier": "paraphrase",
+   "intent": "precaution",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"
+  }
+ ]
+}

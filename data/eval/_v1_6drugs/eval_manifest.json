@@ -1,0 +1,35 @@
+{
+ "built": "2026-09-17",
+ "corpus": {
+  "drugs": 6,
+  "sections": 36
+ },
+ "total_rows": 352,
+ "sets": {
+  "section_locate": {
+   "n": 140,
+   "file": "section_locate_set.json",
+   "tests": "③ 章节定位（问题→该查哪一节）"
+  },
+  "boundary": {
+   "n": 62,
+   "file": "boundary_set.json",
+   "tests": "①④ 边界与拒答"
+  },
+  "retrieval": {
+   "n": 46,
+   "file": "retrieval_set.json",
+   "tests": "③ 检索召回（含 direct/paraphrase 两档）"
+  },
+  "intent": {
+   "n": 78,
+   "file": "intent_set.json",
+   "tests": "② 理解（多轮指代消解）"
+  },
+  "e2e": {
+   "n": 26,
+   "file": "e2e_set.json",
+   "tests": "全链路多轮"
+  }
+ }
+}

@@ -1,0 +1,2121 @@
+{
+ "n": 140,
+ "note": "问题 → 该查哪一节（LOINC）；每条都验证过",
+ "rows": [
+  {
+   "qid": "loc0001",
+   "question": "Can I take warfarin if I have Hemorrhagic tendencies?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hemorrhagic tendencies",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hemorrhagic' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0002",
+   "question": "Is warfarin safe for someone with Hemorrhagic tendencies?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hemorrhagic tendencies",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hemorrhagic' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0003",
+   "question": "Should I avoid warfarin if I have Hemorrhagic tendencies?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hemorrhagic tendencies",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hemorrhagic' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0004",
+   "question": "I have Hemorrhagic tendencies — can I still take warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hemorrhagic tendencies",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hemorrhagic' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0005",
+   "question": "Can I take warfarin if I have Bleeding tendencies associated with certain conditions?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Bleeding tendencies associated with certain conditions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'bleeding' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0006",
+   "question": "Is warfarin safe for someone with Bleeding tendencies associated with certain conditions?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Bleeding tendencies associated with certain conditions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'bleeding' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0007",
+   "question": "Should I avoid warfarin if I have Bleeding tendencies associated with certain conditions?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Bleeding tendencies associated with certain conditions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'bleeding' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0008",
+   "question": "I have Bleeding tendencies associated with certain conditions — can I still take warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Bleeding tendencies associated with certain conditions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'bleeding' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0009",
+   "question": "Can I take warfarin if I have Hypersensitivity to warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hypersensitivity to warfarin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0010",
+   "question": "Is warfarin safe for someone with Hypersensitivity to warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hypersensitivity to warfarin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0011",
+   "question": "Should I avoid warfarin if I have Hypersensitivity to warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hypersensitivity to warfarin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0012",
+   "question": "I have Hypersensitivity to warfarin — can I still take warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Hypersensitivity to warfarin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0013",
+   "question": "Can I take warfarin if I have Major regional?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Major regional",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'major' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0014",
+   "question": "Is warfarin safe for someone with Major regional?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Major regional",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'major' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0015",
+   "question": "Should I avoid warfarin if I have Major regional?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Major regional",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'major' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0016",
+   "question": "I have Major regional — can I still take warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Major regional",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'major' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0017",
+   "question": "Can I take warfarin if I have Malignant hypertension?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Malignant hypertension",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'malignant' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0018",
+   "question": "Is warfarin safe for someone with Malignant hypertension?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Malignant hypertension",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'malignant' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0019",
+   "question": "Should I avoid warfarin if I have Malignant hypertension?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Malignant hypertension",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'malignant' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0020",
+   "question": "I have Malignant hypertension — can I still take warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Malignant hypertension",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'malignant' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0021",
+   "question": "Can I take warfarin if I have Pregnancy Warfarin sodium?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Pregnancy Warfarin sodium",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'pregnancy' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0022",
+   "question": "Is warfarin safe for someone with Pregnancy Warfarin sodium?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Pregnancy Warfarin sodium",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'pregnancy' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0023",
+   "question": "Should I avoid warfarin if I have Pregnancy Warfarin sodium?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Pregnancy Warfarin sodium",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'pregnancy' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0024",
+   "question": "I have Pregnancy Warfarin sodium — can I still take warfarin?",
+   "intent": "contraindication",
+   "drug": "warfarin",
+   "entity": "Pregnancy Warfarin sodium",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34070-3",
+   "verified_by": "'pregnancy' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0025",
+   "question": "How much warfarin should I take?",
+   "intent": "dosage",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34068-7",
+   "verified_by": "Dosage and Administration 节长度 380 字符"
+  },
+  {
+   "qid": "loc0026",
+   "question": "What is the recommended dose of warfarin?",
+   "intent": "dosage",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34068-7",
+   "verified_by": "Dosage and Administration 节长度 380 字符"
+  },
+  {
+   "qid": "loc0027",
+   "question": "What is the starting dose of warfarin?",
+   "intent": "dosage",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34068-7",
+   "verified_by": "Dosage and Administration 节长度 380 字符"
+  },
+  {
+   "qid": "loc0028",
+   "question": "How should I take warfarin?",
+   "intent": "dosage",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34068-7",
+   "verified_by": "Dosage and Administration 节长度 380 字符"
+  },
+  {
+   "qid": "loc0029",
+   "question": "What is warfarin used for?",
+   "intent": "indication",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34067-9",
+   "verified_by": "Indications and Usage 节长度 1396 字符"
+  },
+  {
+   "qid": "loc0030",
+   "question": "What conditions does warfarin treat?",
+   "intent": "indication",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34067-9",
+   "verified_by": "Indications and Usage 节长度 1396 字符"
+  },
+  {
+   "qid": "loc0031",
+   "question": "Why would my doctor prescribe warfarin?",
+   "intent": "indication",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34067-9",
+   "verified_by": "Indications and Usage 节长度 1396 字符"
+  },
+  {
+   "qid": "loc0032",
+   "question": "What should I watch out for when taking warfarin?",
+   "intent": "precaution",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7"
+   ],
+   "gold_section": "Warnings and Precautions",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#43685-7",
+   "verified_by": "Warnings and Precautions 节长度 949 字符"
+  },
+  {
+   "qid": "loc0033",
+   "question": "Are there any warnings for warfarin?",
+   "intent": "precaution",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7"
+   ],
+   "gold_section": "Warnings and Precautions",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#43685-7",
+   "verified_by": "Warnings and Precautions 节长度 949 字符"
+  },
+  {
+   "qid": "loc0034",
+   "question": "What precautions should I take with warfarin?",
+   "intent": "precaution",
+   "drug": "warfarin",
+   "entity": "",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7"
+   ],
+   "gold_section": "Warnings and Precautions",
+   "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+   "cite_key": "ecd271ad-765e-4ac5-99f4-2e9c6e466336#43685-7",
+   "verified_by": "Warnings and Precautions 节长度 949 字符"
+  },
+  {
+   "qid": "loc0035",
+   "question": "Can I take metformin together with Glyburide?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Glyburide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'glyburide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0036",
+   "question": "Is it safe to combine metformin and Glyburide?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Glyburide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'glyburide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0037",
+   "question": "Does metformin interact with Glyburide?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Glyburide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'glyburide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0038",
+   "question": "Glyburide and metformin — is there any interaction?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Glyburide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'glyburide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0039",
+   "question": "Can I take metformin together with Furosemide?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Furosemide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'furosemide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0040",
+   "question": "Is it safe to combine metformin and Furosemide?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Furosemide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'furosemide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0041",
+   "question": "Does metformin interact with Furosemide?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Furosemide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'furosemide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0042",
+   "question": "Furosemide and metformin — is there any interaction?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Furosemide",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'furosemide' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0043",
+   "question": "Can I take metformin together with Nifedipine?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Nifedipine",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'nifedipine' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0044",
+   "question": "Is it safe to combine metformin and Nifedipine?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Nifedipine",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'nifedipine' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0045",
+   "question": "Does metformin interact with Nifedipine?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Nifedipine",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'nifedipine' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0046",
+   "question": "Nifedipine and metformin — is there any interaction?",
+   "intent": "interaction",
+   "drug": "metformin",
+   "entity": "Nifedipine",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+   "verified_by": "'nifedipine' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0047",
+   "question": "Can I take metformin if I have Renal disease?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "Renal disease",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'renal' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0048",
+   "question": "Is metformin safe for someone with Renal disease?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "Renal disease",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'renal' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0049",
+   "question": "Should I avoid metformin if I have Renal disease?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "Renal disease",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'renal' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0050",
+   "question": "I have Renal disease — can I still take metformin?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "Renal disease",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'renal' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0051",
+   "question": "Can I take metformin if I have hypersensitivity to metformin hydrochloride?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "hypersensitivity to metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0052",
+   "question": "Is metformin safe for someone with hypersensitivity to metformin hydrochloride?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "hypersensitivity to metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0053",
+   "question": "Should I avoid metformin if I have hypersensitivity to metformin hydrochloride?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "hypersensitivity to metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0054",
+   "question": "I have hypersensitivity to metformin hydrochloride — can I still take metformin?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "hypersensitivity to metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0055",
+   "question": "Can I take metformin if I have metformin hydrochloride?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'metformin' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0056",
+   "question": "Is metformin safe for someone with metformin hydrochloride?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'metformin' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0057",
+   "question": "Should I avoid metformin if I have metformin hydrochloride?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'metformin' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0058",
+   "question": "I have metformin hydrochloride — can I still take metformin?",
+   "intent": "contraindication",
+   "drug": "metformin",
+   "entity": "metformin hydrochloride",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34070-3",
+   "verified_by": "'metformin' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0059",
+   "question": "How much metformin should I take?",
+   "intent": "dosage",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+   "verified_by": "Dosage and Administration 节长度 4000 字符"
+  },
+  {
+   "qid": "loc0060",
+   "question": "What is the recommended dose of metformin?",
+   "intent": "dosage",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+   "verified_by": "Dosage and Administration 节长度 4000 字符"
+  },
+  {
+   "qid": "loc0061",
+   "question": "What is the starting dose of metformin?",
+   "intent": "dosage",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+   "verified_by": "Dosage and Administration 节长度 4000 字符"
+  },
+  {
+   "qid": "loc0062",
+   "question": "How should I take metformin?",
+   "intent": "dosage",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+   "verified_by": "Dosage and Administration 节长度 4000 字符"
+  },
+  {
+   "qid": "loc0063",
+   "question": "What is metformin used for?",
+   "intent": "indication",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34067-9",
+   "verified_by": "Indications and Usage 节长度 166 字符"
+  },
+  {
+   "qid": "loc0064",
+   "question": "What conditions does metformin treat?",
+   "intent": "indication",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34067-9",
+   "verified_by": "Indications and Usage 节长度 166 字符"
+  },
+  {
+   "qid": "loc0065",
+   "question": "Why would my doctor prescribe metformin?",
+   "intent": "indication",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34067-9",
+   "verified_by": "Indications and Usage 节长度 166 字符"
+  },
+  {
+   "qid": "loc0066",
+   "question": "What should I watch out for when taking metformin?",
+   "intent": "precaution",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "34071-1"
+   ],
+   "gold_section": "Precautions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34069-5",
+   "verified_by": "Precautions 节长度 572 字符"
+  },
+  {
+   "qid": "loc0067",
+   "question": "Are there any warnings for metformin?",
+   "intent": "precaution",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "34071-1"
+   ],
+   "gold_section": "Precautions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34069-5",
+   "verified_by": "Precautions 节长度 572 字符"
+  },
+  {
+   "qid": "loc0068",
+   "question": "What precautions should I take with metformin?",
+   "intent": "precaution",
+   "drug": "metformin",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "34071-1"
+   ],
+   "gold_section": "Precautions",
+   "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+   "cite_key": "ded33248-44ef-45f6-a461-24b35772a1b2#34069-5",
+   "verified_by": "Precautions 节长度 572 字符"
+  },
+  {
+   "qid": "loc0069",
+   "question": "Can I take atorvastatin if I have Acute liver failure?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Acute liver failure",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'acute' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0070",
+   "question": "Is atorvastatin safe for someone with Acute liver failure?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Acute liver failure",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'acute' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0071",
+   "question": "Should I avoid atorvastatin if I have Acute liver failure?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Acute liver failure",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'acute' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0072",
+   "question": "I have Acute liver failure — can I still take atorvastatin?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Acute liver failure",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'acute' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0073",
+   "question": "Can I take atorvastatin if I have Hypersensitivity to atorvastatin?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Hypersensitivity to atorvastatin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0074",
+   "question": "Is atorvastatin safe for someone with Hypersensitivity to atorvastatin?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Hypersensitivity to atorvastatin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0075",
+   "question": "Should I avoid atorvastatin if I have Hypersensitivity to atorvastatin?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Hypersensitivity to atorvastatin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0076",
+   "question": "I have Hypersensitivity to atorvastatin — can I still take atorvastatin?",
+   "intent": "contraindication",
+   "drug": "atorvastatin",
+   "entity": "Hypersensitivity to atorvastatin",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0077",
+   "question": "How much atorvastatin should I take?",
+   "intent": "dosage",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "verified_by": "Dosage and Administration 节长度 820 字符"
+  },
+  {
+   "qid": "loc0078",
+   "question": "What is the recommended dose of atorvastatin?",
+   "intent": "dosage",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "verified_by": "Dosage and Administration 节长度 820 字符"
+  },
+  {
+   "qid": "loc0079",
+   "question": "What is the starting dose of atorvastatin?",
+   "intent": "dosage",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "verified_by": "Dosage and Administration 节长度 820 字符"
+  },
+  {
+   "qid": "loc0080",
+   "question": "How should I take atorvastatin?",
+   "intent": "dosage",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "verified_by": "Dosage and Administration 节长度 820 字符"
+  },
+  {
+   "qid": "loc0081",
+   "question": "What is atorvastatin used for?",
+   "intent": "indication",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34067-9",
+   "verified_by": "Indications and Usage 节长度 2201 字符"
+  },
+  {
+   "qid": "loc0082",
+   "question": "What conditions does atorvastatin treat?",
+   "intent": "indication",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34067-9",
+   "verified_by": "Indications and Usage 节长度 2201 字符"
+  },
+  {
+   "qid": "loc0083",
+   "question": "Why would my doctor prescribe atorvastatin?",
+   "intent": "indication",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34067-9",
+   "verified_by": "Indications and Usage 节长度 2201 字符"
+  },
+  {
+   "qid": "loc0084",
+   "question": "What should I watch out for when taking atorvastatin?",
+   "intent": "precaution",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34069-5",
+   "verified_by": "Precautions 节长度 545 字符"
+  },
+  {
+   "qid": "loc0085",
+   "question": "Are there any warnings for atorvastatin?",
+   "intent": "precaution",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34069-5",
+   "verified_by": "Precautions 节长度 545 字符"
+  },
+  {
+   "qid": "loc0086",
+   "question": "What precautions should I take with atorvastatin?",
+   "intent": "precaution",
+   "drug": "atorvastatin",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+   "cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34069-5",
+   "verified_by": "Precautions 节长度 545 字符"
+  },
+  {
+   "qid": "loc0087",
+   "question": "Can I take lisinopril together with Diuretics?",
+   "intent": "interaction",
+   "drug": "lisinopril",
+   "entity": "Diuretics",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+   "verified_by": "'diuretics' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0088",
+   "question": "Is it safe to combine lisinopril and Diuretics?",
+   "intent": "interaction",
+   "drug": "lisinopril",
+   "entity": "Diuretics",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+   "verified_by": "'diuretics' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0089",
+   "question": "Does lisinopril interact with Diuretics?",
+   "intent": "interaction",
+   "drug": "lisinopril",
+   "entity": "Diuretics",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+   "verified_by": "'diuretics' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0090",
+   "question": "Diuretics and lisinopril — is there any interaction?",
+   "intent": "interaction",
+   "drug": "lisinopril",
+   "entity": "Diuretics",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "gold_section": "Drug Interactions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+   "verified_by": "'diuretics' 出现在 Drug Interactions 节"
+  },
+  {
+   "qid": "loc0091",
+   "question": "Can I take lisinopril if I have Angioedema?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Angioedema",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'angioedema' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0092",
+   "question": "Is lisinopril safe for someone with Angioedema?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Angioedema",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'angioedema' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0093",
+   "question": "Should I avoid lisinopril if I have Angioedema?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Angioedema",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'angioedema' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0094",
+   "question": "I have Angioedema — can I still take lisinopril?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Angioedema",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'angioedema' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0095",
+   "question": "Can I take lisinopril if I have Hypersensitivity?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Hypersensitivity",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0096",
+   "question": "Is lisinopril safe for someone with Hypersensitivity?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Hypersensitivity",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0097",
+   "question": "Should I avoid lisinopril if I have Hypersensitivity?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Hypersensitivity",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0098",
+   "question": "I have Hypersensitivity — can I still take lisinopril?",
+   "intent": "contraindication",
+   "drug": "lisinopril",
+   "entity": "Hypersensitivity",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0099",
+   "question": "How much lisinopril should I take?",
+   "intent": "dosage",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34068-7",
+   "verified_by": "Dosage and Administration 节长度 798 字符"
+  },
+  {
+   "qid": "loc0100",
+   "question": "What is the recommended dose of lisinopril?",
+   "intent": "dosage",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34068-7",
+   "verified_by": "Dosage and Administration 节长度 798 字符"
+  },
+  {
+   "qid": "loc0101",
+   "question": "What is the starting dose of lisinopril?",
+   "intent": "dosage",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34068-7",
+   "verified_by": "Dosage and Administration 节长度 798 字符"
+  },
+  {
+   "qid": "loc0102",
+   "question": "How should I take lisinopril?",
+   "intent": "dosage",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34068-7",
+   "verified_by": "Dosage and Administration 节长度 798 字符"
+  },
+  {
+   "qid": "loc0103",
+   "question": "What is lisinopril used for?",
+   "intent": "indication",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34067-9",
+   "verified_by": "Indications and Usage 节长度 268 字符"
+  },
+  {
+   "qid": "loc0104",
+   "question": "What conditions does lisinopril treat?",
+   "intent": "indication",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34067-9",
+   "verified_by": "Indications and Usage 节长度 268 字符"
+  },
+  {
+   "qid": "loc0105",
+   "question": "Why would my doctor prescribe lisinopril?",
+   "intent": "indication",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34067-9",
+   "verified_by": "Indications and Usage 节长度 268 字符"
+  },
+  {
+   "qid": "loc0106",
+   "question": "What should I watch out for when taking lisinopril?",
+   "intent": "precaution",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34069-5",
+   "verified_by": "Precautions 节长度 392 字符"
+  },
+  {
+   "qid": "loc0107",
+   "question": "Are there any warnings for lisinopril?",
+   "intent": "precaution",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34069-5",
+   "verified_by": "Precautions 节长度 392 字符"
+  },
+  {
+   "qid": "loc0108",
+   "question": "What precautions should I take with lisinopril?",
+   "intent": "precaution",
+   "drug": "lisinopril",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+   "cite_key": "9470b102-3c81-469a-a4c5-6816d9d39b07#34069-5",
+   "verified_by": "Precautions 节长度 392 字符"
+  },
+  {
+   "qid": "loc0109",
+   "question": "Can I take levothyroxine if I have uncorrected adrenal insufficiency?",
+   "intent": "contraindication",
+   "drug": "levothyroxine",
+   "entity": "uncorrected adrenal insufficiency",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+   "verified_by": "'uncorrected' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0110",
+   "question": "Is levothyroxine safe for someone with uncorrected adrenal insufficiency?",
+   "intent": "contraindication",
+   "drug": "levothyroxine",
+   "entity": "uncorrected adrenal insufficiency",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+   "verified_by": "'uncorrected' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0111",
+   "question": "Should I avoid levothyroxine if I have uncorrected adrenal insufficiency?",
+   "intent": "contraindication",
+   "drug": "levothyroxine",
+   "entity": "uncorrected adrenal insufficiency",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+   "verified_by": "'uncorrected' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0112",
+   "question": "I have uncorrected adrenal insufficiency — can I still take levothyroxine?",
+   "intent": "contraindication",
+   "drug": "levothyroxine",
+   "entity": "uncorrected adrenal insufficiency",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34070-3",
+   "verified_by": "'uncorrected' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0113",
+   "question": "How much levothyroxine should I take?",
+   "intent": "dosage",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34068-7",
+   "verified_by": "Dosage and Administration 节长度 850 字符"
+  },
+  {
+   "qid": "loc0114",
+   "question": "What is the recommended dose of levothyroxine?",
+   "intent": "dosage",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34068-7",
+   "verified_by": "Dosage and Administration 节长度 850 字符"
+  },
+  {
+   "qid": "loc0115",
+   "question": "What is the starting dose of levothyroxine?",
+   "intent": "dosage",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34068-7",
+   "verified_by": "Dosage and Administration 节长度 850 字符"
+  },
+  {
+   "qid": "loc0116",
+   "question": "How should I take levothyroxine?",
+   "intent": "dosage",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34068-7",
+   "verified_by": "Dosage and Administration 节长度 850 字符"
+  },
+  {
+   "qid": "loc0117",
+   "question": "What is levothyroxine used for?",
+   "intent": "indication",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34067-9",
+   "verified_by": "Indications and Usage 节长度 1701 字符"
+  },
+  {
+   "qid": "loc0118",
+   "question": "What conditions does levothyroxine treat?",
+   "intent": "indication",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34067-9",
+   "verified_by": "Indications and Usage 节长度 1701 字符"
+  },
+  {
+   "qid": "loc0119",
+   "question": "Why would my doctor prescribe levothyroxine?",
+   "intent": "indication",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34067-9",
+   "verified_by": "Indications and Usage 节长度 1701 字符"
+  },
+  {
+   "qid": "loc0120",
+   "question": "What should I watch out for when taking levothyroxine?",
+   "intent": "precaution",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34069-5",
+   "verified_by": "Precautions 节长度 563 字符"
+  },
+  {
+   "qid": "loc0121",
+   "question": "Are there any warnings for levothyroxine?",
+   "intent": "precaution",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34069-5",
+   "verified_by": "Precautions 节长度 563 字符"
+  },
+  {
+   "qid": "loc0122",
+   "question": "What precautions should I take with levothyroxine?",
+   "intent": "precaution",
+   "drug": "levothyroxine",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+   "cite_key": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34069-5",
+   "verified_by": "Precautions 节长度 563 字符"
+  },
+  {
+   "qid": "loc0123",
+   "question": "Can I take omeprazole if I have hypersensitivity reactions?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "hypersensitivity reactions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0124",
+   "question": "Is omeprazole safe for someone with hypersensitivity reactions?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "hypersensitivity reactions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0125",
+   "question": "Should I avoid omeprazole if I have hypersensitivity reactions?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "hypersensitivity reactions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0126",
+   "question": "I have hypersensitivity reactions — can I still take omeprazole?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "hypersensitivity reactions",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'hypersensitivity' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0127",
+   "question": "Can I take omeprazole if I have substituted benzimidazoles?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "substituted benzimidazoles",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'substituted' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0128",
+   "question": "Is omeprazole safe for someone with substituted benzimidazoles?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "substituted benzimidazoles",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'substituted' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0129",
+   "question": "Should I avoid omeprazole if I have substituted benzimidazoles?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "substituted benzimidazoles",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'substituted' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0130",
+   "question": "I have substituted benzimidazoles — can I still take omeprazole?",
+   "intent": "contraindication",
+   "drug": "omeprazole",
+   "entity": "substituted benzimidazoles",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "gold_section": "Contraindications",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
+   "verified_by": "'substituted' 出现在 Contraindications 节"
+  },
+  {
+   "qid": "loc0131",
+   "question": "How much omeprazole should I take?",
+   "intent": "dosage",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+   "verified_by": "Dosage and Administration 节长度 1722 字符"
+  },
+  {
+   "qid": "loc0132",
+   "question": "What is the recommended dose of omeprazole?",
+   "intent": "dosage",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+   "verified_by": "Dosage and Administration 节长度 1722 字符"
+  },
+  {
+   "qid": "loc0133",
+   "question": "What is the starting dose of omeprazole?",
+   "intent": "dosage",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+   "verified_by": "Dosage and Administration 节长度 1722 字符"
+  },
+  {
+   "qid": "loc0134",
+   "question": "How should I take omeprazole?",
+   "intent": "dosage",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "gold_section": "Dosage and Administration",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+   "verified_by": "Dosage and Administration 节长度 1722 字符"
+  },
+  {
+   "qid": "loc0135",
+   "question": "What is omeprazole used for?",
+   "intent": "indication",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34067-9",
+   "verified_by": "Indications and Usage 节长度 539 字符"
+  },
+  {
+   "qid": "loc0136",
+   "question": "What conditions does omeprazole treat?",
+   "intent": "indication",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34067-9",
+   "verified_by": "Indications and Usage 节长度 539 字符"
+  },
+  {
+   "qid": "loc0137",
+   "question": "Why would my doctor prescribe omeprazole?",
+   "intent": "indication",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "gold_section": "Indications and Usage",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34067-9",
+   "verified_by": "Indications and Usage 节长度 539 字符"
+  },
+  {
+   "qid": "loc0138",
+   "question": "What should I watch out for when taking omeprazole?",
+   "intent": "precaution",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34069-5",
+   "verified_by": "Precautions 节长度 517 字符"
+  },
+  {
+   "qid": "loc0139",
+   "question": "Are there any warnings for omeprazole?",
+   "intent": "precaution",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34069-5",
+   "verified_by": "Precautions 节长度 517 字符"
+  },
+  {
+   "qid": "loc0140",
+   "question": "What precautions should I take with omeprazole?",
+   "intent": "precaution",
+   "drug": "omeprazole",
+   "entity": "",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5",
+    "43685-7"
+   ],
+   "gold_section": "Precautions",
+   "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+   "cite_key": "54612d26-9e1a-1960-e063-6394a90a5784#34069-5",
+   "verified_by": "Precautions 节长度 517 字符"
+  }
+ ]
+}

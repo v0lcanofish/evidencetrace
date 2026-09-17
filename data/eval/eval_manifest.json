@@ -1,35 +1,48 @@
 {
  "built": "2026-09-17",
  "corpus": {
-  "drugs": 6,
-  "sections": 36
+  "drugs": 50,
+  "sections": 297
  },
- "total_rows": 352,
+ "total_rows": 185,
+ "caps": {
+  "section_locate": 50,
+  "boundary": 45,
+  "retrieval": 60,
+  "intent": 20,
+  "e2e": 10
+ },
+ "raw_before_cap": 2300,
  "sets": {
   "section_locate": {
-   "n": 140,
+   "n": 50,
    "file": "section_locate_set.json",
-   "tests": "③ 章节定位（问题→该查哪一节）"
+   "tests": "③ 章节定位（问题→该查哪一节）",
+   "consumer": "scripts/eval_retrieval.py"
   },
   "boundary": {
-   "n": 62,
+   "n": 45,
    "file": "boundary_set.json",
-   "tests": "①④ 边界与拒答"
+   "tests": "①④ 边界与拒答",
+   "consumer": "scripts/eval_agent.py（停止准则/拒答）"
   },
   "retrieval": {
-   "n": 46,
+   "n": 60,
    "file": "retrieval_set.json",
-   "tests": "③ 检索召回（含 direct/paraphrase 两档）"
+   "tests": "③ 检索召回（含 direct/paraphrase 两档）",
+   "consumer": "eval_retrieval.py + eval_agent.py"
   },
   "intent": {
-   "n": 78,
+   "n": 20,
    "file": "intent_set.json",
-   "tests": "② 理解（多轮指代消解）"
+   "tests": "② 理解（多轮指代消解）",
+   "consumer": "E10（未做）"
   },
   "e2e": {
-   "n": 26,
+   "n": 10,
    "file": "e2e_set.json",
-   "tests": "全链路多轮"
+   "tests": "全链路多轮",
+   "consumer": "E10（未做）"
   }
  }
 }

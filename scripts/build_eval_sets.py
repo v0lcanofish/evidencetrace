@@ -41,6 +41,229 @@ PROJECT = Path(__file__).resolve().parents[1]
 LABELS = PROJECT / "data" / "labels.json"
 OUT_DIR = PROJECT / "data" / "eval"
 
+# ---------------------------------------------------------------- 限量
+#
+# ⚠️ 2026-09-17 加（E5b）。加之前是**不限量**的：语料 6 份药生成 352 条，
+#    扩到 50 份药会直接爆炸到几千条。而真正被消费的只有 46 条（检索集）——
+#    其余 306 条**只有元校验脚本读过**，没有任何判据用它们。
+#    **这就是"堆测评"**：造得越多越像做了事，但数量不等于证据。
+#
+# ⭐ 定这两个数的依据，不是"看着差不多"，是**每个集合必须有一个指名道姓的消费者**：
+#
+#     retrieval      60   ← E6 检索判据 + E8 策略①②对照（**主集合**）
+#     boundary       45   ← E8 停止准则 / 拒答准确率（AbstentionBench：拒答要专门指标）
+#     section_locate 40   ← E6 的"定位命中率"（原来只有 28 条，靠检索集里的子集凑）
+#     intent         15   ← E10 记忆与多轮（先留苗，不用就不扩）
+#     e2e            10   ← E10 全链路（同上）
+#
+#     ⚠️ 没有消费者的集合**不许进**。要加新集合，先在判据脚本里指出谁消费它。
+CAPS: Dict[str, int] = {
+    "section_locate": 50,      # = 10 份药 × 5 种意图（两个维度都要覆盖，见 GROUP_BY）
+    "boundary": 45,
+    "retrieval": 60,           # = 30 道题 × 2 档（必须成对，见 cap_paired）
+    "intent": 20,              # 5 种意图 × 4 条；15 条时药覆盖只有 7 份，不够摊开
+    "e2e": 10,
+}
+
+# 限量时按什么分组轮转 —— **这是本轮唯一必须两步思考的地方**。
+#
+# ⚠️ 只按"药"轮转会把**意图**覆盖压塌：语料遍历是按药来的，每份药的第一条
+#    往往是同一个意图，于是 40 条全是「禁忌」类，另外 4 种意图一条没有。
+#    （实测踩到过：校验器报"章节定位：5 种意图全覆盖"失败。）
+#
+# ⭐ 用「先保层、再摊开」的两级限量：层 = intent，摊开 = drug。
+#    50 条 = 5 种意图 × 各 10 条（每层的 10 条尽量来自不同的药）。
+GROUP_BY: Dict[str, Any] = {
+    "section_locate": ("intent", "drug"),
+    # ⚠️ 意图集的药名存在 `referent` 字段，**不是 `drug`** ——
+    #    默认按 `drug` 分组会取不到，退化成按 intent 分组，
+    #    结果 15 条全挤在前 2 份药上（实测报"覆盖 2 / 50 份药"）。
+    "intent": ("intent", "referent"),
+}
+
+# 🔴 已知缺口（2026-09-17 记录，没修）：
+#    很多药的「相互作用实体」抽取结果为 0（实测 esomeprazole / famotidine /
+#    insulin glargine / valproic acid 都是 0），于是 `interaction` 类的题
+#    只覆盖到少数几份药。**不是限量限没的，是抽取抽不出来。**
+#    影响：章节定位集里 interaction 这一层明显偏薄。
+#    要修得改 `extract_entities`（不同厂家说明书的相互作用节写法不一样）。
+
+
+def _is_tautological(row: Dict[str, Any]) -> bool:
+    """这题是不是废话题 —— 问句里的"实体"就是药名本身。
+
+    实测样例：`Can I take amiodarone if I have Amiodarone hydrochloride tablet?`
+    —— 实体抽到了药名（还带着剂型后缀）。这种题**不成立**：
+    它考不出"检索到没检索到那一节"，因为药名在每份说明书里都出现。
+
+    ⚠️ 别小看这类脏数据的杀伤力：它会让 Recall@5 **虚高**
+       （问句里的词和答案里的词重合是必然的），而且**看不出来**。
+    """
+    ent = (row.get("entity") or "").strip().lower()
+    drug = (row.get("drug") or "").strip().lower()
+    if not ent or not drug:
+        return False
+    return drug in ent
+
+
+def cap_round_robin(rows: List[Dict[str, Any]], cap: int,
+                    key: str = "drug",
+                    key_fn=None) -> List[Dict[str, Any]]:
+    """按 key **轮转**取样，直到取满 cap 条。
+
+    ⚠️ 为什么不能直接 `rows[:cap]`：生成是按药顺序遍历语料的，
+       顺序截断会让**语料里靠后的药一条题都没有** ——
+       44 份新药的题全被前 6 份药挤掉，等于白扩语料。
+       轮转取样保证"每种 key 至少一条，再回头补第二条"。
+
+    key 取不到时（比如 boundary 集没有 drug 字段）退回按大类轮转。
+    """
+    if len(rows) <= cap:
+        return rows
+
+    def group_key(r: Dict[str, Any]) -> str:
+        if key_fn is not None:
+            return str(key_fn(r))
+        return str(r.get(key) or r.get("boundary_class") or r.get("intent")
+                   or r.get("scenario") or "_")
+
+    buckets: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+    for r in rows:
+        buckets[group_key(r)].append(r)
+
+    # ⚠️ 桶的顺序也要固定 —— 用 sorted 而不是 dict 的插入序，
+    #    否则换一次语料顺序，取出来的题就变一批，判据数字会莫名跳动
+    names = sorted(buckets)
+    out: List[Dict[str, Any]] = []
+    i = 0
+    while len(out) < cap:
+        added = False
+        for name in names:
+            b = buckets[name]
+            if i < len(b):
+                out.append(b[i])
+                added = True
+                if len(out) >= cap:
+                    break
+        if not added:
+            break                      # 所有桶都空了
+        i += 1
+    return out
+
+
+def cap_stratified(rows: List[Dict[str, Any]], cap: int,
+                   strata: str = "intent", spread: str = "drug"
+                   ) -> List[Dict[str, Any]]:
+    """**先保层（意图），再摊开（药）** 的限量。
+
+    ⚠️ 为什么不能只做一层轮转：实测过一次 —— 按药轮转 50 条，
+       结果 4 种意图各 14 条、另一类一条没有（因为它排序靠后被挤掉）。
+       **一层轮转只能保住一个维度。**
+
+    做法：把 cap 平均分给各层，每层内部按 spread 轮转。
+        50 条 / 5 层 = 每层 10 条，每层的这 10 条尽量来自不同的药。
+    """
+    by_stratum: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+    for r in rows:
+        by_stratum[str(r.get(strata))].append(r)
+    names = sorted(by_stratum)
+    if not names:
+        return []
+
+    per = max(1, cap // len(names))
+    out: List[Dict[str, Any]] = []
+    for name in names:
+        bucket = by_stratum[name]
+        groups: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+        for r in bucket:
+            groups[str(r.get(spread))].append(r)
+        gnames = sorted(groups)
+        i = 0
+        taken = 0
+        while taken < per:
+            progressed = False
+            for g in gnames:
+                if i < len(groups[g]) and taken < per:
+                    out.append(groups[g][i])
+                    taken += 1
+                    progressed = True
+            if not progressed:
+                break
+            i += 1
+    return out
+
+
+def cap_paired(rows: List[Dict[str, Any]], cap: int) -> List[Dict[str, Any]]:
+    """检索集专用限量：**以"一道题"为单位取整组，按药轮转。**
+
+    ⚠️ 为什么不能复用 cap_round_robin：那个是"每轮每组取**一行**"。
+       而一道题有两行（direct + paraphrase）——
+       60 条会在**第一轮**被 60 道不同的题各占一行，结果**全是 direct 档**，
+       paraphrase 一条不剩。这个坑实测踩到过（截断后按档统计是 {'direct': 60}）。
+       所以这里必须**整组取**：一道题要么完整进来（两档都有），要么都不进。
+    """
+    items: Dict[Any, List[Dict[str, Any]]] = {}
+    for r in rows:
+        items.setdefault((r.get("drug"), r.get("intent"), r.get("entity")), []).append(r)
+
+    by_drug: Dict[str, List[Any]] = defaultdict(list)
+    for key in items:                       # key = (drug, intent, entity)
+        by_drug[key[0]].append(key)
+
+    out: List[Dict[str, Any]] = []
+    i = 0
+    while len(out) < cap:
+        progressed = False
+        for drug in sorted(by_drug):
+            lst = by_drug[drug]
+            if i < len(lst):
+                out.extend(items[lst[i]])
+                progressed = True
+                if len(out) >= cap:
+                    break
+        if not progressed:
+            break
+        i += 1
+    return out
+
+
+def apply_caps(sets: Dict[str, List[Dict[str, Any]]], verbose: bool = True
+               ) -> Dict[str, List[Dict[str, Any]]]:
+    """给每个集合限量，并报告砍了多少、覆盖了多少种 key。
+
+    ⚠️ 检索集**按"题"截断，不按行截断**（见下面 pair_key 的注释）——
+       这是本函数里唯一一处有讲究的地方，别顺手"简化"掉。
+    """
+    out = {}
+    for name, rows in sets.items():
+        cap = CAPS.get(name, len(rows))
+
+        # 先剔废话题（实体=药名）
+        n0 = len(rows)
+        rows = [r for r in rows if not _is_tautological(r)]
+        n_dropped = n0 - len(rows)
+
+        # ⭐ 检索集走**整题成组**的限量：direct / paraphrase 是同一道题的两种问法，
+        #    头条指标 `direct − paraphrase` 只有两档问同一件事时才有意义。
+        #    按行轮转会把两档拆到不同的药上 —— 那个差值就被"药的差异"污染了，
+        #    而且**看不出来**（两边都算出个像样的数）。
+        if name == "retrieval":
+            kept = cap_paired(rows, cap)
+        elif name in GROUP_BY:                      # 需要同时保住两个维度的集合
+            kept = cap_stratified(rows, cap, *GROUP_BY[name])
+        else:
+            kept = cap_round_robin(rows, cap)
+        out[name] = kept
+        if verbose:
+            n_drug = len({r.get("drug") for r in kept if r.get("drug")})
+            t = f"  覆盖 {n_drug} 份药" if n_drug else ""
+            if name == "retrieval":
+                from collections import Counter as _C
+                t += f"  按档 {dict(_C(r['tier'] for r in kept))}"
+            print(f"  ✂ {name:<16} {n0:>4} → {len(kept):>3}"
+                  f"{f'（剔废话题 {n_dropped}）' if n_dropped else ''}{t}")
+    return out
+
 # ---------------------------------------------------------------- LOINC 知识
 
 SECTION_NAME = {
@@ -472,63 +695,55 @@ def build_retrieval_set(labels: List[Dict[str, Any]],
        定位集测的是 **"该查哪一节"这个决策**（②→③ 的映射对不对）
        检索集测的是 **"检索器实际捞回来了什么"**（③ 的执行好不好）
        两者可以都错、也可以一个对一个错 —— 分开量才知道该改哪。
+
+    ━━━ ⭐ 两档必须是同一道题的两种问法（2026-09-17 修）━━━
+
+    改之前的写法有个**结构性缺陷**：
+        direct 档只从「相互作用 / 禁忌」两个意图生成（因为要抽得出实体），
+        paraphrase 档覆盖全部 5 个意图。
+    于是 `direct − paraphrase` 这个头条指标**一直在比较不同的意图构成** ——
+    两边都能算出像样的数，但那个差值和"语义检索的贡献"没关系。
+    **这类错误不会报错，只会让结论悄悄错。**
+
+    现在的写法：以**定位集的一道题**为单位，一次生成 direct + paraphrase 两句，
+    共用同一个 gold。这样两档问的是同一件事，差值才有意义。
     """
     rows: List[Dict[str, Any]] = []
     qid = 0
+    seen: set = set()
 
-    # ---- 档 1：direct（复用定位集里带实体的那些题，BM25 友好）
-    seen_key = set()
     for r in loc_rows:
-        if r["intent"] not in ("interaction", "contraindication"):
+        intent, drug, ent = r["intent"], r["drug"], r["entity"]
+        tpls = PARAPHRASE_TEMPLATES.get(intent)
+        if not tpls:
             continue
-        key = (r["drug"], r["intent"], r["entity"])
-        if key in seen_key:
+        key = (drug, intent, ent)
+        if key in seen:
             continue
-        seen_key.add(key)
-        qid += 1
-        rows.append({
-            "qid": f"ret{qid:04d}", "question": r["question"],
-            "tier": "direct", "intent": r["intent"], "drug": r["drug"],
-            "entity": r["entity"],
+        seen.add(key)
+
+        gold = {
             "gold_cite_key": r["cite_key"], "gold_loinc": r["gold_loinc"],
             # ⭐ 可接受的 LOINC 集合 —— 「注意事项」这类问题，
             #    不同药落在 Precautions / Warnings / Warnings and Precautions 上都算对
             "gold_loinc_any": r["gold_loinc_any"],
-            "note": "关键词能匹配上（药名+实体词都出现在原文）",
-        })
+            "intent": intent, "drug": drug, "entity": ent,
+        }
 
-    # ---- 档 2：paraphrase（同义改写，关键词匹配不上）
-    for L in labels:
-        drug = L["drug"]
-        sections = L.get("sections", [])
-        have = {s["loinc"] for s in sections}
-        text_of = {s["loinc"]: (s.get("text") or "") for s in sections}
-        ents = extract_entities(sections, drug)
+        # 档 1：direct —— 药名 + 实体词都出现在原文里，BM25 友好
+        qid += 1
+        rows.append({**gold, "qid": f"ret{qid:04d}", "tier": "direct",
+                     "question": r["question"],
+                     "note": "关键词能匹配上（药名+实体词都出现在原文）"})
 
-        for intent, tpls in PARAPHRASE_TEMPLATES.items():
-            avail = [x for x in INTENT_TO_LOINC[intent] if x in have]
-            if not avail:
-                continue
-            target = avail[0]
-            if len(text_of.get(target, "")) < 80:
-                continue
-            if intent in ("interaction", "contraindication"):
-                if not ents.get(intent):
-                    continue
-                ent = ents[intent][0]
-                q = tpls[0].format(drug=drug, entity=ent)
-            else:
-                ent = ""
-                q = tpls[0].format(drug=drug)
-            qid += 1
-            rows.append({
-                "qid": f"ret{qid:04d}", "question": q,
-                "tier": "paraphrase", "intent": intent, "drug": drug,
-                "entity": ent,
-                "gold_cite_key": f"{L['setid']}#{target}", "gold_loinc": target,
-                "gold_loinc_any": avail,
-                "note": "同义改写 —— 关键词匹配不上，只能靠语义检索",
-            })
+        # 档 2：paraphrase —— 同一件事换个说法，关键词匹配不上
+        q = (tpls[0].format(drug=drug, entity=ent) if ent
+             else tpls[0].format(drug=drug))
+        qid += 1
+        rows.append({**gold, "qid": f"ret{qid:04d}", "tier": "paraphrase",
+                     "question": q,
+                     "note": "同义改写 —— 关键词匹配不上，只能靠语义检索"})
+
     return rows
 
 
@@ -648,89 +863,81 @@ def main() -> int:
         if e.get("contraindication"):
             print(f"     条件样例：{[x[:34] for x in e['contraindication'][:2]]}")
 
-    # ---- 章节定位集
-    print("\n── 章节定位集 " + "─" * 48)
-    loc = build_section_locate(labels)
-    print(f"  生成 {len(loc)} 条（每条都过了验证）")
-    by_intent = defaultdict(int)
-    by_drug = defaultdict(int)
-    for r in loc:
-        by_intent[r["intent"]] += 1
-        by_drug[r["drug"]] += 1
-    print(f"  按意图：{dict(by_intent)}")
-    print(f"  按药：  {dict(by_drug)}")
-
-    (OUT_DIR / "section_locate_set.json").write_text(
-        json.dumps({"n": len(loc), "note": "问题 → 该查哪一节（LOINC）；每条都验证过",
-                    "rows": loc}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"  → {OUT_DIR / 'section_locate_set.json'}")
-
-    # ---- 边界集
-    print("\n── 边界集 " + "─" * 52)
-    bnd = build_boundary_set(labels)
+    # ---- 先生成（不限量），再统一限量
+    #       ⚠️ 顺序很重要：**先生成全部、再轮转截断**。
+    #          如果边生成边截断，后面那些药根本进不了候选池。
     from collections import Counter
-    print(f"  生成 {len(bnd)} 条")
-    print(f"  按类别：{dict(Counter(r['boundary_class'] for r in bnd))}")
-    (OUT_DIR / "boundary_set.json").write_text(
-        json.dumps({"n": len(bnd),
-                    "note": "该拒答的时候拒答了吗；每类对应一种边界处理",
-                    "rows": bnd}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"  → {OUT_DIR / 'boundary_set.json'}")
+    raw: Dict[str, List[Dict[str, Any]]] = {
+        "section_locate": build_section_locate(labels),
+        "boundary": build_boundary_set(labels),
+        "intent": build_intent_set(labels),
+        "e2e": build_e2e_set(labels),
+    }
+    # 检索集是**从定位集派生**的（同题两档写法），所以必须在限量之前建 ——
+    # 否则被砍掉的定位题会在这里"复活"
+    raw["retrieval"] = build_retrieval_set(labels, raw["section_locate"])
 
-    # ---- 检索集
-    print("\n── 检索集 " + "─" * 52)
-    ret = build_retrieval_set(labels, loc)
-    print(f"  生成 {len(ret)} 条")
-    print(f"  按档：{dict(Counter(r['tier'] for r in ret))}"
-          f"   ← direct = 关键词能匹配；paraphrase = 只能靠语义")
-    (OUT_DIR / "retrieval_set.json").write_text(
-        json.dumps({"n": len(ret),
-                    "note": "该命中的章节捞出来了吗；两档之差 = 语义检索的贡献",
-                    "rows": ret}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"  → {OUT_DIR / 'retrieval_set.json'}")
+    print("\n── 限量（按药轮转，保证覆盖所有药）" + "─" * 30)
+    print(f"  不限量的话这些语料能生成 {sum(len(v) for v in raw.values())} 条")
+    capped = apply_caps(raw)
+    print(f"  限量后合计 {sum(len(v) for v in capped.values())} 条"
+          f"（砍掉 {sum(len(v) for v in raw.values()) - sum(len(v) for v in capped.values())} 条）")
+    print("  ⚠️ 砍掉≠丢弃：`_v1_6drugs/` 里冻着上一版，需要时可回查。"
+          "但**没有消费者的集合不许进主流程**（CAPS 的注释里有各自的责任人）")
 
-    # ---- 意图集
-    print("\n── 意图集 " + "─" * 52)
-    itt = build_intent_set(labels)
-    print(f"  生成 {len(itt)} 条")
-    print(f"  按指代说法：{dict(Counter(r['anaphor'] for r in itt))}")
-    (OUT_DIR / "intent_set.json").write_text(
-        json.dumps({"n": len(itt), "note": "多轮指代消解：'它'指谁",
-                    "rows": itt}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"  → {OUT_DIR / 'intent_set.json'}")
-
-    # ---- 端到端集
-    print("\n── 端到端集 " + "─" * 52)
-    e2e = build_e2e_set(labels)
-    print(f"  生成 {len(e2e)} 组，共 {sum(r['n_turns'] for r in e2e)} turn")
-    print(f"  按场景：{dict(Counter(r['scenario'] for r in e2e))}")
-    (OUT_DIR / "e2e_set.json").write_text(
-        json.dumps({"n": len(e2e), "note": "多轮对话脚本，测全链路 + 记忆",
-                    "rows": e2e}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"  → {OUT_DIR / 'e2e_set.json'}")
+    for name, note in (
+        ("section_locate", "问题 → 该查哪一节（LOINC）；每条都验证过"),
+        ("boundary", "该拒答的时候拒答了吗；每类对应一种边界处理"),
+        ("retrieval", "该命中的章节捞出来了吗；两档之差 = 语义检索的贡献"),
+        ("intent", "多轮指代消解：'它'指谁"),
+        ("e2e", "多轮对话脚本，测全链路 + 记忆"),
+    ):
+        rows = capped[name]
+        (OUT_DIR / f"{name}_set.json").write_text(
+            json.dumps({"n": len(rows), "note": note, "rows": rows},
+                       ensure_ascii=False, indent=1), encoding="utf-8")
+        extra = ""
+        if name == "retrieval":
+            extra = f"  按档 {dict(Counter(r['tier'] for r in rows))}"
+        if name == "boundary":
+            extra = f"  按类 {dict(Counter(r['boundary_class'] for r in rows))}"
+        n_drug = len({r.get("drug") for r in rows if r.get("drug")})
+        print(f"  → {name}_set.json  n={len(rows)}"
+              f"{f'  覆盖 {n_drug} 份药' if n_drug else ''}{extra}")
 
     # ---- 清单
-    total = len(loc) + len(bnd) + len(ret) + len(itt) + len(e2e)
+    total = sum(len(v) for v in capped.values())
     (OUT_DIR / "eval_manifest.json").write_text(json.dumps({
         "built": "2026-09-17",
         "corpus": {"drugs": len(labels),
                    "sections": sum(len(L.get("sections", [])) for L in labels)},
         "total_rows": total,
+        "caps": CAPS,
+        "raw_before_cap": sum(len(v) for v in raw.values()),
         "sets": {
-            "section_locate": {"n": len(loc), "file": "section_locate_set.json",
-                               "tests": "③ 章节定位（问题→该查哪一节）"},
-            "boundary": {"n": len(bnd), "file": "boundary_set.json",
-                         "tests": "①④ 边界与拒答"},
-            "retrieval": {"n": len(ret), "file": "retrieval_set.json",
-                          "tests": "③ 检索召回（含 direct/paraphrase 两档）"},
-            "intent": {"n": len(itt), "file": "intent_set.json",
-                       "tests": "② 理解（多轮指代消解）"},
-            "e2e": {"n": len(e2e), "file": "e2e_set.json",
-                    "tests": "全链路多轮"},
+            "section_locate": {"n": len(capped["section_locate"]),
+                               "file": "section_locate_set.json",
+                               "tests": "③ 章节定位（问题→该查哪一节）",
+                               "consumer": "scripts/eval_retrieval.py"},
+            "boundary": {"n": len(capped["boundary"]), "file": "boundary_set.json",
+                         "tests": "①④ 边界与拒答",
+                         "consumer": "scripts/eval_agent.py（停止准则/拒答）"},
+            "retrieval": {"n": len(capped["retrieval"]), "file": "retrieval_set.json",
+                          "tests": "③ 检索召回（含 direct/paraphrase 两档）",
+                          "consumer": "eval_retrieval.py + eval_agent.py"},
+            "intent": {"n": len(capped["intent"]), "file": "intent_set.json",
+                       "tests": "② 理解（多轮指代消解）",
+                       "consumer": "E10（未做）"},
+            "e2e": {"n": len(capped["e2e"]), "file": "e2e_set.json",
+                    "tests": "全链路多轮",
+                    "consumer": "E10（未做）"},
         },
     }, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\n→ 清单 {OUT_DIR / 'eval_manifest.json'}")
     print(f"★ 合计 {total} 条")
+
+    loc = capped["section_locate"]
+    bnd = capped["boundary"]
 
     print("\n样例：")
     for r in (loc[:1] + bnd[:2]):
