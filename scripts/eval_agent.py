@@ -336,12 +336,14 @@ def part_loop_abstain(labels) -> Dict:
           "修之前会返回 5 条：in/of/the 这些虚词在每条 chunk 里都有")
 
     # ⭐ 已知边界的回归护栏：词命中 ≠ 药对了
+    #    ⚠️ 断言只写在**不随语料漂移**的性质上（初版写"正文不许出现 aspirin"，
+    #       语料 6→50 之后当场失效 —— 那是语料组成的偶然，不是要验的东西）
     sneaky = "Can I take aspirin if I have a stomach ulcer?"
     hit = r(sneaky, 5)
-    check(len(hit) > 0 and all("aspirin" not in d.text.lower() for d in hit),
-          f"「 aspirin + ulcer」返回 {len(hit)} 条 —— 全是词命中，没有一条真的讲 aspirin",
-          "⚠️ 已知边界：agent 目前分不清「词命中」和「药对了」，"
-          "这正是 E8 的证据槽位要补的（槽位里要有【药品】这一项）")
+    check(len(hit) > 0 and all(d.drug != "aspirin" for d in hit),
+          f"「 aspirin + ulcer」返回 {len(hit)} 条 —— 没有一条来自 aspirin 的说明书",
+          f"⚠️ 已知边界：语料里没有 aspirin 这个药，却照样返回结果（命中靠疾病词）。"
+          f"来源药 {sorted({d.drug for d in hit})} —— 这正是 E8 的【药品】槽位要补的")
 
     # 无用户 → 查不到就该拒答
     loop = _mk_loop(r)
@@ -413,18 +415,25 @@ def part_rule_pathology(labels) -> Dict:
           f"规则策略**作答了**（{st.n_evidence} 条证据 / {st.n_claims} 条论断）",
           "它只有 0/1 两种判断：检索有返回 = 有证据")
 
-    texts = " ".join(d.text.lower() for d in loop.last_state.evidence)
-    check("aspirin" not in texts,
-          "⭐ 但它引的 5 条证据里**一条都没提 aspirin** —— 全是词命中",
-          "")
+    # ⚠️ 断言只写在**不会随语料漂移**的性质上。
+    #    初版写的是「正文里不许出现 aspirin」——语料 6→50 之后就有说明书正文提到 aspirin，
+    #    断言当场失效。那是**语料组成的偶然**，不是我们要验的东西。
+    #    要验的是：【语料里根本没有 aspirin 这份说明书】，agent 却照样答了。
+    ev = loop.last_state.evidence
+    check(all(d.drug != "aspirin" for d in ev),
+          f"检索到的 {len(ev)} 条**没有一条来自 aspirin 的说明书**——语料里根本没这个药",
+          f"来源药：{sorted({d.drug for d in ev})}")
+    check(any("ulcer" in d.text.lower() for d in ev),
+          "命中靠的是**疾病词**（ulcer / duodenal ulcer），不是**药品**",
+          "→ 状态里缺的正是「药品」这个槽位")
 
     check(not lg.malformed,
           "⭐ 而闭包检查**通过了** —— 每条引用确实都追得到出处",
           "结论：**闭包只保证「引用追得到」，不保证「引对了」。**"
           "这条边界必须写进报告，否则「引用可验证」会被误读成「答案正确」")
 
-    print(f"       理想行为：该拒答（「这个药不在我的语料里」）")
-    print(f"       规则策略做不到 —— 它的状态里**没有「药品对不对」这一项**。")
+    print("       理想行为：该拒答（「这个药不在我的语料里」）")
+    print("       规则策略做不到 —— 它的状态里**没有「药品对不对」这一项**。")
     print("       → E8 的证据槽位要补的正是这个（槽位 = 药品 / 条件 / 关系）")
     return {"pathology": "rule-cannot-check-drug-identity"}
 

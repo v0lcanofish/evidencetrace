@@ -21,7 +21,7 @@
    ],
    "terminated_by": "answer",
    "cost": 6,
-   "n_evidence": 5,
+   "n_evidence": 6,
    "n_claims": 2,
    "malformed": false
   },

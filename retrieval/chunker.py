@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+from collections import Counter
 from dataclasses import dataclass
 from typing import Any, Dict, List, Tuple
 
@@ -109,6 +110,18 @@ def build_chunks(labels: List[Dict[str, Any]],
     chunks: List[Chunk] = []
     for L in labels:
         drug, setid = L["drug"], L["setid"]
+        # ⚠️ 计数键是 **(setid, loinc)**，不是"每节从 1 重新数"。
+        #
+        #    同一份说明书里可能有**多节共用同一个 LOINC 码** —— 扩语料实测：
+        #    4 份药有这情况（omeprazole 的 43685-7 ×2、methotrexate 的 34073-7 ×3……）。
+        #    每节重置计数器 → chunk_id 撞车 → `{chunk_id: chunk}` 索引里**后者静默覆盖前者**
+        #    （实测 1111 个 chunk 建完索引只剩 1101，**丢了 10 个**，不报任何错）。
+        #    后果：被覆盖的那些块**永远检索不到**，而且看不出来。
+        #
+        #    ⭐ 为什么用这个改法：对**没有重复节的药**，两种计数结果完全一样
+        #       （每份 (setid,loinc) 只有一个节 → 计数器行为等价）→
+        #       **现有 chunk_id 一个都不变**，评测集不受影响。
+        n_by_loinc: Counter = Counter()
         for sec in L.get("sections", []):
             loinc = sec["loinc"]
             section = sec["section"]
@@ -117,7 +130,7 @@ def build_chunks(labels: List[Dict[str, Any]],
                 continue
 
             sents = split_sentences(text)
-            i, n = 0, 0
+            i = 0
             while i < len(sents):
                 buf, start = [], sents[i][1]
                 cur_len = 0
@@ -129,9 +142,9 @@ def build_chunks(labels: List[Dict[str, Any]],
                 end = sents[j - 1][1] + len(sents[j - 1][0])
                 body = " ".join(buf).strip()
                 if body:
-                    n += 1
+                    n_by_loinc[loinc] += 1
                     chunks.append(Chunk(
-                        chunk_id=f"{setid}#{loinc}#{n}",
+                        chunk_id=f"{setid}#{loinc}#{n_by_loinc[loinc]}",
                         doc_id=setid, loinc=loinc, section=section, drug=drug,
                         text=body, char_span=(start, end),
                         heading_path=f"{drug} / {section}",

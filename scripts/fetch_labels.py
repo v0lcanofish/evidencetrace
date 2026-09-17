@@ -22,6 +22,7 @@ import copy
 import json
 import re
 import sys
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -58,8 +59,14 @@ def get(url: str, timeout: int = 30) -> bytes:
 
 
 def find_setid(drug: str) -> str:
-    """按药名找 setid —— 优先挑真有 DRUG INTERACTIONS 的处方药。"""
-    d = json.loads(get(f"{BASE}/spls.json?drug_name={drug}&pagesize=20").decode())
+    """按药名找 setid —— 优先挑真有 DRUG INTERACTIONS 的处方药。
+
+    ⚠️ 药名必须 **URL 编码**：「insulin glargine」「valproic acid」带空格，
+       不编码会直接抛 InvalidURL（`urllib` 不容忍裸空格）。
+       扩语料时实测踩到 —— 两个药因为一个空格被静默跳过。
+    """
+    q = urllib.parse.quote(drug)
+    d = json.loads(get(f"{BASE}/spls.json?drug_name={q}&pagesize=20").decode())
     for item in d.get("data", []):
         sid = item.get("setid")
         if not sid:

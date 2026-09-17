@@ -1,0 +1,256 @@
+{
+  "labels": [
+    {
+      "drug": "warfarin",
+      "setid": "ecd271ad-765e-4ac5-99f4-2e9c6e466336",
+      "sections": [
+        {
+          "loinc": "34067-9",
+          "section": "Indications and Usage",
+          "display": "INDICATIONS & USAGE SECTION",
+          "text": "Warfarin sodium tablets are indicated for: Prophylaxis and treatment of venous thrombosis and its extension, pulmonary embolism (PE). Prophylaxis and treatment of thromboembolic complications associated with atrial fibrillation (AF) and/or cardiac valve replacement. Reduction in the risk of death, recurrent myocardial infarction (MI), and thromboembolic events such as stroke or systemic embolization after myocardial infarction. Limitations of Use Warfarin sodium tablets have no direct effect on an established thrombus, nor does it reverse ischemic tissue damage. Once a thrombus has occurred, however, the goals of anticoagulant treatment are to prevent further extension of the formed clot and to prevent secondary thromboembolic complications that may result in serious and possibly fatal sequelae. Warfarin sodium tablets are a vitamin K antagonist indicated for: Prophylaxis and treatment of venous thrombosis and its extension, pulmonary embolism (1) Prophylaxis and treatment of thromboembolic complications associated with atrial fibrillation and/or cardiac valve replacement (1) Reduction in the risk of death, recurrent myocardial infarction, and thromboembolic events such as stroke or systemic embolization after myocardial infarction (1) Limitations of Use Warfarin sodium tablets have no direct effect on an established thrombus, nor does it reverse ischemic tissue damage. (1)"
+        },
+        {
+          "loinc": "34068-7",
+          "section": "Dosage and Administration",
+          "display": "DOSAGE & ADMINISTRATION SECTION",
+          "text": "Individualize dosing regimen for each patient, and adjust based on INR response. (2.1, 2.2) Knowledge of genotype can inform initial dose selection. (2.3) Monitoring: Obtain daily INR determinations upon initiation until stable in the therapeutic range. Obtain subsequent INR determinations every 1 to 4 weeks. (2.4) Review conversion instructions from other anticoagulants. (2.8)"
+        },
+        {
+          "loinc": "34070-3",
+          "section": "Contraindications",
+          "display": "CONTRAINDICATIONS SECTION",
+          "text": "Warfarin sodium is contraindicated in: Pregnancy Warfarin sodium is contraindicated in women who are pregnant except in pregnant women with mechanical heart valves, who are at high risk of thromboembolism [see Warnings and Precautions (5.7) and Use in Specific Populations (8.1)]. Warfarin sodium can cause fetal harm when administered to a pregnant woman. Warfarin sodium exposure during pregnancy causes a recognized pattern of major congenital malformations (warfarin embryopathy and fetotoxicity), fatal fetal hemorrhage, and an increased risk of spontaneous abortion and fetal mortality. If warfarin sodium is used during pregnancy or if the patient becomes pregnant while taking this drug, the patient should be apprised of the potential hazard to a fetus [see Use in Specific Populations (8.1)]. Warfarin sodium is contraindicated in patients with: Hemorrhagic tendencies or blood dyscrasias Recent or contemplated surgery of the central nervous system or eye, or traumatic surgery resulting in large open surfaces [see Warnings and Precautions (5.8)] Bleeding tendencies associated with:− Active ulceration or overt bleeding of the gastrointestinal, genitourinary, or respiratory tract − Central nervous system hemorrhage − Cerebral aneurysms, dissecting aorta − Pericarditis and pericardial effusions − Bacterial endocarditis Threatened abortion, eclampsia, and preeclampsia Unsupervised patients with conditions associated with potential high level of non-compliance Spinal puncture and other diagnostic or therapeutic procedures with potential for uncontrollable bleeding Hypersensitivity to warfarin or to any other components of this product (e.g., anaphylaxis) [see Adverse Reactions (6)] Major regional or lumbar block anesthesia Malignant hypertension Pregnancy, except in women with mechanical heart valves (4, 5.7, 8.1) Hemorrhagic tendencies or blood dyscrasias (4) Recent or contemplated surgery of the central nervous system (CNS) or eye, or traumatic surgery resulting in large open surfaces (4, 5.8) Bleeding tendencies associated with certain conditions (4) Threatened abortion, eclampsia, and preeclampsia (4) Unsupervised patients with potential high levels of non-compliance (4) Spinal puncture and other diagnostic or therapeutic procedures with potential for uncontrollable bleeding (4) Hypersensitivity to warfarin or any component of the product (4) Major regional or lumbar block anesthesia (4) Malignant hypertension (4)"
+        },
+        {
+          "loinc": "43685-7",
+          "section": "Warnings and Precautions",
+          "display": "WARNINGS AND PRECAUTIONS SECTION",
+          "text": "Tissue necrosis: Necrosis or gangrene of skin or other tissues can occur, with severe cases requiring debridement or amputation. Discontinue warfarin sodium and consider alternative anticoagulants if necessary. (5.2) Calciphylaxis: Fatal and serious cases have occurred. Discontinue warfarin sodium and consider alternative anticoagulation therapy. (5.3) Acute kidney injury may occur during episodes of excessive anticoagulation and hematuria. (5.4) Systemic atheroemboli and cholesterol microemboli: Some cases have progressed to necrosis or death. Discontinue warfarin sodium if such emboli occur. (5.5) Heparin-induced thrombocytopenia (HIT): Initial therapy with warfarin sodium in HIT has resulted in cases of amputation and death. Warfarin sodium may be considered after platelet count has normalized. (5.6) Pregnant women with mechanical heart valves: Warfarin sodium may cause fetal harm; however, the benefits may outweigh the risks. (5.7)"
+        },
+        {
+          "loinc": "34073-7",
+          "section": "Drug Interactions",
+          "display": "DRUG INTERACTIONS SECTION",
+          "text": "Concomitant use of drugs that increase bleeding risk, antibiotics, antifungals, botanical (herbal) products, and inhibitors and inducers of CYP2C9, 1A2, or 3A4. (7) Consult labeling of all concurrently used drugs for complete information about interactions with warfarin sodium or increased risks for bleeding. (7)"
+        }
+      ]
+    },
+    {
+      "drug": "metformin",
+      "setid": "ded33248-44ef-45f6-a461-24b35772a1b2",
+      "sections": [
+        {
+          "loinc": "34067-9",
+          "section": "Indications and Usage",
+          "display": "INDICATIONS & USAGE SECTION",
+          "text": "Metformin Hydrochloride Tablets USP are indicated as an adjunct to diet and exercise to improve glycemic control in adults and children with type 2 diabetes mellitus."
+        },
+        {
+          "loinc": "34070-3",
+          "section": "Contraindications",
+          "display": "CONTRAINDICATIONS SECTION",
+          "text": "Metformin Hydrochloride Tablets USP are contraindicated in patients with: 1. Renal disease or renal dysfunction (e.g., as suggested by serum creatinine levels ≥1.5 mg/dL [males], ≥1.4 mg/dL [females] or abnormal creatinine clearance) which may also result from conditions such as cardiovascular collapse (shock), acute myocardial infarction, and septicemia (see WARNINGSand PRECAUTIONS). 2. Known hypersensitivity to metformin hydrochloride 3. Acute or chronic metabolic acidosis, including diabetic ketoacidosis, with or without coma. Diabetic ketoacidosis should be treated with insulin. Metformin Hydrochloride Tablets USP should be temporarily discontinued in patients undergoing radiologic studies involving intravascular administration of iodinated contrast materials, because use of such products may result in acute alteration of renal function. (See also PRECAUTIONS.)"
+        },
+        {
+          "loinc": "34071-1",
+          "section": "Warnings",
+          "display": "WARNINGS SECTION",
+          "text": "Lactic Acidosis: Lactic acidosis is a rare, but serious, metabolic complication that can occur due to metformin accumulation during treatment with Metformin Hydrochloride Tablets USP; when it occurs, it is fatal in approximately 50% of cases. Lactic acidosis may also occur in association with a number of pathophysiologic conditions, including diabetes mellitus, and whenever there is significant tissue hypoperfusion and hypoxemia. Lactic acidosis is characterized by elevated blood lactate levels (>5 mmol/L), decreased blood pH, electrolyte disturbances with an increased anion gap, and an increased lactate/pyruvate ratio. When metformin is implicated as the cause of lactic acidosis, metformin plasma levels >5 mcg/mL are generally found. The reported incidence of lactic acidosis in patients receiving metformin hydrochloride is very low (approximately 0.03 cases/1000 patient-years, with approximately 0.015 fatal cases/1000 patient-years). In more than 20,000 patient-years exposure to metformin in clinical trials, there were no reports of lactic acidosis. Reported cases have occurred primarily in diabetic patients with significant renal insufficiency, including both intrinsic renal disease and renal hypoperfusion, often in the setting of multiple concomitant medical/surgical problems and multiple concomitant medications. Patients with congestive heart failure requiring pharmacologic management, in particular those with unstable or acute congestive heart failure who are at risk of hypoperfusion and hypoxemia, are at increased risk of lactic acidosis. The risk of lactic acidosis increases with the degree of renal dysfunction and the patient’s age. The risk of lactic acidosis may, therefore, be significantly decreased by regular monitoring of renal function in patients taking Metformin Hydrochloride Tablets USP and by use of the minimum effective dose of Metformin Hydrochloride Tablets USP. In particular, treatment of the elderly should be accompanied by careful monitoring of renal function. Metformin Hydrochloride Tablets USP treatment should not be initiated in patients ≥80 years of age unless measurement of creatinine clearance demonstrates that renal function is not reduced, as these patients are more susceptible to developing lactic acidosis. In addition, Metformin Hydrochloride Tablets USP should be promptly withheld in the presence of any condition associated with hypoxemia, dehydration, or sepsis. Because impaired hepatic function may significantly limit the ability to clear lactate, Metformin Hydrochloride Tablets USP should generally be avoided in patients with clinical or laboratory evidence of hepatic disease. Patients should be cautioned against excessive alcohol intake, either acute or chronic, when taking Metformin Hydrochloride Tablets USP, since alcohol potentiates the effects of metformin hydrochloride on lactate metabolism. In addition, Metformin Hydrochloride Tablets USP should be temporarily discontinued prior to any intravascular radiocontrast study and for any surgical procedure (see also PRECAUTIONS). The onset of lactic acidosis often is subtle, and accompanied only by nonspecific symptoms such as malaise, myalgias, respiratory distress, increasing somnolence, and nonspecific abdominal distress. There may be associated hypothermia, hypotension, and resistant bradyarrhythmias with more marked acidosis. The patient and the patient’s physician must be aware of the possible importance of such symptoms and the patient should be instructed to notify the physician immediately if they occur (see also PRECAUTIONS). Metformin Hydrochloride Tablets USP should be withdrawn until the situation is clarified. Serum electrolytes, ketones, blood glucose, and if indicated, blood pH, lactate levels, and even blood metformin levels may be useful. Once a patient is stabilized on any dose level of Metformin Hydrochloride Tablets USP, gastrointestinal symptoms, which are common during initiation of therapy, are unlikely to be drug r"
+        },
+        {
+          "loinc": "34073-7",
+          "section": "Drug Interactions",
+          "display": "DRUG INTERACTIONS SECTION",
+          "text": "(Clinical Evaluation of Drug Interactions Conducted with Metformin Hydrochloride Tablets USP) Glyburide—In a single-dose interaction study in type 2 diabetes patients, coadministration of metformin and glyburide did not result in any changes in either metformin pharmacokinetics or pharmacodynamics. Decreases in glyburide AUC and C maxwere observed, but were highly variable. The single-dose nature of this study and the lack of correlation between glyburide blood levels and pharmacodynamic effects, makes the clinical significance of this interaction uncertain (see DOSAGE AND ADMINISTRATION: Concomitant Metformin Hydrochloride Tablets USP and Oral Sulfonylurea Therapy in Adult Patients). Furosemide—A single-dose, metformin-furosemide drug interaction study in healthy subjects demonstrated that pharmacokinetic parameters of both compounds were affected by coadministration. Furosemide increased the metformin plasma and blood C maxby 22% and blood AUC by 15%, without any significant change in metformin renal clearance. When administered with metformin, the C maxand AUC of furosemide were 31% and 12% smaller, respectively, than when administered alone, and the terminal half-life was decreased by 32%, without any significant change in furosemide renal clearance. No information is available about the interaction of metformin and furosemide when coadministered chronically. Nifedipine—A single-dose, metformin-nifedipine drug interaction study in normal healthy volunteers demonstrated that coadministration of nifedipine increased plasma metformin C maxand AUC by 20% and 9%, respectively, and increased the amount excreted in the urine. T maxand half-life were unaffected. Nifedipine appears to enhance the absorption of metformin. Metformin had minimal effects on nifedipine. Cationic drugs—Cationic drugs (e.g., amiloride, digoxin, morphine, procainamide, quinidine, quinine, ranitidine, triamterene, trimethoprim, or vancomycin) that are eliminated by renal tubular secretion theoretically have the potential for interaction with metformin by competing for common renal tubular transport systems. Such interaction between metformin and oral cimetidine has been observed in normal healthy volunteers in both single- and multiple-dose, metformin-cimetidine drug interaction studies, with a 60% increase in peak metformin plasma and whole blood concentrations and a 40% increase in plasma and whole blood metformin AUC. There was no change in elimination half-life in the single-dose study. Metformin had no effect on cimetidine pharmacokinetics. Although such interactions remain theoretical (except for cimetidine), careful patient monitoring and dose adjustment of Metformin Hydrochloride Tablets USP and/or the interfering drug is recommended in patients who are taking cationic medications that are excreted via the proximal renal tubular secretory system. Other—Certain drugs tend to produce hyperglycemia and may lead to loss of glycemic control. These drugs include the thiazides and other diuretics, corticosteroids, phenothiazines, thyroid products, estrogens, oral contraceptives, phenytoin, nicotinic acid, sympathomimetics, calcium channel blocking drugs, and isoniazid. When such drugs are administered to a patient receiving Metformin Hydrochloride Tablets USP, the patient should be closely observed for loss of blood glucose control. When such drugs are withdrawn from a patient receiving Metformin Hydrochloride Tablets USP, the patient should be observed closely for hypoglycemia. In healthy volunteers, the pharmacokinetics of metformin and propranolol, and metformin and ibuprofen were not affected when coadministered in single-dose interaction studies. Metformin is negligibly bound to plasma proteins and is, therefore, less likely to interact with highly protein-bound drugs such as salicylates, sulfonamides, chloramphenicol, and probenecid, as compared to the sulfonylureas, which are extensively bound to serum proteins."
+        },
+        {
+          "loinc": "34068-7",
+          "section": "Dosage and Administration",
+          "display": "DOSAGE & ADMINISTRATION SECTION",
+          "text": "There is no fixed dosage regimen for the management of hyperglycemia in patients with type 2 diabetes with metformin hydrochloride or any other pharmacologic agent. Dosage of metformin hydrochloride must be individualized on the basis of both effectiveness and tolerance, while not exceeding the maximum recommended daily doses. The maximum recommended daily dose of metformin hydrochloride is 2550 mg in adults and 2000 mg in pediatric patients (10 to 16 years of age). Metformin hydrochloride should be given in divided doses with meals. Metformin hydrochloride should be started at a low dose, with gradual dose escalation, both to reduce gastrointestinal side effects and to permit identification of the minimum dose required for adequate glycemic control of the patient. During treatment initiation and dose titration (see Recommended Dosing Schedule), fasting plasma glucose should be used to determine the therapeutic response to metformin hydrochloride and identify the minimum effective dose for the patient. Thereafter, glycosylated hemoglobin should be measured at intervals of approximately three months. The therapeutic goal should be to decrease both fasting plasma glucose and glycosylated hemoglobin levels to normal or near normal by using the lowest effective dose of metformin hydrochloride, either when used as monotherapy or in combination with sulfonylurea or insulin. Monitoring of blood glucose and glycosylated hemoglobin will also permit detection of primary failure, i.e., inadequate lowering of blood glucose at the maximum recommended dose of medication, and secondary failure, i.e., loss of an adequate blood glucose lowering response after an initial period of effectiveness. Short-term administration of metformin hydrochloride may be sufficient during periods of transient loss of control in patients usually well-controlled on diet alone. Recommended Dosing Schedule Adults– In general, clinically significant responses are not seen at doses below 1500 mg per day. However, a lower recommended starting dose and gradually increased dosage is advised to minimize gastrointestinal symptoms. The usual starting dose of metformin hydrochloride is 500 mg twice a day or 850 mg once a day, given with meals. Dosage increases should be made in increments of 500 mg weekly or 850 mg every 2 weeks, up to a total of 2000 mg per day, given in divided doses. Patients can also be titrated from 500 mg twice a day to 850 mg twice a day after 2 weeks. For those patients requiring additional glycemic control, metformin hydrochloride may be given to a maximum daily dose of 2550 mg per day. Doses above 2000 mg may be better tolerated given three times a day with meals. If higher doses of metformin are required, metformin hydrochloride should be used at total daily doses up to 2550 mg administered in divided daily doses, as described above. (See CLINICAL PHARMACOLOGY: Clinical Studies.) Pediatrics– The usual starting dose of metformin hydrochloride is 500 mg twice a day, given with meals. Dosage increases should be made in increments of 500 mg weekly up to a maximum of 2000 mg per day, given in divided doses. Transfer From Other Antidiabetic Therapy When transferring patients from standard oral hypoglycemic agents other than chlorpropamide to metformin hydrochloride, no transition period generally is necessary. When transferring patients from chlorpropamide, care should be exercised during the first two weeks because of the prolonged retention of chlorpropamide in the body, leading to overlapping drug effects and possible hypoglycemia. Concomitant Metformin Hydrochloride and Oral Sulfonylurea Therapy in Adult Patients If patients have not responded to four weeks of the maximum dose of metformin hydrochloride monotherapy, consideration should be given to gradual addition of an oral sulfonylurea while continuing metformin hydrochloride at the maximum dose, even if prior primary or secondary failure to a sulfonylurea has occurred. Clinical and pharmacokine"
+        },
+        {
+          "loinc": "34069-5",
+          "section": "Precautions",
+          "display": "HOW SUPPLIED SECTION",
+          "text": "Metformin Hydrochloride Tablets, USP 850 mg -White to off-white, round, biconvex, film coated tablets debossed with G;11 on one side and plain on the other side. NDC: 70518-4479-00 NDC: 70518-4479-01 PACKAGING: 90 in 1 BOTTLE PLASTIC PACKAGING: 100 in 1 BOTTLE PLASTIC Storage Store at 20°–25° C (68°–77° F); excursions permitted to 15°–30° C (59°–86° F). [See USP Controlled Room Temperature.] Dispense in tight, light-resistant containers with child-resistant closure. Repackaged and Distributed By: Remedy Repack, Inc. 625 Kolter Dr. Suite #4 Indiana, PA 1-724-465-8762"
+        }
+      ]
+    },
+    {
+      "drug": "atorvastatin",
+      "setid": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04",
+      "sections": [
+        {
+          "loinc": "34067-9",
+          "section": "Indications and Usage",
+          "display": "INDICATIONS & USAGE SECTION",
+          "text": "Atorvastatin calcium tablets are indicated: To reduce the risk of: o Myocardial infarction (MI), stroke, revascularization procedures, and angina in adults with multiple risk factors for coronary heart disease (CHD) but without clinically evident CHD o MI and stroke in adults with type 2 diabetes mellitus with multiple risk factors for CHD but without clinically evident CHD o Non-fatal MI, fatal and non-fatal stroke, revascularization procedures, hospitalization for congestive heart failure, and angina in adults with clinically evident CHD As an adjunct to diet to reduce low-density lipoprotein cholesterol (LDL-C) in: o Adults with primary hyperlipidemia. o Adults and pediatric patients aged 10 years and older with heterozygous familial hypercholesterolemia (HeFH). As an adjunct to other LDL-C-lowering therapies, or alone if such treatments are unavailable, to reduce LDL-C in adults and pediatric patients aged 10 years and older with homozygous familial hypercholesterolemia (HoFH). As an adjunct to diet for the treatment of adults with: o Primary dysbetalipoproteinemia o Hypertriglyceridemia Atorvastatin calcium tablets are an HMG-CoA reductase inhibitor (statin) indicated (1): To reduce the risk of: o Myocardial infarction (MI), stroke, revascularization procedures, and angina in adults with multiple risk factors for coronary heart disease (CHD) but without clinically evident CHD. o MI and stroke in adults with type 2 diabetes mellitus with multiple risk factors for CHD but without clinically evident CHD. o Non-fatal MI, fatal and non-fatal stroke, revascularization procedures, hospitalization for congestive heart failure, and angina in adults with clinically evident CHD. As an adjunct to diet to reduce low-density lipoprotein (LDL-C) in: o Adults with primary hyperlipidemia. o Adults and pediatric patients aged 10 years and older with heterozygous familial hypercholesterolemia (HeFH). As an adjunct to other LDL-C-lowering therapies to reduce LDL-C in adults and pediatric patients aged 10 years and older with homozygous familial hypercholesterolemia. As an adjunct to diet for the treatment of adults with: o Primary dysbetalipoproteinemia. o Hypertriglyceridemia."
+        },
+        {
+          "loinc": "34068-7",
+          "section": "Dosage and Administration",
+          "display": "DOSAGE & ADMINISTRATION SECTION",
+          "text": "Take orally once daily with or without food (2.1). Assess LDL-C when clinically appropriate, as early as 4 weeks after initiating atorvastatin calcium tablets, and adjust dosage if necessary (2.1). Adults(2.2): o Recommended starting dosage is 10 or 20 mg once daily; dosage range is 10 mg to 80 mg once daily. o Patients requiring LDL-C reduction >45% may start at 40 mg once daily. Pediatric Patients Aged 10 Years of Age and Older with HeFH: Recommended starting dosage is 10 mg once daily; dosage range is 10 to 20 mg once daily (2.3). Pediatric Patients Aged 10 Years of Age and Older with HoFH: Recommended starting dosage is 10 to 20 mg once daily; dosage range is 10 to 80 mg once daily (2.4). See full prescribing information for atorvastatin calcium tablets dosage modifications due to drug interactions (2.5)."
+        },
+        {
+          "loinc": "34070-3",
+          "section": "Contraindications",
+          "display": "CONTRAINDICATIONS SECTION",
+          "text": "Acute liver failure or decompensated cirrhosis [see Warnings and Precautions (5.3)] Hypersensitivity to atorvastatin or any excipients in atorvastatin calcium tablets. Hypersensitivity reactions, including anaphylaxis, angioneurotic edema, erythema multiforme, Stevens-Johnson syndrome, and toxic epidermal necrolysis, have been reported [see Adverse Reactions (6.2)]. Acute liver failure or decompensated cirrhosis (4). Hypersensitivity to atorvastatin or any excipient in atorvastatin calcium tablets (4)."
+        },
+        {
+          "loinc": "43685-7",
+          "section": "Warnings and Precautions",
+          "display": "WARNINGS AND PRECAUTIONS SECTION",
+          "text": "Myopathy and Rhabdomyolysis: Risk factors include age 65 years or greater, uncontrolled hypothyroidism, renal impairment, concomitant use with certain other drugs, and higher atorvastatin calcium dosage. Discontinue atorvastatin calcium if markedly elevated CK levels occur or myopathy is diagnosed or suspected. Temporarily discontinue atorvastatin calcium in patients experiencing an acute or serious condition at high risk of developing renal failure secondary to rhabdomyolysis. Inform patients of the risk of myopathy and rhabdomyolysis when starting or increasing atorvastatin calcium dosage. Instruct patients to promptly report unexplained muscle pain, tenderness, or weakness, particularly if accompanied by malaise or fever (2.5, 5.1, 7.1, 8.5, 8.6). Immune-Mediated Necrotizing Myopathy (IMNM):Rare reports of IMNM, an autoimmune myopathy, have been reported with statin use. Discontinue atorvastatin calcium if IMNM is suspected (5.2). Hepatic Dysfunction:Increases in serum transaminases have occurred, some persistent. Rare reports of fatal and non-fatal hepatic failure have occurred. Consider testing liver enzymes before initiating therapy and as clinically indicated thereafter. If serious hepatic injury with clinical symptoms and/or hyperbilirubinemia or jaundice occurs, promptly discontinue atorvastatin calcium (5.3)."
+        },
+        {
+          "loinc": "34073-7",
+          "section": "Drug Interactions",
+          "display": "DRUG INTERACTIONS SECTION",
+          "text": "See full prescribing information for details regarding concomitant use of atorvastatin calcium with other drugs or grapefruit juice that increase the risk of myopathy and rhabdomyolysis (2.5, 7.1). Rifampin: May reduce atorvastatin plasma concentrations. Administer simultaneously with atorvastatin calcium (7.2). Oral Contraceptives:May increase plasma levels of norethindrone and ethinyl estradiol; consider this effect when selecting an oral contraceptive (7.3). Digoxin: May increase digoxin plasma levels; monitor patients appropriately (7.3)."
+        },
+        {
+          "loinc": "34069-5",
+          "section": "Precautions",
+          "display": "HOW SUPPLIED SECTION",
+          "text": "Atorvastatin calcium tablets, USP 80 mg (80 mg of atorvastatin): White, oval shaped, film-coated tablet with \"LS\" debossed on one side of the tablet and \"250\" debossed on the other side of the tablet. NDC: 70518-4473-00 NDC: 70518-4473-01 NDC: 70518-4473-02 PACKAGING: 90 in 1 BOTTLE PLASTIC PACKAGING: 100 in 1 BOTTLE PLASTIC PACKAGING: 30 in 1 BLISTER PACK Storage Store at 20°C to 25°C (68°F to 77°F). [See USP Controlled Room Temperature]. Repackaged and Distributed By: Remedy Repack, Inc. 625 Kolter Dr. Suite #4 Indiana, PA 1-724-465-8762"
+        }
+      ]
+    },
+    {
+      "drug": "lisinopril",
+      "setid": "9470b102-3c81-469a-a4c5-6816d9d39b07",
+      "sections": [
+        {
+          "loinc": "34067-9",
+          "section": "Indications and Usage",
+          "display": "INDICATIONS & USAGE SECTION",
+          "text": "Lisinopril tablet USP is an angiotensin converting enzyme (ACE) inhibitor indicated for: Treatment of hypertension in adults and pediatric patients 6 years of age and older ( 1.1) Adjunct therapy for heart failure ( 1.2) Treatment of Acute Myocardial Infarction ( 1.3)"
+        },
+        {
+          "loinc": "34068-7",
+          "section": "Dosage and Administration",
+          "display": "DOSAGE & ADMINISTRATION SECTION",
+          "text": "Hypertension: Initial adult dose is 10 mg once daily. Titrate up to 40 mg daily based on blood pressure response. Initiate patients on diuretics at 5 mg once daily ( 2.1) Pediatric patients with glomerular filtration rate > 30 mL/min/1.73m 2: Initial dose in patients 6 years of age and older is 0.07 mg per kg (up to 5 mg total) once daily ( 2.1) Heart Failure: Initiate with 5 mg once daily. Increase dose as tolerated to 40 mg daily ( 2.2) Acute Myocardial Infarction (MI): Give 5 mg within 24 hours of MI. Followed by 5 mg after 24 hours, then 10 mg once daily ( 2.3) Renal Impairment: For patients with creatinine clearance >10 mL/min and <30 mL/min, halve usual initial dose. For patients with creatinine clearance < 10 mL/min or on hemodialysis, the recommended initial dose is 2.5 mg ( 2.4)"
+        },
+        {
+          "loinc": "34070-3",
+          "section": "Contraindications",
+          "display": "CONTRAINDICATIONS SECTION",
+          "text": "Angioedema or a history of hereditary or idiopathic angioedema ( 4) Hypersensitivity ( 4) Co-administration of aliskiren with lisinopril in patients with diabetes ( 4, 7.4)"
+        },
+        {
+          "loinc": "43685-7",
+          "section": "Warnings and Precautions",
+          "display": "WARNINGS AND PRECAUTIONS SECTION",
+          "text": "Angioedema: Discontinue lisinopril, provide appropriate therapy and monitor until resolved ( 5.2) Renal impairment: Monitor renal function periodically ( 5.3) Hypotension: Patients with other heart or renal diseases have increased risk, monitor blood pressure after initiation ( 5.4) Hyperkalemia: Monitor serum potassium periodically ( 5.5) Cholestatic jaundice and hepatic failure: Monitor for jaundice or signs of liver failure ( 5.6)"
+        },
+        {
+          "loinc": "34073-7",
+          "section": "Drug Interactions",
+          "display": "DRUG INTERACTIONS SECTION",
+          "text": "Diuretics: Excessive drop in blood pressure ( 7.1) NSAIDS: Increased risk of renal impairment and loss of antihypertensive efficacy ( 7.3) Dual inhibition of the renin-angiotensin system: Increased risk of renal impairment, hypotension and hyperkalemia ( 7.4) Lithium: Symptoms of lithium toxicity ( 7.5) Gold: Nitritoid reactions have been reported ( 7.6) Concomitant mTOR inhibitor or neprilysin inhibitor use may increase angioedema risk ( 7.7, 7.8)"
+        },
+        {
+          "loinc": "34069-5",
+          "section": "Precautions",
+          "display": "HOW SUPPLIED SECTION",
+          "text": "Lisinopril tablet USP is available as uncoated biconvex tablets in bottles of below mentioned pack size Strength Color Shape Scored Side 1/Side 2 NDC 20 mg Pink Round No LUPIN/20 Bottles of 30: 72789-093-30 Bottles of 90: 72789-093-90 Store at controlled room temperature, 20° to 25°C (68° to 77°F) [see USP]. Protect from moisture, freezing and excessive heat. Dispense in a tight container."
+        }
+      ]
+    },
+    {
+      "drug": "levothyroxine",
+      "setid": "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e",
+      "sections": [
+        {
+          "loinc": "34067-9",
+          "section": "Indications and Usage",
+          "display": "INDICATIONS & USAGE SECTION",
+          "text": "Hypothyroidism Levothyroxine sodium tablets are indicated in adult and pediatric patients, including neonates, as a replacement therapy in primary (thyroidal), secondary (pituitary), and tertiary (hypothalamic) congenital or acquired hypothyroidism. Pituitary Thyrotropin (Thyroid-Stimulating Hormone, TSH) Suppression Levothyroxine sodium tablets are indicated in adult and pediatric patients, including neonates, as an adjunct to surgery and radioiodine therapy in the management of thyrotropin-dependent well-differentiated thyroid cancer. Limitations of Use Levothyroxine sodium tablets are not indicated for suppression of benign thyroid nodules and nontoxic diffuse goiter in iodine-sufficient patients as there are no clinical benefits and overtreatment with levothyroxine sodium tablets may induce hyperthyroidism [see Warnings and Precautions ( 5.1)]. Levothyroxine sodium tablets are not indicated for treatment of hypothyroidism during the recovery phase of subacute thyroiditis. Levothyroxine sodium tablets are a L-thyroxine (T4) indicated in adult and pediatric patients, including neonates, for: Hypothyroidism: As replacement therapy in primary (thyroidal), secondary (pituitary), and tertiary (hypothalamic) congenital or acquired hypothyroidism. ( 1) Pituitary Thyrotropin (Thyroid-Stimulating Hormone, TSH) Suppression: As an adjunct to surgery and radioiodine therapy in the management of thyrotropin-dependent well-differentiated thyroid cancer. ( 1) Limitations of Use: Not indicated for suppression of benign thyroid nodules and nontoxic diffuse goiter in iodine-sufficient patients Not indicated for treatment of hypothyroidism during the recovery phase of subacute thyroiditis"
+        },
+        {
+          "loinc": "34068-7",
+          "section": "Dosage and Administration",
+          "display": "DOSAGE & ADMINISTRATION SECTION",
+          "text": "Administer once daily, preferably on an empty stomach, one-half to one hour before breakfast. ( 2.1) Administer at least 4 hours before or after drugs that are known to interfere with absorption. ( 2.1) Evaluate the need for dose adjustments when regularly administering within one hour of certain foods that may affect absorption. ( 2.1) Advise patients to stop biotin and biotin-containing supplements at least 2 days before assessing TSH and/or T4 levels. ( 2.2) Starting dose depends on a variety of factors, including age, body weight, cardiovascular status, and concomitant medications. Peak therapeutic effect may not be attained for 4-6 weeks. ( 2.2) See full prescribing information for dosing in specific patient populations. ( 2.3) Adequacy of therapy determined with periodic monitoring of TSH and/or T4 as well as clinical status. ( 2.4)"
+        },
+        {
+          "loinc": "34070-3",
+          "section": "Contraindications",
+          "display": "CONTRAINDICATIONS SECTION",
+          "text": "Levothyroxine sodium tablets are contraindicated in patients with uncorrected adrenal insufficiency [see Warnings and Precautions ( 5.4)]. Uncorrected adrenal insufficiency. ( 4)"
+        },
+        {
+          "loinc": "43685-7",
+          "section": "Warnings and Precautions",
+          "display": "WARNINGS AND PRECAUTIONS SECTION",
+          "text": "Serious risks related to overtreatment or undertreatment with levothyroxine sodium:Titrate the dose of levothyroxine sodium carefully and monitor response to titration. ( 5.1) Cardiac adverse reactions in the elderly and in patients with underlying cardiovascular disease:Initiate levothyroxine sodium at less than the full replacement dose because of the increased risk of cardiac adverse reactions, including atrial fibrillation. ( 2.3, 5.2, 8.5) Myxedema coma:Do not use oral thyroid hormone drug products to treat myxedema coma. ( 5.3) Acute adrenal crisis in patients with concomitant adrenal insufficiency:Treat with replacement glucocorticoids prior to initiation of levothyroxine sodium treatment. ( 5.4) Worsening of diabetic control:Therapy in patients with diabetes mellitus may worsen glycemic control and result in increased antidiabetic agent or insulin requirements. Carefully monitor glycemic control after starting, changing, or discontinuing thyroid hormone therapy. ( 5.5) Decreased bone mineral density associated with thyroid hormone over-replacement:Over-replacement can increase bone resorption and decrease bone mineral density. Give the lowest effective dose. ( 5.6)"
+        },
+        {
+          "loinc": "34073-7",
+          "section": "Drug Interactions",
+          "display": "DRUG INTERACTIONS SECTION",
+          "text": "See full prescribing information for drugs that affect thyroid hormone pharmacokinetics and metabolism (e.g., absorption, synthesis, secretion, catabolism, protein binding, and target tissue response) and may alter the therapeutic response to levothyroxine sodium. ( 7)"
+        },
+        {
+          "loinc": "34069-5",
+          "section": "Precautions",
+          "display": "HOW SUPPLIED SECTION",
+          "text": "Levothyroxine Sodium Tablets, USP 88 mcg are available as Olive coloured, circular tablets debossed with ‘M59’ on one side and break line on other side. NDC: 70518-4434-00 PACKAGING: 90 in 1 BOTTLE Storage and Handling Store Levothyroxine sodium tablets, USP at 20° to 25°C (68° to 77°F); excursions permitted between 15° to 30°C (59° to 86°F) [see USP Controlled Room Temperature]. Levothyroxine sodium tablets, USP should be protected from light and moisture. Repackaged and Distributed By: Remedy Repack, Inc. 625 Kolter Dr. Suite #4 Indiana, PA 1-724-465-8762"
+        }
+      ]
+    },
+    {
+      "drug": "omeprazole",
+      "setid": "54612d26-9e1a-1960-e063-6394a90a5784",
+      "sections": [
+        {
+          "loinc": "34067-9",
+          "section": "Indications and Usage",
+          "display": "INDICATIONS & USAGE SECTION",
+          "text": "Omeprazole is a proton pump inhibitor (PPI) indicated for the: • Treatment of active duodenal ulcer in adults (1.1) • Eradication of Helicobacter pylori to reduce the risk of duodenal ulcer recurrence in adults (1.2) • Treatment of active benign gastric ulcer in adults (1.3) • Treatment of symptomatic gastroesophageal reflux disease (GERD) in patients 2 years of age and older (1.4) • Maintenance of healing of EE due to acid-mediated GERD in patients 2 years of age and older (1.6) • Pathologic hypersecretory conditions in adults (1.7)"
+        },
+        {
+          "loinc": "34068-7",
+          "section": "Dosage and Administration",
+          "display": "DOSAGE & ADMINISTRATION SECTION",
+          "text": "Indication Recommended Adult (2.1) and Pediatric Dosage (2.2) Treatment of Active Duodenal Ulcer 20 mg once daily for 4 weeks; some patients may require an additional 4 weeks (2.1) H. pylori Eradication to Reduce the Risk of Duodenal Ulcer Recurrence Triple Therapy: Omeprazole delayed-release capsules Amoxicillin Clarithromycin 20 mg 1000 mg 500 mg Each drug twice daily for 10 days (2.1)* Dual Therapy: Omeprazole delayed-release capsules Clarithromycin 40 mg once daily for 14 days** 500 mg three times daily for 14 days (2.1) Active Benign Gastric Ulcer 40 mg once daily for 4 to 8 weeks (2.1) Symptomatic GERD 20 mg once daily for up to 4 weeks (2.1)See full prescribing information for weight based dosing in pediatric patients 2 years of age and older (2.2) EE due to Acid-Mediated GERD 20 mg once daily for 4 to 8 weeks (2.1)*** Maintenance of Healing of EE due to Acid-Mediated GERD 20 mg once daily (2.1)**** See full prescribing information for weight based dosing in pediatric patients 2 years of age and older (2.2) Pathological Hypersecretory Conditions Starting dose is 60 mg once daily (varies with individual patient, see full prescribing information) as long as clinically indicated (2.1) * if ulcer present, continue omeprazole delayed-release capsules 20 mg once daily for an additional 18 days. ** if ulcer present, continue omeprazole delayed-release capsules 20 mg once daily for an additional 14 days. *** an additional 4 weeks of treatment may be given if no response; if recurrence additional 4 to 8 week courses may be considered. **** studied for 12 months. Reduce the dosage to 10 mg once daily for patients with hepatic impairment (Child-Pugh Class A, B, or C) and Asian patients ( 8.6, 8.7)"
+        },
+        {
+          "loinc": "34070-3",
+          "section": "Contraindications",
+          "display": "CONTRAINDICATIONS SECTION",
+          "text": "Omeprazole delayed-release capsules are contraindicated in patients with known hypersensitivity reactions including anaphylaxis to the formulation or any substituted benzimidazole. Hypersensitivity reactions may include anaphylaxis, anaphylactic shock, angioedema, bronchospasm, acute tubulointerstitial nephritis, and urticaria [see Warnings and Precautions ( 5.2), Adverse Reactions ( 6)]. Proton pump inhibitors (PPIs), including omeprazole, are contraindicated in patients receiving rilpivirine-containing products [see Drug Interactions (7)]. For information about contraindications of antibacterial agents (clarithromycin and amoxicillin) indicated in combination with omeprazole, refer to the CONTRAINDICATIONS section of their package inserts. • Patients with known hypersensitivity to substituted benzimidazoles or any component of the formulation. (4) • Patients receiving rilpivirine-containing products. ( 4, 7) • Refer to the Contraindications section of the prescribing information for clarithromycin and amoxicillin, when administered in combination with omeprazole. (4)"
+        },
+        {
+          "loinc": "43685-7",
+          "section": "Warnings and Precautions",
+          "display": "WARNINGS AND PRECAUTIONS SECTION",
+          "text": "Gastric Malignancy:In adults, symptomatic response does not preclude the presence of gastric malignancy. Consider additional follow-up and diagnostic testing. (5.1) Acute Tubulointerstitial Nephritis:Discontinue treatment and evaluate patients. (5.2) Clostridium difficile- Associated Diarrhea:PPI therapy may be associated with increased risk. (5.3) Bone Fracture:Long-term and multiple daily dose PPI therapy may be associated with an increased risk for osteoporosis-related fractures of the hip, wrist or spine. (5.4) Severe Cutaneous Adverse Reactions:Discontinue at the first signs or symptoms of severe cutaneous adverse reactions or other signs of hypersensitivity and consider further evaluation. ( 5.5) Cutaneous and Systemic Lupus Erythematosus:Mostly cutaneous; new onset or exacerbation of existing disease; discontinue omeprazole and refer to specialist for evaluation (5.6) Interaction with Clopidogrel:Avoid concomitant use of omeprazole. ( 5.7, 7) Cyanocobalamin (Vitamin B-12) Deficiency:Daily long-term use (e.g., longer than 3 years) may lead to malabsorption or a deficiency of cyanocobalamin. ( 5.8) Hypomagnesemia and Mineral Metabolism:Reported rarely with prolonged treatment with PPIs. (5.9) Interaction with St. John’s Wort or Rifampin:Avoid concomitant use of omeprazole. ( 5.10, 7) Interactions with Diagnostic Investigations for Neuroendocrine Tumors:Increased Chromogranin A (CgA) levels may interfere with diagnostic investigations for neuroendocrine tumors; temporarily stop omeprazole at least 14 days before assessing CgA levels. ( 5.11, 7) Interaction with Methotrexate:Concomitant use with PPIs may elevate and/or prolong serum concentrations of methotrexate and/or its metabolite, possibly leading to toxicity. With high dose methotrexate administration, consider a temporary withdrawal of omeprazole ( 5.12, 7). Fundic Gland Polyps:Risk increases with long-term use, especially beyond one year. Use the shortest duration of therapy. (5.13)"
+        },
+        {
+          "loinc": "43685-7",
+          "section": "Warnings and Precautions",
+          "display": "WARNINGS AND PRECAUTIONS SECTION",
+          "text": "PPI use is associated with an increased risk of fundic gland polyps that increases with long-term use, especially beyond one year. Most PPIs users who developed fundic gland polyps were asymptomatic and fundic gland polyps were identified incidentally on endoscopy. Use the shortest duration of PPI therapy appropriate to the condition being treated."
+        },
+        {
+          "loinc": "34073-7",
+          "section": "Drug Interactions",
+          "display": "DRUG INTERACTIONS SECTION",
+          "text": "Tables 3 and 4 include drugs with clinically important drug interactions and interaction with diagnostics when administered concomitantly with omeprazole and instructions for preventing or managing them. Consult the labeling of concomitantly used drugs to obtain further information about interactions with PPIs. Table 3: Clinically Relevant Interactions Affecting Drugs Co-Administered with Omeprazole and Interaction with Diagnostics Antiretrovirals Clinical Impact: The effect of PPIs on antiretroviral drugs is variable. The clinical importance and the mechanisms behind these interactions are not always known. • Decreased exposure of some antiretroviral drugs (e.g., rilpivirine, atazanavir and nelfinavir) when used concomitantly with omeprazole may reduce antiviral effect and promote the development of drug resistance [see Clinical Pharmacology (12.3)]. • Increased exposure of other antiretroviral drugs (e.g., saquinavir) when used concomitantly with omeprazole may increase toxicity [see Clinical Pharmacology (12.3)]. • There are other antiretroviral drugs which do not result in clinically relevant interactions with omeprazole. Intervention: Rilpivirine-containing products: Concomitant use with omeprazole is contraindicated [see Contraindications (4)]. Atazanavir: Avoid concomitant use with omeprazole. See prescribing information for atazanavir for dosing information. Nelfinavir: Avoid concomitant use with omeprazole. See prescribing information for nelfinavir. Saquinavir: See the prescribing information for saquinavir for monitoring of potential saquinavir-related toxicities. Other antiretrovirals: See prescribing information for specific antiretroviral drugs. Warfarin Clinical Impact: Increased INR and prothrombin time in patients receiving PPIs, including omeprazole, and warfarin concomitantly. Increases in INR and prothrombin time may lead to abnormal bleeding and even death. Intervention: Monitor INR and prothrombin time and adjust the dose of warfarin, if needed, to maintain target INR range. Methotrexate Clinical Impact: Concomitant use of omeprazole with methotrexate (primarily at high dose) may elevate and prolong serum concentrations of methotrexate and/or its metabolite hydroxymethotrexate, possibly leading to methotrexate toxicities. No formal drug interaction studies of high-dose methotrexate with PPIs have been conducted [see Warnings and Precautions ( 5.12 )]. Intervention: A temporary withdrawal of omeprazole may be considered in some patients receiving high-dose methotrexate. CYP2C19 Substrates (e.g., clopidogrel, citalopram, cilostazol, phenytoin, diazepam) Clopidogrel Clinical Impact: Concomitant use of omeprazole 80 mg results in reduced plasma concentrations of the active metabolite of clopidogrel and a reduction in platelet inhibition [ seeClinical Pharmacology (12.3)]. There are no adequate combination studies of a lower dose of omeprazole or a higher dose of clopidogrel in comparison with the approved dose of clopidogrel. Intervention: Avoid concomitant use with omeprazole. Consider use of alternative anti-platelet therapy [see Warnings and Precautions ( 5.7 )]. Citalopram Clinical Impact: Increased exposure of citalopram leading to an increased risk of QT prolongation [see Clinical Pharmacology (12.3)]. Intervention: Limit the dose of citalopram to a maximum of 20 mg per day. See prescribing information for citalopram. Cilostazol Clinical Impact: Increased exposure of one of the active metabolites of cilostazol (3,4-dihydro-cilostazol) [see Clinical Pharmacology (12.3)]. Intervention: Reduce the dose of cilostazol to 50 mg twice daily. See prescribing information for cilostazol. Phenytoin Clinical Impact: Potential for increased exposure of phenytoin. Intervention: Monitor phenytoin serum concentrations. Dose adjustment may be needed to maintain therapeutic drug concentrations. See prescribing information for phenytoin. Diazepam Clinical Impact: Increased exposure of diazepam [see Clinical Pharmacology ("
+        },
+        {
+          "loinc": "34069-5",
+          "section": "Precautions",
+          "display": "HOW SUPPLIED SECTION",
+          "text": "Omeprazole delayed-release capsules USP, 20 mg are off-white to pale yellow, spherical, enteric coated pellets filled in size '2' hard gelatin capsule shells with opaque purple colored cap and opaque grey colored body, imprinted on cap and 'R644' on body with black ink and are supplied in bottles of 90's. Bottles of 90 NDC 68071-5301-9 Storage Store omeprazole delayed-release capsules in a tight container protected from light and moisture. Store at 20° to 25°C (68° to 77°F) [See USP Controlled Room Temperature]."
+        }
+      ]
+    }
+  ]
+}
