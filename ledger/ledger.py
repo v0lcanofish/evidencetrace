@@ -13,7 +13,7 @@
     Claim（回答里的一条建议）──cite──▶ Doc
 
 两个枚举字段（必须封闭，否则归因无法机械判定）：
-    action          : plan | retrieve | read | synthesize
+    action          : plan | retrieve | read | synthesize | locate | ask | abstain
     reason_dropped  : context_budget | judged_irrelevant | duplicate | low_authority | None
 
 核心不变量（closure）：
@@ -36,7 +36,18 @@ ACTION_PLAN = "plan"
 ACTION_RETRIEVE = "retrieve"
 ACTION_READ = "read"
 ACTION_SYNTHESIZE = "synthesize"
-ACTIONS = (ACTION_PLAN, ACTION_RETRIEVE, ACTION_READ, ACTION_SYNTHESIZE)
+
+# ---- 块 E7 新增：agent 自己选的动作 ----
+# ⚠️ agent 说的 `search` / `answer` **不新增枚举** —— 它们就是 retrieve / synthesize，
+#    只是换了个更贴合 agent 语境的叫法。理由：三层归因（dropped / attribute）
+#    整条链都挂在 retrieve 上，为改名复制一份归因逻辑，两份迟早不一致。
+#    这里只补【真正新增】的三个：定位、问用户、拒答。
+ACTION_LOCATE = "locate"        # 问题 → 该查哪一节（买路钱，还没拿到证据）
+ACTION_ASK = "ask"              # 问用户（证据之外的第二个信息源）
+ACTION_ABSTAIN = "abstain"      # 拒答（拒答本身是一个决策，不是"没答"）
+
+ACTIONS = (ACTION_PLAN, ACTION_RETRIEVE, ACTION_READ, ACTION_SYNTHESIZE,
+           ACTION_LOCATE, ACTION_ASK, ACTION_ABSTAIN)
 
 DROP_CONTEXT_BUDGET = "context_budget"
 DROP_IRRELEVANT = "judged_irrelevant"
@@ -61,6 +72,8 @@ class Doc:
     doc_id: str                     # ⭐ 主键：DailyMed 的 setid（UUID）
     section: str                    # 章节名（人读）
     loinc: Optional[str] = None     # ⭐ LOINC 章节码（机械可判）
+    drug: str = ""                  # 药名。E7 的 search 要按「哪份药的哪一节」限定候选集，
+                                    # 只有 loinc 不够 —— 所有药都有 34073-7 那一节
     text: str = ""
     source_type: str = "dailymed_spl"
     title: str = ""
@@ -100,8 +113,14 @@ class Step:
             raise LedgerError(f"step {self.step}: 未知 action={self.action!r}")
         if self.reason_dropped is not None and self.reason_dropped not in DROP_REASONS:
             raise LedgerError(f"step {self.step}: 未知 reason_dropped={self.reason_dropped!r}")
-        if self.action == ACTION_RETRIEVE and not self.query:
-            raise LedgerError(f"step {self.step}: retrieve 动作必须有 query")
+        # 带 query 的动作：retrieve 查资料 / locate 定位章节 / ask 问用户，
+        # 都是「拿一个字符串去换东西」，没有 query 就无从复盘"当时问了什么"
+        if self.action in (ACTION_RETRIEVE, ACTION_LOCATE, ACTION_ASK) and not self.query:
+            raise LedgerError(f"step {self.step}: {self.action} 动作必须有 query")
+        # 拒答必须写理由：拒答是一个【决策】，不是"什么都没发生"。
+        # 不写理由，事后无法区分「证据不够该拒」和「模型偷懒拒了」。
+        if self.action == ACTION_ABSTAIN and not self.note:
+            raise LedgerError(f"step {self.step}: abstain 必须写清理由（note）")
         if self.used_in_report is False and self.reason_dropped is None:
             raise LedgerError(
                 f"step {self.step}: 检索到了但没用进回答，必须给 reason_dropped "

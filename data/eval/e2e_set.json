@@ -1,0 +1,372 @@
+{
+ "n": 26,
+ "note": "多轮对话脚本，测全链路 + 记忆",
+ "rows": [
+  {
+   "qid": "e2e0001",
+   "scenario": "新用户问禁忌",
+   "drug": "warfarin",
+   "turns": [
+    "I have Hemorrhagic tendencies. Can I take warfarin?",
+    "What should I watch out for?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0002",
+   "scenario": "拒答路径",
+   "drug": "warfarin",
+   "turns": [
+    "What are the side effects of warfarin?",
+    "Are you sure you don't know?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0003",
+   "scenario": "越界后回到正题",
+   "drug": "warfarin",
+   "turns": [
+    "What's the weather today?",
+    "OK — can I take warfarin if I have Hemorrhagic tendencies?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0004",
+   "scenario": "库里没有的药",
+   "drug": "warfarin",
+   "turns": [
+    "Can I take ibuprofen with warfarin?",
+    "Then what about just warfarin?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0005",
+   "scenario": "新用户问禁忌",
+   "drug": "metformin",
+   "turns": [
+    "I have Renal disease. Can I take metformin?",
+    "What should I watch out for?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0006",
+   "scenario": "指代 + 追问",
+   "drug": "metformin",
+   "turns": [
+    "I take metformin.",
+    "Can I take it with Glyburide?",
+    "And how much should I take?"
+   ],
+   "n_turns": 3,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0007",
+   "scenario": "拒答路径",
+   "drug": "metformin",
+   "turns": [
+    "What are the side effects of metformin?",
+    "Are you sure you don't know?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0008",
+   "scenario": "越界后回到正题",
+   "drug": "metformin",
+   "turns": [
+    "What's the weather today?",
+    "OK — can I take metformin if I have Renal disease?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0009",
+   "scenario": "库里没有的药",
+   "drug": "metformin",
+   "turns": [
+    "Can I take ibuprofen with metformin?",
+    "Then what about just metformin?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0010",
+   "scenario": "新用户问禁忌",
+   "drug": "atorvastatin",
+   "turns": [
+    "I have Acute liver failure. Can I take atorvastatin?",
+    "What should I watch out for?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0011",
+   "scenario": "拒答路径",
+   "drug": "atorvastatin",
+   "turns": [
+    "What are the side effects of atorvastatin?",
+    "Are you sure you don't know?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0012",
+   "scenario": "越界后回到正题",
+   "drug": "atorvastatin",
+   "turns": [
+    "What's the weather today?",
+    "OK — can I take atorvastatin if I have Acute liver failure?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0013",
+   "scenario": "库里没有的药",
+   "drug": "atorvastatin",
+   "turns": [
+    "Can I take ibuprofen with atorvastatin?",
+    "Then what about just atorvastatin?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0014",
+   "scenario": "新用户问禁忌",
+   "drug": "lisinopril",
+   "turns": [
+    "I have Angioedema. Can I take lisinopril?",
+    "What should I watch out for?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0015",
+   "scenario": "指代 + 追问",
+   "drug": "lisinopril",
+   "turns": [
+    "I take lisinopril.",
+    "Can I take it with Diuretics?",
+    "And how much should I take?"
+   ],
+   "n_turns": 3,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0016",
+   "scenario": "拒答路径",
+   "drug": "lisinopril",
+   "turns": [
+    "What are the side effects of lisinopril?",
+    "Are you sure you don't know?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0017",
+   "scenario": "越界后回到正题",
+   "drug": "lisinopril",
+   "turns": [
+    "What's the weather today?",
+    "OK — can I take lisinopril if I have Angioedema?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0018",
+   "scenario": "库里没有的药",
+   "drug": "lisinopril",
+   "turns": [
+    "Can I take ibuprofen with lisinopril?",
+    "Then what about just lisinopril?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0019",
+   "scenario": "新用户问禁忌",
+   "drug": "levothyroxine",
+   "turns": [
+    "I have uncorrected adrenal insufficiency. Can I take levothyroxine?",
+    "What should I watch out for?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0020",
+   "scenario": "拒答路径",
+   "drug": "levothyroxine",
+   "turns": [
+    "What are the side effects of levothyroxine?",
+    "Are you sure you don't know?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0021",
+   "scenario": "越界后回到正题",
+   "drug": "levothyroxine",
+   "turns": [
+    "What's the weather today?",
+    "OK — can I take levothyroxine if I have uncorrected adrenal insufficiency?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0022",
+   "scenario": "库里没有的药",
+   "drug": "levothyroxine",
+   "turns": [
+    "Can I take ibuprofen with levothyroxine?",
+    "Then what about just levothyroxine?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0023",
+   "scenario": "新用户问禁忌",
+   "drug": "omeprazole",
+   "turns": [
+    "I have hypersensitivity reactions. Can I take omeprazole?",
+    "What should I watch out for?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0024",
+   "scenario": "拒答路径",
+   "drug": "omeprazole",
+   "turns": [
+    "What are the side effects of omeprazole?",
+    "Are you sure you don't know?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0025",
+   "scenario": "越界后回到正题",
+   "drug": "omeprazole",
+   "turns": [
+    "What's the weather today?",
+    "OK — can I take omeprazole if I have hypersensitivity reactions?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  },
+  {
+   "qid": "e2e0026",
+   "scenario": "库里没有的药",
+   "drug": "omeprazole",
+   "turns": [
+    "Can I take ibuprofen with omeprazole?",
+    "Then what about just omeprazole?"
+   ],
+   "n_turns": 2,
+   "expected_loinc": [
+    "34070-3"
+   ],
+   "note": "测全链路 + 多轮记忆"
+  }
+ ]
+}

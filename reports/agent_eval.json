@@ -1,0 +1,311 @@
+{
+ "policy": "rule",
+ "budget": 8,
+ "n": 15,
+ "n_distinct_paths": 2,
+ "terminated_by": {
+  "answer": 15
+ },
+ "avg_actions": 3.6666666666666665,
+ "avg_cost": 5.333333333333333,
+ "rows": [
+  {
+   "qid": "q01",
+   "difficulty": "single_hop",
+   "question": "Can I take metformin if I have kidney disease?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q02",
+   "difficulty": "single_hop",
+   "question": "What conditions is lisinopril approved to treat?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q03",
+   "difficulty": "single_hop",
+   "question": "Is warfarin safe to take during pregnancy?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q04",
+   "difficulty": "single_hop",
+   "question": "What is the usual dose of omeprazole for an active duodenal ulcer?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q05",
+   "difficulty": "single_hop",
+   "question": "Who should NOT be given levothyroxine?",
+   "actions": [
+    "locate",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 4,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q06",
+   "difficulty": "multi_hop",
+   "question": "My patient has type 2 diabetes and impaired kidney function. Can they still take metformin, and what is the main danger if they do?",
+   "actions": [
+    "locate",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 4,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q07",
+   "difficulty": "multi_hop",
+   "question": "I take atorvastatin. What are the serious muscle-related risks, and which co-administered drugs make them more likely?",
+   "actions": [
+    "locate",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 4,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q08",
+   "difficulty": "multi_hop",
+   "question": "I am pregnant. Can I take warfarin, and is there any exception for women with a mechanical heart valve?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q09",
+   "difficulty": "multi_hop",
+   "question": "I have been prescribed lisinopril. Which other medicines should I avoid or use cautiously, and are any of them contraindicated outright?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q10",
+   "difficulty": "multi_hop",
+   "question": "My patient is starting omeprazole. Which other drugs interact with it, and what is omeprazole actually approved to treat?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 1,
+   "malformed": false
+  },
+  {
+   "qid": "q11",
+   "difficulty": "multi_hop",
+   "question": "A patient has a history of angioedema. Can they take lisinopril, and what is the risk of adding an NSAID for their arthritis?",
+   "actions": [
+    "locate",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 4,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q12",
+   "difficulty": "multi_hop",
+   "question": "I take metformin and my doctor wants to add glyburide. What does the label say about combining them, and how is that dosed?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 1,
+   "malformed": false
+  },
+  {
+   "qid": "q13",
+   "difficulty": "cross_drug",
+   "question": "I am on both atorvastatin and lisinopril. What interactions does each label warn about?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q14",
+   "difficulty": "cross_drug",
+   "question": "My patient has both diabetes and high cholesterol and is asking whether metformin and atorvastatin can be taken together. What should be checked?",
+   "actions": [
+    "locate",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 4,
+   "n_evidence": 5,
+   "n_claims": 2,
+   "malformed": false
+  },
+  {
+   "qid": "q15",
+   "difficulty": "cross_drug",
+   "question": "I take warfarin together with omeprazole. What bleeding-related concerns and interactions should I watch for?",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "cost": 6,
+   "n_evidence": 5,
+   "n_claims": 1,
+   "malformed": false
+  }
+ ],
+ "configs": [
+  {
+   "name": "规则策略 · 预算 8",
+   "actions": [
+    "locate",
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "answer",
+   "why": "正常收尾"
+  },
+  {
+   "name": "规则策略 · 预算 2",
+   "actions": [
+    "locate",
+    "abstain"
+   ],
+   "terminated_by": "budget",
+   "why": "经济刹车：买不起下一个动作"
+  },
+  {
+   "name": "规则策略 · 步数上限 2",
+   "actions": [
+    "locate",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "max_steps",
+   "why": "硬上限：兜住策略失控"
+  },
+  {
+   "name": "坏策略 · 永远同一个动作",
+   "actions": [
+    "search",
+    "search",
+    "answer"
+   ],
+   "terminated_by": "repeat",
+   "why": "打转刹车：不许原地踏步"
+  },
+  {
+   "name": "域外问题 · 无用户",
+   "actions": [
+    "locate",
+    "search",
+    "abstain"
+   ],
+   "terminated_by": "abstain",
+   "why": "该说不知道时就说不知道"
+  },
+  {
+   "name": "域外问题 · 有用户",
+   "actions": [
+    "locate",
+    "search",
+    "ask",
+    "abstain"
+   ],
+   "terminated_by": "abstain",
+   "why": "问了也补不上证据 → 仍拒答"
+  }
+ ]
+}

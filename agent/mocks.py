@@ -182,4 +182,96 @@ class MockLLM:
                 f"[{c2}].")
 
 
-__all__ = ["MockRetriever", "MockLLM", "FIXTURE"]
+# ---------------------------------------------------------------- 假 LLM（第二版）
+
+
+class GroundedMockLLM:
+    """
+    能答**任意题**的假模型 —— 但它不是硬编码答案，是**照着证据抄**。
+
+    做法（三步，全是机械操作）：
+        ① 从问题里抽实词
+        ② 和每条证据块求词重叠，挑重叠最高的那条
+        ③ 把那条证据的**第一句话原样抄出来** + 挂上它的引用键
+
+    ━━━ 它和 MockLLM 的分工 ━━━
+
+        MockLLM          只认 ibuprofen/warfarin 那道题。
+                         用途：**E2 的断言**（确定性 + 故意能造坏引用）
+        GroundedMockLLM  能答任意题，但只会抄不会推理。
+                         用途：**E7 循环的断言** —— 让引用解析、闭包检查、
+                         拒答路径在**离线、可复现**的条件下被真实走到
+
+    ⚠️ **诚实边界**：它不会推理。问"metformin 肾病能不能吃"，它会把禁忌节
+       那句话抄给你，但它**不会**把"肾病患者禁用"和"我有肾病"接起来。
+       所以它是**弱模型的下界**，不是真模型的替代品。
+       真数字必须用真模型跑（`agent/llm.py`）。
+
+    为什么需要它：E2 那个 MockLLM 拿真实语料跑，除了那道题一律回"证据不足"——
+       循环会因为"生成层总说答不了"而永远走不到正常收尾，
+       判据就验不到该验的东西。
+    """
+
+    # 抽实词时要扔掉的词（问题模板里的虚词）
+    STOP = frozenset("""a an the is are was were do does did can could should would
+        i my me you your it its of to in on for with and or if about any what
+        how much many take taking have has had be been being there this that these those
+        """.split())
+
+    def __init__(self, max_claims: int = 2):
+        self.max_claims = max_claims
+
+    def __call__(self, prompt: str) -> str:
+        if "research planner" in prompt:
+            return MockLLM._plan(prompt)
+        return self._report(prompt)
+
+    # ---- 主逻辑
+    def _report(self, prompt: str) -> str:
+        question = self._question_of(prompt)
+        blocks = self._evidence_of(prompt)
+        if not blocks or not question:
+            return "The available evidence is insufficient to answer this question."
+
+        qw = self._content_words(question)
+        scored = []
+        for i, (key, text) in enumerate(blocks):
+            overlap = len(qw & self._content_words(text))
+            scored.append((overlap, -i, key, text))       # -i：同分时保顺序 → 确定性
+        scored.sort(reverse=True)
+
+        out, used = [], set()
+        for overlap, _, key, text in scored:
+            if overlap <= 0 or len(out) >= self.max_claims:
+                break
+            if key in used:                                # 同一节只引一次
+                continue
+            used.add(key)
+            first = re.split(r"(?<=[.;])\s+", text.strip())[0].strip()
+            out.append(f"{first} [{key}].")
+
+        if not out:
+            return "The available evidence is insufficient to answer this question."
+        return " ".join(out)
+
+    # ---- 从 prompt 里把零件抠出来
+    # ⚠️ 抠法必须和 agent/tools.py 的拼法严格对称 —— 一边改了另一边就会静默失效
+    #    （不会报错，只会让假模型突然"变笨"）。所以两边的正则都写在一起、都带注释。
+    @staticmethod
+    def _question_of(prompt: str) -> str:
+        m = re.search(r"Question:\s*(.*?)(?:\n\s*\n|\nEvidence:)", prompt, re.S)
+        return (m.group(1) if m else "").strip()
+
+    @staticmethod
+    def _evidence_of(prompt: str) -> List[tuple]:
+        m = re.search(r"Evidence:\s*(.*?)\n\s*Answer:", prompt, re.S)
+        ev = m.group(1) if m else prompt
+        return re.findall(r"\[([0-9a-fA-F-]{8,}#\d+-\d)\]\s*(.*?)(?=\n\n\[|\Z)", ev, re.S)
+
+    @classmethod
+    def _content_words(cls, text: str) -> set:
+        return {w for w in re.findall(r"[a-z0-9]+", (text or "").lower())
+                if w not in cls.STOP and len(w) > 2}
+
+
+__all__ = ["MockRetriever", "MockLLM", "GroundedMockLLM", "FIXTURE"]

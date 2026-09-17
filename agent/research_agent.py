@@ -23,18 +23,18 @@
 
 from __future__ import annotations
 
-import re
-from dataclasses import dataclass, field
-from typing import Any, Callable, Dict, List, Optional
+from dataclasses import dataclass
+from typing import Callable, List, Optional
 
 from ledger.ledger import (
     Ledger, Step, Claim, Doc,
     ACTION_PLAN, ACTION_RETRIEVE, ACTION_SYNTHESIZE,
-    DROP_CONTEXT_BUDGET, DROP_IRRELEVANT, LedgerError,
+    DROP_CONTEXT_BUDGET, LedgerError,
 )
-
-# 引用格式：[setid] 或 [setid#LOINC]
-CITE_RE = re.compile(r"\[([0-9a-fA-F-]{8,})(?:#(\d+-\d))?\]")
+# ⭐ 提示词 / 引用格式 / claim 切分是**两条链路共用的契约**，
+#    放在 agent/report.py（E7 抽出）。这里 import 而不复制 ——
+#    复制两份迟早漂移，漂移后闭包断言会开始误报。
+from agent.report import CITE_RE, PLAN_PROMPT, SYNTH_PROMPT, build_evidence_block, split_claims
 
 
 # ---------------------------------------------------------------- 接口
@@ -50,31 +50,6 @@ class AgentConfig:
     max_steps: int = 8            # 最多检索几次（防弱模型无限查）
     top_k: int = 5                # 每次取几篇
     context_budget: int = 3       # 最终报告最多用几篇（其余记 reason_dropped）
-
-
-# ---------------------------------------------------------------- 提示词
-
-PLAN_PROMPT = """You are a research planner. Break the question into 2-3 sub-questions
-that must be answered from drug labels.
-
-Question: {q}
-
-Return one sub-question per line, no numbering, no extra text."""
-
-SYNTH_PROMPT = """You are a medical information assistant. Answer the question using ONLY
-the evidence below. Every sentence that states a fact MUST cite its source.
-
-Cite in this exact format: [<setid>#<loinc>]
-Example: Ibuprofen is contraindicated in patients on anticoagulants [a1b2c3d4-...#34073-7].
-
-If the evidence is insufficient, say so explicitly instead of guessing.
-
-Question: {q}
-
-Evidence:
-{evidence}
-
-Answer:"""
 
 
 # ---------------------------------------------------------------- 编排
@@ -168,24 +143,11 @@ class ResearchAgent:
     def _synthesize(self, question: str, docs: List[Doc]) -> str:
         if not docs:
             return "The available evidence is insufficient to answer this question."
-        ev = "\n\n".join(
-            f"[{d.doc_id}#{d.loinc}] {d.section}\n{d.text}" for d in docs
-        )
-        return self.llm(SYNTH_PROMPT.format(q=question, evidence=ev))
+        return self.llm(SYNTH_PROMPT.format(q=question, evidence=build_evidence_block(docs)))
 
     def _split_claims(self, report: str):
-        """把报告切成「一句 + 它的引用」。"""
-        out = []
-        for sent in re.split(r"(?<=[.!?])\s+", report.strip()):
-            if not sent.strip():
-                continue
-            cites = []
-            for m in CITE_RE.finditer(sent):
-                sid, loinc = m.group(1), m.group(2)
-                cites.append(f"{sid}#{loinc}" if loinc else sid)
-            if cites:
-                out.append((sent.strip(), cites))
-        return out
+        """把报告切成「一句 + 它的引用」。实现在 agent/report.py（两条链路共用）。"""
+        return split_claims(report)
 
 
 __all__ = ["ResearchAgent", "AgentConfig", "LLM", "Retriever", "CITE_RE"]
