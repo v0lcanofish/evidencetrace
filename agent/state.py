@@ -79,6 +79,10 @@ class Action:
 
     action: str
     arg: Any = None
+    # 策略对这次动作的一句话说明（比如覆盖度的读数）。
+    # ⚠️ 这不只是日志：**"策略当时依据什么做决定"是 E8 归因的输入** ——
+    #    错了要能回答"是覆盖度算错了，还是阈值选错了"。
+    note: str = ""
 
     def __post_init__(self):
         if self.action not in ACTIONS:
@@ -148,6 +152,10 @@ class AgentState:
     #         不是策略的偏好。策略必须知道它不能选一个环境不支持的动作。
     has_user: bool = False
     has_locator: bool = False
+
+    # ---- 语料里收录了哪些药（E8 的覆盖度要拿它从问题里认药名）
+    #      ⭐ 和 has_user/has_locator 同理：这是 agent 的**处境**，不是策略的偏好。
+    known_drugs: List[str] = field(default_factory=list)
 
     # 步数（= 账本里的 step 数，由循环维护）
     step: int = 0

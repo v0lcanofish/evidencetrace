@@ -135,7 +135,8 @@ class AgentLoop:
         tb = self.toolbox_factory(lg, user)
         st = AgentState(question=question, budget=self.cfg.budget,
                         has_user=tb.user is not None,
-                        has_locator=tb.locator is not None)
+                        has_locator=tb.locator is not None,
+                        known_drugs=_corpus_drugs(tb.retriever))
         trace: List[str] = []
         repeats = 0
         terminated_by = ""
@@ -287,8 +288,17 @@ class AgentLoop:
     @staticmethod
     def _fmt(act: Action, res) -> str:
         arg = act.arg if not isinstance(act.arg, dict) else act.arg.get("query", "")
-        head = f"{act.action}({str(arg)[:44]})"
-        return f"{head:<48} ok={res.ok!s:<5} cost={res.cost}  {res.note}"
+        head = f"{act.action}({str(arg)[:40]})"
+        why = f"  ｜策略依据：{act.note}" if act.note else ""
+        return f"{head:<44} ok={res.ok!s:<5} cost={res.cost}  {res.note}{why}"
+
+
+def _corpus_drugs(retriever) -> List[str]:
+    """语料里有哪些药 —— 从检索器的 chunk 上取（E8 的覆盖度要用）。"""
+    chunks = getattr(retriever, "chunks", None)
+    if not chunks:
+        return []
+    return sorted({c.drug for c in chunks if getattr(c, "drug", "")})
 
 
 # ---------------------------------------------------------------- 打印

@@ -81,9 +81,9 @@
   },
   {
    "qid": "bnd0215",
-   "question": "Can I take amoxicillin with my other medication?",
+   "question": "Can I take naproxen with my other medication?",
    "boundary_class": "unknown_drug",
-   "why": "amoxicillin 不在语料库里（库里只有 50 种药）",
+   "why": "naproxen 不在语料库里（库里只有 50 种药）",
    "expect_action": "refuse_no_source"
   },
   {
@@ -109,9 +109,9 @@
   },
   {
    "qid": "bnd0216",
-   "question": "Can I take sertraline with my other medication?",
+   "question": "Can I take celecoxib with my other medication?",
    "boundary_class": "unknown_drug",
-   "why": "sertraline 不在语料库里（库里只有 50 种药）",
+   "why": "celecoxib 不在语料库里（库里只有 50 种药）",
    "expect_action": "refuse_no_source"
   },
   {
@@ -137,9 +137,9 @@
   },
   {
    "qid": "bnd0217",
-   "question": "Can I take gabapentin with my other medication?",
+   "question": "Can I take tramadol with my other medication?",
    "boundary_class": "unknown_drug",
-   "why": "gabapentin 不在语料库里（库里只有 50 种药）",
+   "why": "tramadol 不在语料库里（库里只有 50 种药）",
    "expect_action": "refuse_no_source"
   },
   {
@@ -165,9 +165,9 @@
   },
   {
    "qid": "bnd0218",
-   "question": "Can I take prednisone with my other medication?",
+   "question": "Can I take oxycodone with my other medication?",
    "boundary_class": "unknown_drug",
-   "why": "prednisone 不在语料库里（库里只有 50 种药）",
+   "why": "oxycodone 不在语料库里（库里只有 50 种药）",
    "expect_action": "refuse_no_source"
   },
   {
@@ -193,9 +193,9 @@
   },
   {
    "qid": "bnd0219",
-   "question": "Can I take clopidogrel with my other medication?",
+   "question": "Can I take amoxicillin with my other medication?",
    "boundary_class": "unknown_drug",
-   "why": "clopidogrel 不在语料库里（库里只有 50 种药）",
+   "why": "amoxicillin 不在语料库里（库里只有 50 种药）",
    "expect_action": "refuse_no_source"
   },
   {
@@ -221,9 +221,9 @@
   },
   {
    "qid": "bnd0220",
-   "question": "Can I take furosemide with my other medication?",
+   "question": "Can I take prednisone with my other medication?",
    "boundary_class": "unknown_drug",
-   "why": "furosemide 不在语料库里（库里只有 50 种药）",
+   "why": "prednisone 不在语料库里（库里只有 50 种药）",
    "expect_action": "refuse_no_source"
   },
   {

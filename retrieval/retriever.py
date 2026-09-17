@@ -119,6 +119,19 @@ LOCATE_RULES: List[Tuple[str, List[str]]] = [
                 "how should i take", "starting dose", "recommended dose"]),
     ("precaution", ["watch out", "careful", "warning", "precaution", "keep an eye",
                     "red flag", "monitor"]),
+    # ⚠️ 下面三类是**我们知道它存在、但语料里故意没采**的章节。
+    #    识别它们不是为了检索（检索不到），是为了让 agent 能说
+    #    "你问的是副作用那一节 —— 我这份资料里没有" ，而不是拿别的章节硬答。
+    #
+    #    实测背景（E8）：`What are the side effects of warfarin?` 原来识别不出意图，
+    #    但 `side`/`effects` 两个词在说明书正文里到处都是 → 实词槽位全填上
+    #    → 覆盖度 0.75 → 作答。**12 条 missing_section 漏了 5 条。**
+    ("adverse_reactions", ["side effect", "side effects", "adverse reaction",
+                           "adverse reactions", "side-effect"]),
+    ("clinical_studies", ["clinical trial", "clinical study", "clinical studies",
+                          "trial data"]),
+    ("mechanism", ["how does it work", "how it works", "mechanism of action",
+                   "how does this work"]),
     ("indication", ["used for", "prescribe", "treat", "what is it for",
                     "what does it do", "why was i put on"]),
 ]
@@ -130,6 +143,11 @@ INTENT_TO_LOINC: Dict[str, List[str]] = {
     "dosage": ["34068-7"],
     "indication": ["34067-9"],
     "precaution": ["34069-5", "34071-1", "43685-7"],
+    # 这三节的 LOINC 是**真实存在但本语料没采集**的 —— 定位到它们 = 没资料可引。
+    # ⭐ 这正是「拒答要有理由」的机械依据：不是"检索失败"，是"这一节我们没采"。
+    "adverse_reactions": ["34084-4"],
+    "clinical_studies": ["34090-1"],
+    "mechanism": ["34083-6"],
 }
 
 
