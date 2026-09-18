@@ -8,7 +8,7 @@
 
 ⚠️ 图是**跑出来的**，不是画的 —— 每根柱子来自一次真跑的 Session。
 
-跑法：PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/make_figs_e10.py
+跑法：PYTHONIOENCODING=utf-8 python scripts/make_figs_e10.py
 """
 
 

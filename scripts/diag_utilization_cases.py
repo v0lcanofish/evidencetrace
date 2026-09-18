@@ -2,7 +2,7 @@
 """
 E13 的诊断工具：归因报 `utilization` 时，**逐条看现场**。
 
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/diag_utilization_cases.py
+    PYTHONIOENCODING=utf-8 python scripts/diag_utilization_cases.py
 
 ━━━ 为什么需要它（2026-09-18 建）━━━
 

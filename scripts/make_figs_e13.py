@@ -10,7 +10,7 @@
 ⚠️ 数据是跑出来的。**柱子上那个 0 要配一句诚实说明**：
    利用层/推理层是 0，不是"没问题"，是 mock 口径**测不出来**。
 
-跑法：PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/make_figs_e13.py
+跑法：PYTHONIOENCODING=utf-8 python scripts/make_figs_e13.py
 """
 
 

@@ -14,7 +14,7 @@ E10 判据：**多轮一致**。
    不是"记性好"。记忆的价值在于"该记的时候记住，**该忘的时候忘掉**"。
 
 跑法：
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_session.py
+    PYTHONIOENCODING=utf-8 python scripts/eval_session.py
 """
 
 from __future__ import annotations

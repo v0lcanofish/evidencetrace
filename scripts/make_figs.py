@@ -5,7 +5,7 @@ EvidenceTrace 块 E1 / E3 的可视化。
   fig_E1_ledger.png    证据账本的结构与闭包不变量
   fig_E3_sources.png   数据源可达性对照（为什么换掉 NMPA）
 
-跑法：D:/anaconda/python.exe scripts/make_figs.py
+跑法：python scripts/make_figs.py
 """
 
 

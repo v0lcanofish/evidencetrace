@@ -21,7 +21,7 @@
 
 跑法：
   cd 代码库/projects/EvidenceTrace
-  PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_agent.py
+  PYTHONIOENCODING=utf-8 python scripts/eval_agent.py
 """
 
 from __future__ import annotations

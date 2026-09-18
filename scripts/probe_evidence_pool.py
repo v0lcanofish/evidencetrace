@@ -2,7 +2,7 @@
 """
 E13b 探针：归因报 utilization 的题，**生成层实际看到的证据池长什么样**。
 
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/probe_evidence_pool.py
+    PYTHONIOENCODING=utf-8 python scripts/probe_evidence_pool.py
 
 ━━━ 为什么需要它（2026-09-18 建）━━━
 

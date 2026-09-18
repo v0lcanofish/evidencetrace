@@ -14,7 +14,7 @@ E9 判据：**坏引用 100% 抓住**。
     所以第 1、5 条是**反向用例** —— 它们防的是"核验器过于激进"。
 
 跑法：
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_verify.py
+    PYTHONIOENCODING=utf-8 python scripts/eval_verify.py
 """
 
 from __future__ import annotations

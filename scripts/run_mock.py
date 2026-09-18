@@ -14,7 +14,7 @@
 
 跑法（纯 CPU，零 GPU）：
   cd 代码库/projects/EvidenceTrace
-  PYTHONIOENCODING=utf-8 D:/anaconda/python.exe scripts/run_mock.py
+  PYTHONIOENCODING=utf-8 python scripts/run_mock.py
 """
 
 

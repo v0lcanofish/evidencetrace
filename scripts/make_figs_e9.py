@@ -7,7 +7,7 @@
 
 所以它一半画"抓得住"（判据矩阵），一半画"用得上"（两条策略的时间线对照）。
 
-跑法：PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/make_figs_e9.py
+跑法：PYTHONIOENCODING=utf-8 python scripts/make_figs_e9.py
 """
 
 

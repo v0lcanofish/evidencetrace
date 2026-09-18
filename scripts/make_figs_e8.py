@@ -2,7 +2,7 @@
 """
 块 E8 可视化：把 0/1 判断换成算出来的覆盖度，好了多少。
 
-跑法：D:/anaconda/python.exe scripts/make_figs_e8.py
+跑法：python scripts/make_figs_e8.py
 （先跑 scripts/eval_coverage.py 生成 reports/coverage_eval.json）
 """
 

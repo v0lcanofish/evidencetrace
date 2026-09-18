@@ -1,0 +1,26 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# ---- 虚拟环境 ----
+.env
+.venv/
+venv/
+
+# ---- 本机路径 / 编辑器 ----
+.vscode/
+.idea/
+.DS_Store
+
+# ---- 密钥（绝不入库）----
+.env
+.env.*
+
+# ---- 模型权重与向量缓存（可从 HF 重新下载 / 跑脚本重建）----
+models/
+data/cache/
+
+# ---- 运行产物 ----
+data/runs/
+*.log

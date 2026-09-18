@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """块 E2 可视化：编排循环 + 找到的两个 bug。
 
-跑法：D:/anaconda/python.exe scripts/make_figs_e2.py
+跑法：python scripts/make_figs_e2.py
 """
 
 

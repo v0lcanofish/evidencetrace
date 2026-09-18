@@ -2,8 +2,8 @@
 """
 块 E13b 的判据：生成前的证据选择（排序 + 按预算截断）。
 
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_select.py
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_select.py --quick
+    PYTHONIOENCODING=utf-8 python scripts/eval_select.py
+    PYTHONIOENCODING=utf-8 python scripts/eval_select.py --quick
 
 ━━━ 判据三铁律怎么落的 ━━━
 

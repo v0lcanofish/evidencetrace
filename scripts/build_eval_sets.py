@@ -6,7 +6,7 @@
 
 ━━━ 为什么这个块要第一个做 ━━━
 
-2026 面试市场上，简历项目的四大通病之一是：
+评测的常见通病之一是：
     **"写'准确率提升 15%'，细问发现是自己拿 20 条数据跑的，没有基线。"**
 
 我们原来只有 15 道题。**没有评测集，后面每写一个模块都不知道它有没有变好。**
@@ -799,7 +799,7 @@ def build_intent_set(labels: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         turn2: "Can I take it with furosemide?"      ← "it" 指 metformin
     gold  = 消解后的完整 query + 指代对象
 
-    ⚠️ 这是 ② Understand 阶段的核心考点（面试真题 Q26：
+    ⚠️ 这是指代消解的核心考点（
        "当用户提出不完整的请求时，如何补全用户意图"）。
     """
     rows: List[Dict[str, Any]] = []

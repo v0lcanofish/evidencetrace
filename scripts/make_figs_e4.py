@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """块 E4 可视化：语料 + 15 道自建题。
 
-跑法：D:/anaconda/python.exe scripts/make_figs_e4.py
+跑法：python scripts/make_figs_e4.py
 """
 
 

@@ -23,7 +23,7 @@ E13 把它接上，产出**错误层级分布**：
        只是归因层从 retrieval 变成了 utilization —— **问题被推走了，不是被消灭了**
 
 跑法：
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_attribution.py
+    PYTHONIOENCODING=utf-8 python scripts/eval_attribution.py
 """
 
 from __future__ import annotations

@@ -14,7 +14,7 @@
     ③ 稠密检索    语义匹配        —— 后面加（需要 BGE-M3）
 
     ⭐ 每加一层就量一次 Recall@5，差值就是那一层的贡献。
-       这就是"从 X 到 Y"的数字，也是面试要讲的 Trade-off 依据。
+       这就是"从 X 到 Y"的数字，是每一层贡献的 Trade-off 依据。
 """
 
 from __future__ import annotations

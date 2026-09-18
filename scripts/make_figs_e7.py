@@ -2,7 +2,7 @@
 """
 块 E7 可视化：agent 走出来的路。
 
-跑法：D:/anaconda/python.exe scripts/make_figs_e7.py
+跑法：python scripts/make_figs_e7.py
 
 ━━━ 这张图要回答的问题 ━━━
 

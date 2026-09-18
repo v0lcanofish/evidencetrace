@@ -1,17 +1,28 @@
 # EvidenceTrace 依赖清单
 #
-# 本项目【零 GPU】—— 全部在 CPU 上跑。
+# 分三层装 —— 因为**核心链路本来就不需要神经网络**。
+# ⚠️ dense / rerank 里的 torch / transformers 是**惰性 import**（写在函数内部），
+#    不装也能跑 BM25 + 章节定位那条主路。所以别把它们写进必需项。
 
-# ---------- 已用（当前进度）----------
-matplotlib>=3.5          # 出图
+# ---------- ① 必需：核心链路（词面检索 + 章节定位 + 账本 + 判据）----------
+numpy>=1.24
 
-# ---------- 待用（后续块）----------
-# requests               # 取 DailyMed 数据（也可用标准库 urllib，当前探针就是这么写的）
-# python-dotenv          # 读 .env 里的 DeepSeek API key
-# rank-bm25              # ⚠️ 不装——检索器是自己写的（可复用 ToolHorizon 的 search_retriever）
-# numpy                  # 向量检索用
-# scipy                  # Bootstrap / McNemar 检验
+# ---------- ② 可选：出图 ----------
+matplotlib>=3.5
 
-# ---------- 复用 ----------
-# 检索器：直接复用 ToolHorizon/scripts/search_retriever.py 的 BM25 打分逻辑
-#        （本机实测该实现是英文 tokenizer `[a-z0-9]+`，正好适配 DailyMed 英文语料）
+# ---------- ③ 可选：稠密检索 + 交叉编码器重排 ----------
+# 装了才走三路融合；不装则自动退回 BM25 + 章节定位。
+# 首次运行会从 HF 下载两个模型（bge-small-en-v1.5 33M / bge-reranker-base 278M）。
+#   国内直连 huggingface.co 会超时 —— 代码里已 setdefault 到 hf-mirror.com
+#   （retrieval/dense.py 顶部），要覆盖就自己设 HF_ENDPOINT。
+# torch>=2.0            # CPU 版够用
+# transformers>=4.40
+
+# ---------- ④ 可选：接真模型（生成层）----------
+# agent/llm.py 用；缺 key 时它会直接报错，不会静默降级成 mock。
+# openai>=1.0
+# python-dotenv>=1.0
+
+# ---------- 明确不装 ----------
+# rank-bm25   —— 检索器是自己写的（retrieval/retriever.py），装它反而会混口径
+# sentence-transformers —— 只是一层薄封装；dense.py 直接用 transformers + 自己写 pooling

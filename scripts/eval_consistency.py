@@ -13,7 +13,7 @@ E11 判据：**引用偏不偏**（跨药一致性核验）。
    所以必须分开报 —— 混成一个的话 agent 会白白重试。
 
 跑法：
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_consistency.py
+    PYTHONIOENCODING=utf-8 python scripts/eval_consistency.py
 """
 
 from __future__ import annotations

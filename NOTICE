@@ -1,0 +1,13 @@
+EvidenceTrace
+Copyright 2026 v0lcanofish
+
+This product includes software developed as part of a personal research
+project on evidence-grounded agent decision policies.
+
+Third-party data:
+  - Drug label text is retrieved from DailyMed (U.S. National Library of
+    Medicine, https://dailymed.nlm.nih.gov). DailyMed content is a work of
+    the U.S. federal government and is not subject to copyright in the
+    United States. This repository does NOT redistribute the original
+    label documents; it stores tokenized, section-split copies produced by
+    scripts/expand_corpus.py for retrieval evaluation.

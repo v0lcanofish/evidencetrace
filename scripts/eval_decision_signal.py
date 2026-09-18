@@ -2,8 +2,8 @@
 """
 块 E12 前置的判据：**决策日志里到底有没有东西可学**。
 
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_decision_signal.py
-    PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/eval_decision_signal.py --limit 12
+    PYTHONIOENCODING=utf-8 python scripts/eval_decision_signal.py
+    PYTHONIOENCODING=utf-8 python scripts/eval_decision_signal.py --limit 12
 
 ━━━ 为什么这个脚本必须先跑 ━━━
 

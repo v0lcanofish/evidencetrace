@@ -10,7 +10,7 @@
 
 ⚠️ 数据是**扫出来的**，不是画的。
 
-跑法：PYTHONIOENCODING=utf-8 D:/anaconda/envs/myenv/python.exe scripts/make_figs_e11.py
+跑法：PYTHONIOENCODING=utf-8 python scripts/make_figs_e11.py
 """
 
 
