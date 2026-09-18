@@ -147,6 +147,28 @@ class AgentState:
     answer_text: str = ""
     abstain_reason: str = ""
 
+    # ---- ⭐ E9：引用核验的**失败记录**，策略要看得见
+    #      ⚠️ 为什么放进 state 而不是只写日志：
+    #         设计 v7 第 137 行要求"机械核验结果**反过来决定下一步**"。
+    #         要能反过来决定，策略就必须**读得到**它 —— 只写日志等于没有反馈。
+    #      每项 = {"cite": "setid#loinc", "kind": "not_retrieved", "reason": "…"}
+    failed_cites: List[Dict[str, Any]] = field(default_factory=list)
+
+    @property
+    def has_bad_cites(self) -> bool:
+        """上一份答案有没有被打回的引用 —— 策略用它决定"先补检索再答"。"""
+        return bool(self.failed_cites)
+
+    def failed_cite_keys(self) -> List[str]:
+        """被打回的引用键（去重、保序）—— 策略拿它当下一轮检索的线索。"""
+        seen, out = set(), []
+        for c in self.failed_cites:
+            k = c.get("cite", "")
+            if k and k not in seen:
+                seen.add(k)
+                out.append(k)
+        return out
+
     # ---- 环境能力：动作空间**实际**有哪些动作可选
     #      ⭐ 这两项属于状态，不属于策略 —— "有没有用户可问"是 agent 的处境，
     #         不是策略的偏好。策略必须知道它不能选一个环境不支持的动作。
@@ -156,6 +178,11 @@ class AgentState:
     # ---- 语料里收录了哪些药（E8 的覆盖度要拿它从问题里认药名）
     #      ⭐ 和 has_user/has_locator 同理：这是 agent 的**处境**，不是策略的偏好。
     known_drugs: List[str] = field(default_factory=list)
+
+    # ---- setid → 药名。E9 的**定向补检索**要用：
+    #      被打回的引用只给得出 (setid, loinc)，而要检索必须知道**哪份药的哪一节**
+    #      （restrict={"drug":…, "loincs":[…]})。没有这张表，补检索就只能瞎铺开。
+    drug_by_setid: Dict[str, str] = field(default_factory=dict)
 
     # 步数（= 账本里的 step 数，由循环维护）
     step: int = 0

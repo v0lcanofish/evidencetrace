@@ -17,6 +17,15 @@
   PYTHONIOENCODING=utf-8 D:/anaconda/python.exe scripts/run_mock.py
 """
 
+
+import sys
+
+# ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
+#    → **判据崩在半路，红绿一个字都读不到**（2026-09-18 实测 eval_retrieval.py）。
+#    errors="replace"：宁可显示问号，也不许判据跑到一半死掉。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 import json
 import sys
 from pathlib import Path
@@ -24,6 +33,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 PROJECT = HERE.parent
 sys.path.insert(0, str(PROJECT))
+
 
 from agent.research_agent import ResearchAgent, AgentConfig, CITE_RE   # noqa: E402
 from agent.mocks import MockRetriever, MockLLM                         # noqa: E402

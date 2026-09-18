@@ -51,6 +51,7 @@ from ledger.ledger import (
     ACTION_LOCATE, ACTION_RETRIEVE, ACTION_ASK, ACTION_SYNTHESIZE, ACTION_ABSTAIN,
 )
 from agent.report import SYNTH_PROMPT, USER_NOTE_TEMPLATE, build_evidence_block
+from agent.select import select_evidence, Selection
 from agent.state import AgentState
 
 
@@ -156,9 +157,18 @@ class ToolBox:
                  user: Optional[ScriptedUser] = None,
                  llm: Optional[Callable[[str], str]] = None,
                  top_k: int = 5,
-                 cost: Optional[Dict[str, int]] = None):
+                 cost: Optional[Dict[str, int]] = None,
+                 evidence_budget: Optional[int] = None,
+                 select_order: str = "struct"):
         self.retriever = retriever
         self.ledger = ledger
+        # ---- E13b：生成前把证据**排序 + 截断到 evidence_budget 条**
+        #      ⚠️ None = 不截断（只排序）。**只排序对"挑错节"是无效的** ——
+        #         实测 gold 与问题字面零重合、干扰项重合 1~2 分，排序改不了谁分高。
+        #         真正起作用的是 budget 这个旋钮，它必须标定（见 scripts/eval_select.py ③）。
+        self.evidence_budget = evidence_budget
+        self.select_order = select_order
+        self.last_selection: Optional[Selection] = None
         # locator 缺省时从检索器身上取（BM25Retriever 自带 SectionLocator）
         self.locator = locator if locator is not None else getattr(retriever, "locator", None)
         self.user = user
@@ -268,14 +278,25 @@ class ToolBox:
         if state.user_facts:
             q = q + "\n" + USER_NOTE_TEMPLATE.format(
                 facts="\n".join(f"- {f}" for f in state.user_facts))
-        prompt = SYNTH_PROMPT.format(q=q, evidence=build_evidence_block(state.evidence))
+
+        # ⭐ E13b：**交给生成层的不是全池，是选过的那几条**。
+        #    排序依据全部来自 state（焦点药 / 定位章节 / 权威度）——
+        #    生成层拿不到这些结构事实，只能靠"字面像不像"猜，那是它挑错节的根因。
+        sel = select_evidence(state.evidence, state.located, state.known_drugs,
+                              state.question, budget=self.evidence_budget,
+                              order=self.select_order)
+        self.last_selection = sel
+
+        prompt = SYNTH_PROMPT.format(q=q, evidence=build_evidence_block(sel.kept))
         text = self.llm(prompt) if self.llm else ""
 
+        note = f"用了 {sel.n_kept}/{sel.n_pool} 篇证据"
+        if sel.dropped:
+            note += f"（截断 {len(sel.dropped)} 条）"
         self.ledger.record(Step(step=self._next_step(), action=ACTION_SYNTHESIZE,
-                                note=f"用了 {len(state.evidence)} 篇证据"))
+                                note=note))
         return ToolResult("answer", bool(text), payload=text,
-                          cost=self.cost("answer"),
-                          note=f"用 {len(state.evidence)} 篇证据生成回答")
+                          cost=self.cost("answer"), note=note)
 
     # ------------------------------------------------------------ abstain
 

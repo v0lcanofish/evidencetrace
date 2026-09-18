@@ -1,0 +1,1952 @@
+{
+ "n": 120,
+ "purpose": "让结构先验失效的题 —— 量定位失效时检索层的能力",
+ "metric": "与 retrieval_set 完全一致：Recall@5 over (doc_id, loinc)",
+ "protocol": "templates 0,1 = dev（可用来补词）；2,3 = test（补完词不许再动）",
+ "consumer": "scripts/eval_retrieval.py",
+ "rows": [
+  {
+   "qid": "prb0000",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 0,
+   "drug": "allopurinol",
+   "tier": "probe",
+   "question": "allopurinol — what's the usual amount for an adult?",
+   "gold_cite_key": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0001",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 0,
+   "drug": "alprazolam",
+   "tier": "probe",
+   "question": "alprazolam — what's the usual amount for an adult?",
+   "gold_cite_key": "a23063c0-099a-4256-b95f-3a857bbf704b#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0002",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 0,
+   "drug": "amiodarone",
+   "tier": "probe",
+   "question": "amiodarone — what's the usual amount for an adult?",
+   "gold_cite_key": "4c149392-a4f0-4e2d-a13f-2b94810005de#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0003",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 0,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "amlodipine — what's the usual amount for an adult?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0004",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 0,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "atorvastatin — what's the usual amount for an adult?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0005",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 0,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "bupropion — what's the usual amount for an adult?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0006",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 1,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "How often am I supposed to take amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0007",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 1,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "How often am I supposed to take atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0008",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 1,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "How often am I supposed to take bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0009",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 1,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "How often am I supposed to take carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0010",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 1,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "How often am I supposed to take clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0011",
+   "split": "dev",
+   "intent": "dosage",
+   "template_id": 1,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "How often am I supposed to take colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0012",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 2,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "What strength of carvedilol is normally given?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0013",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 2,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "What strength of clopidogrel is normally given?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0014",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 2,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "What strength of colchicine is normally given?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0015",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 2,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "What strength of cyclobenzaprine is normally given?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0016",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 2,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "What strength of digoxin is normally given?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0017",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 2,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "What strength of diltiazem is normally given?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0018",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 3,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "They handed me cyclobenzaprine; what's the daily amount?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0019",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 3,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "They handed me digoxin; what's the daily amount?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0020",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 3,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "They handed me diltiazem; what's the daily amount?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0021",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 3,
+   "drug": "duloxetine",
+   "tier": "probe",
+   "question": "They handed me duloxetine; what's the daily amount?",
+   "gold_cite_key": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0022",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 3,
+   "drug": "empagliflozin",
+   "tier": "probe",
+   "question": "They handed me empagliflozin; what's the daily amount?",
+   "gold_cite_key": "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0023",
+   "split": "test",
+   "intent": "dosage",
+   "template_id": 3,
+   "drug": "escitalopram",
+   "tier": "probe",
+   "question": "They handed me escitalopram; what's the daily amount?",
+   "gold_cite_key": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7",
+   "gold_loinc": "34068-7",
+   "gold_loinc_any": [
+    "34068-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0024",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 0,
+   "drug": "allopurinol",
+   "tier": "probe",
+   "question": "Why did my doctor give me allopurinol?",
+   "gold_cite_key": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0025",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 0,
+   "drug": "alprazolam",
+   "tier": "probe",
+   "question": "Why did my doctor give me alprazolam?",
+   "gold_cite_key": "a23063c0-099a-4256-b95f-3a857bbf704b#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0026",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 0,
+   "drug": "amiodarone",
+   "tier": "probe",
+   "question": "Why did my doctor give me amiodarone?",
+   "gold_cite_key": "4c149392-a4f0-4e2d-a13f-2b94810005de#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0027",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 0,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "Why did my doctor give me amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0028",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 0,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "Why did my doctor give me atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0029",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 0,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "Why did my doctor give me bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0030",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 1,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "What is amlodipine supposed to accomplish?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0031",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 1,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "What is atorvastatin supposed to accomplish?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0032",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 1,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "What is bupropion supposed to accomplish?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0033",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 1,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "What is carvedilol supposed to accomplish?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0034",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 1,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "What is clopidogrel supposed to accomplish?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0035",
+   "split": "dev",
+   "intent": "indication",
+   "template_id": 1,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "What is colchicine supposed to accomplish?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0036",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 2,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "What's the point of taking carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0037",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 2,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "What's the point of taking clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0038",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 2,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "What's the point of taking colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0039",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 2,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "What's the point of taking cyclobenzaprine?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0040",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 2,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "What's the point of taking digoxin?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0041",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 2,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "What's the point of taking diltiazem?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0042",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 3,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "What condition is cyclobenzaprine meant to help with?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0043",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 3,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "What condition is digoxin meant to help with?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0044",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 3,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "What condition is diltiazem meant to help with?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0045",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 3,
+   "drug": "duloxetine",
+   "tier": "probe",
+   "question": "What condition is duloxetine meant to help with?",
+   "gold_cite_key": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0046",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 3,
+   "drug": "empagliflozin",
+   "tier": "probe",
+   "question": "What condition is empagliflozin meant to help with?",
+   "gold_cite_key": "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0047",
+   "split": "test",
+   "intent": "indication",
+   "template_id": 3,
+   "drug": "escitalopram",
+   "tier": "probe",
+   "question": "What condition is escitalopram meant to help with?",
+   "gold_cite_key": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34067-9",
+   "gold_loinc": "34067-9",
+   "gold_loinc_any": [
+    "34067-9"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0048",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 0,
+   "drug": "allopurinol",
+   "tier": "probe",
+   "question": "Who should not be given allopurinol?",
+   "gold_cite_key": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0049",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 0,
+   "drug": "alprazolam",
+   "tier": "probe",
+   "question": "Who should not be given alprazolam?",
+   "gold_cite_key": "a23063c0-099a-4256-b95f-3a857bbf704b#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0050",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 0,
+   "drug": "amiodarone",
+   "tier": "probe",
+   "question": "Who should not be given amiodarone?",
+   "gold_cite_key": "4c149392-a4f0-4e2d-a13f-2b94810005de#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0051",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 0,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "Who should not be given amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0052",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 0,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "Who should not be given atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0053",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 0,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "Who should not be given bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0054",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 1,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "Are there people who must never be given amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0055",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 1,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "Are there people who must never be given atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0056",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 1,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "Are there people who must never be given bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0057",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 1,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "Are there people who must never be given carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0058",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 1,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "Are there people who must never be given clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0059",
+   "split": "dev",
+   "intent": "contraindication",
+   "template_id": 1,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "Are there people who must never be given colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0060",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 2,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "Is carvedilol a bad idea for someone with liver problems?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0061",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 2,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "Is clopidogrel a bad idea for someone with liver problems?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0062",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 2,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "Is colchicine a bad idea for someone with liver problems?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0063",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 2,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "Is cyclobenzaprine a bad idea for someone with liver problems?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0064",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 2,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "Is digoxin a bad idea for someone with liver problems?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0065",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 2,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "Is diltiazem a bad idea for someone with liver problems?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0066",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 3,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "Which patients ought to stay away from cyclobenzaprine?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0067",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 3,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "Which patients ought to stay away from digoxin?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0068",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 3,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "Which patients ought to stay away from diltiazem?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0069",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 3,
+   "drug": "duloxetine",
+   "tier": "probe",
+   "question": "Which patients ought to stay away from duloxetine?",
+   "gold_cite_key": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0070",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 3,
+   "drug": "empagliflozin",
+   "tier": "probe",
+   "question": "Which patients ought to stay away from empagliflozin?",
+   "gold_cite_key": "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0071",
+   "split": "test",
+   "intent": "contraindication",
+   "template_id": 3,
+   "drug": "escitalopram",
+   "tier": "probe",
+   "question": "Which patients ought to stay away from escitalopram?",
+   "gold_cite_key": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34070-3",
+   "gold_loinc": "34070-3",
+   "gold_loinc_any": [
+    "34070-3"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0072",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 0,
+   "drug": "allopurinol",
+   "tier": "probe",
+   "question": "Does allopurinol play nicely with other medicines?",
+   "gold_cite_key": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0073",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 0,
+   "drug": "alprazolam",
+   "tier": "probe",
+   "question": "Does alprazolam play nicely with other medicines?",
+   "gold_cite_key": "a23063c0-099a-4256-b95f-3a857bbf704b#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0074",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 0,
+   "drug": "amiodarone",
+   "tier": "probe",
+   "question": "Does amiodarone play nicely with other medicines?",
+   "gold_cite_key": "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0075",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 0,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "Does amlodipine play nicely with other medicines?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0076",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 0,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "Does atorvastatin play nicely with other medicines?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0077",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 0,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "Does bupropion play nicely with other medicines?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0078",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 1,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "Anything I shouldn't have alongside amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0079",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 1,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "Anything I shouldn't have alongside atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0080",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 1,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "Anything I shouldn't have alongside bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0081",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 1,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "Anything I shouldn't have alongside carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0082",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 1,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "Anything I shouldn't have alongside clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0083",
+   "split": "dev",
+   "intent": "interaction",
+   "template_id": 1,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "Anything I shouldn't have alongside colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0084",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 2,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "Can I drink alcohol while I'm on carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0085",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 2,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "Can I drink alcohol while I'm on clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0086",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 2,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "Can I drink alcohol while I'm on colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0087",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 2,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "Can I drink alcohol while I'm on cyclobenzaprine?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0088",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 2,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "Can I drink alcohol while I'm on digoxin?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7",
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0089",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 2,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "Can I drink alcohol while I'm on diltiazem?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0090",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 3,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "Would other pills interfere with cyclobenzaprine?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0091",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 3,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "Would other pills interfere with digoxin?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7",
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0092",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 3,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "Would other pills interfere with diltiazem?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0093",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 3,
+   "drug": "duloxetine",
+   "tier": "probe",
+   "question": "Would other pills interfere with duloxetine?",
+   "gold_cite_key": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0094",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 3,
+   "drug": "empagliflozin",
+   "tier": "probe",
+   "question": "Would other pills interfere with empagliflozin?",
+   "gold_cite_key": "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0095",
+   "split": "test",
+   "intent": "interaction",
+   "template_id": 3,
+   "drug": "escitalopram",
+   "tier": "probe",
+   "question": "Would other pills interfere with escitalopram?",
+   "gold_cite_key": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34073-7",
+   "gold_loinc": "34073-7",
+   "gold_loinc_any": [
+    "34073-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0096",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 0,
+   "drug": "allopurinol",
+   "tier": "probe",
+   "question": "Anything I need to look out for while on allopurinol?",
+   "gold_cite_key": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0097",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 0,
+   "drug": "alprazolam",
+   "tier": "probe",
+   "question": "Anything I need to look out for while on alprazolam?",
+   "gold_cite_key": "a23063c0-099a-4256-b95f-3a857bbf704b#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0098",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 0,
+   "drug": "amiodarone",
+   "tier": "probe",
+   "question": "Anything I need to look out for while on amiodarone?",
+   "gold_cite_key": "4c149392-a4f0-4e2d-a13f-2b94810005de#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0099",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 0,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "Anything I need to look out for while on amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0100",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 0,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "Anything I need to look out for while on atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0101",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 0,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "Anything I need to look out for while on bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0102",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 1,
+   "drug": "amlodipine",
+   "tier": "probe",
+   "question": "What should I be aware of while taking amlodipine?",
+   "gold_cite_key": "13ecf91f-dce8-4262-a54a-7bef2b1591c3#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0103",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 1,
+   "drug": "atorvastatin",
+   "tier": "probe",
+   "question": "What should I be aware of while taking atorvastatin?",
+   "gold_cite_key": "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0104",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 1,
+   "drug": "bupropion",
+   "tier": "probe",
+   "question": "What should I be aware of while taking bupropion?",
+   "gold_cite_key": "82872e51-3349-40fe-8ea3-496751955fed#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0105",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 1,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "What should I be aware of while taking carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0106",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 1,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "What should I be aware of while taking clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0107",
+   "split": "dev",
+   "intent": "precaution",
+   "template_id": 1,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "What should I be aware of while taking colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0108",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 2,
+   "drug": "carvedilol",
+   "tier": "probe",
+   "question": "Is there anything unusual to expect with carvedilol?",
+   "gold_cite_key": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0109",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 2,
+   "drug": "clopidogrel",
+   "tier": "probe",
+   "question": "Is there anything unusual to expect with clopidogrel?",
+   "gold_cite_key": "669f0bc6-f173-484d-8efe-c006683b25d1#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0110",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 2,
+   "drug": "colchicine",
+   "tier": "probe",
+   "question": "Is there anything unusual to expect with colchicine?",
+   "gold_cite_key": "5a0b4246-e7dd-29e5-e063-6294a90a2871#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0111",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 2,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "Is there anything unusual to expect with cyclobenzaprine?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0112",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 2,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "Is there anything unusual to expect with digoxin?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0113",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 2,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "Is there anything unusual to expect with diltiazem?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0114",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 3,
+   "drug": "cyclobenzaprine",
+   "tier": "probe",
+   "question": "What else should I know before starting cyclobenzaprine?",
+   "gold_cite_key": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34069-5",
+   "gold_loinc": "34069-5",
+   "gold_loinc_any": [
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0115",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 3,
+   "drug": "digoxin",
+   "tier": "probe",
+   "question": "What else should I know before starting digoxin?",
+   "gold_cite_key": "dfac7f13-28be-423d-9389-9089da29da17#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0116",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 3,
+   "drug": "diltiazem",
+   "tier": "probe",
+   "question": "What else should I know before starting diltiazem?",
+   "gold_cite_key": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0117",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 3,
+   "drug": "duloxetine",
+   "tier": "probe",
+   "question": "What else should I know before starting duloxetine?",
+   "gold_cite_key": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0118",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 3,
+   "drug": "empagliflozin",
+   "tier": "probe",
+   "question": "What else should I know before starting empagliflozin?",
+   "gold_cite_key": "0fdd0255-0055-65f3-b2c0-db8fbb87beae#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  },
+  {
+   "qid": "prb0119",
+   "split": "test",
+   "intent": "precaution",
+   "template_id": 3,
+   "drug": "escitalopram",
+   "tier": "probe",
+   "question": "What else should I know before starting escitalopram?",
+   "gold_cite_key": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#43685-7",
+   "gold_loinc": "43685-7",
+   "gold_loinc_any": [
+    "43685-7",
+    "34069-5"
+   ],
+   "entity": "",
+   "note": "结构先验失效：意图词不在 LOCATE_RULES 里"
+  }
+ ]
+}

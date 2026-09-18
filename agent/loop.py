@@ -45,11 +45,13 @@ from typing import Any, Callable, Dict, List, Optional
 
 from ledger.ledger import Ledger, LedgerError, Claim
 from agent.report import split_claims, looks_like_abstention
+from agent.select import budget_from_env, order_from_env
+from agent.verify import verify_answer
 from agent.state import (
     AgentState, Action, TERMINAL_ACTIONS,
     A_LOCATE, A_SEARCH, A_ASK, A_ANSWER, A_ABSTAIN,
 )
-from agent.tools import ToolBox, ScriptedUser
+from agent.tools import ToolBox, ToolResult, ScriptedUser
 from agent.policy import Policy
 
 
@@ -95,7 +97,9 @@ class RunStats:
 
 
 def make_toolbox_factory(retriever: Any, llm: Any = None, top_k: int = 5,
-                         cost: Optional[Dict[str, int]] = None
+                         cost: Optional[Dict[str, int]] = None,
+                         evidence_budget: Optional[int] = None,
+                         select_order: Optional[str] = None
                          ) -> Callable[[Ledger, Optional[ScriptedUser]], ToolBox]:
     """把「检索器 + LLM」封成一个**按轮造工具箱**的工厂。
 
@@ -103,9 +107,16 @@ def make_toolbox_factory(retriever: Any, llm: Any = None, top_k: int = 5,
        工具箱绑着账本，账本是**一轮一个**的。每个用户的档案也不同。
        传一个现成的工具箱 = 所有轮共用一个账本，账本立刻失去意义。
     """
+    # ⚠️ E13b 的两个旋钮在这里**统一落到一处**（和 retrieval/factory.py 收口
+    #    「14 处写死 BM25Retriever」是同一个道理）：参数缺省时读环境变量，
+    #    免得每个判据脚本各写一份 —— 那种分散正是「写了但没接进流程」的温床。
+    ev_budget = evidence_budget if evidence_budget is not None else budget_from_env()
+    order = select_order or order_from_env()
+
     def factory(ledger: Ledger, user: Optional[ScriptedUser]) -> ToolBox:
         return ToolBox(retriever=retriever, ledger=ledger, user=user,
-                       llm=llm, top_k=top_k, cost=cost)
+                       llm=llm, top_k=top_k, cost=cost,
+                       evidence_budget=ev_budget, select_order=order)
     return factory
 
 
@@ -130,13 +141,35 @@ class AgentLoop:
     # ------------------------------------------------------------ 主循环
 
     def run(self, question: str, run_id: str = "run-0", seed: int = 42,
-            user: Optional[ScriptedUser] = None, verbose: bool = False) -> Ledger:
+            user: Optional[ScriptedUser] = None, verbose: bool = False,
+            carry: Optional[AgentState] = None) -> Ledger:
+        """
+        Args:
+            carry: ⭐ E10 的跨轮继承口子 —— 上一轮的 AgentState（多轮会话用）。
+                   **只继承证据和用户口述**，不继承动作账本/预算/定位：
+                     · 证据继承   → 第 2 轮不必重查第 1 轮查过的药（复用的机制在这）
+                     · 账本不继承 → 它是**每轮内部**打转刹车的依据；
+                                    跨轮继承会让策略"因为上一轮查过所以不许再查"，那是错的
+                     · 预算不继承 → 每轮是独立的一次咨询
+                     · 定位不继承 → 它是"这问题该查哪一节"，换问题就作废
+        """
         lg = Ledger(run_id=run_id, question=question, seed=seed)
         tb = self.toolbox_factory(lg, user)
         st = AgentState(question=question, budget=self.cfg.budget,
                         has_user=tb.user is not None,
                         has_locator=tb.locator is not None,
-                        known_drugs=_corpus_drugs(tb.retriever))
+                        known_drugs=_corpus_drugs(tb.retriever),
+                        drug_by_setid=_drug_by_setid(tb.retriever),
+                        evidence=list(carry.evidence) if carry else [],
+                        user_facts=list(carry.user_facts) if carry else [])
+        # ⭐ E10：把继承来的证据**登记进本轮的账本**。
+        #    ⚠️ 不登记的话，第 2 轮的引用会全部闭包失败 ——
+        #       因为本轮没重查（证据是继承的），账本里自然没有那一步。
+        #    登记用 `CARRIED_STEP` 标记来源，**报告里看得见"这条来自上一轮"**。
+        if carry and carry.evidence:
+            lg.mark_carried(carry.evidence)
+        # E9：语料级引用键，引用核验判 not_in_corpus 要用。一轮算一次，不算贵。
+        self._corpus_keys = _corpus_keys(tb.retriever)
         trace: List[str] = []
         repeats = 0
         terminated_by = ""
@@ -159,7 +192,10 @@ class AgentLoop:
                 break
 
             # ---- 刹车 ④：原地打转
-            if not terminal and st.has_tried(act.action, act.arg):
+            #   ⚠️ E9 之后**不能再加 `not terminal`**：answer 可能被引用核验打回，
+            #      于是它会被反复提出。旧写法把 terminal 排除在外，导致一个被打回的答案
+            #      能一路重试到 max_steps（2026-09-18 实测重试了 10 次才被步数上限拦住）。
+            if st.has_tried(act.action, act.arg):
                 repeats += 1
                 if repeats >= self.cfg.max_repeats:
                     self._force_finish(tb, st, trace, "策略连续提出已试过的动作")
@@ -179,6 +215,15 @@ class AgentLoop:
                 print("  " + line)
 
             if terminal:
+                # ⭐ E9：answer **核验过了才算真的答了**。
+                #    核验没过（answer_text 被作废、failed_cites 有记录）→ **不终止**，
+                #    退回循环把失败信息交给策略 —— 设计 v7："追不到 → 回到 ②③"。
+                #    ⚠️ 不这么改的话，"核验"就只是个事后判死，反馈链是断的。
+                if act.action == A_ANSWER and not st.answer_text:
+                    trace.append("[verify] 引用核验未通过 → 退回循环，带着失败信息重检索")
+                    if verbose:
+                        print("  [verify] 引用核验未通过 → 退回循环")
+                    continue
                 terminated_by = act.action
                 break
 
@@ -218,9 +263,23 @@ class AgentLoop:
 
         if act.action == A_ANSWER:
             r = tb.answer(st)
-            if r.ok:
+            if not r.ok:
+                return r
+            # ⭐ E9 的落点：**答案生成之后，先过机械核验，再决定采不采纳**。
+            #    这是设计 v7 第 137 行那句"核验结果反过来决定下一步"的实现位置。
+            #    核验器是纯函数（agent/verify.py），判据在 scripts/eval_verify.py。
+            v = verify_answer(r.payload or "", st.evidence_keys(),
+                              getattr(self, "_corpus_keys", None))
+            if v.ok:
                 st.answer_text = r.payload
-            return r
+                st.failed_cites = []
+                return r
+            # 核验不过 → **不采纳**：答案作废、坏引用写进 state（策略读得到）
+            st.answer_text = ""
+            st.failed_cites = [x.to_dict() for x in v.bad]
+            return ToolResult(
+                tool=r.tool, ok=False, payload=None, cost=r.cost,
+                note=f"引用核验未通过（{len(v.bad)}/{v.n_cites} 条）：{v.summary()}")
 
         if act.action == A_ABSTAIN:
             st.abstain_reason = str(act.arg or "（策略未给理由）")
@@ -230,6 +289,18 @@ class AgentLoop:
 
     def _force_finish(self, tb: ToolBox, st: AgentState, trace: List[str], reason: str):
         """刹车触发了：有证据就答，没证据就拒答。**照样记账，因为"为什么会停"是数据。**"""
+        # ⭐ E9：如果之前有引用核验失败、而且**一直没答出合法答案** —— 不许硬答。
+        #    给一条没有出处的用药建议是本项目的红线；宁可拒答。
+        #    ⚠️ 注意条件是 `and not st.answer_text`：如果能答出合法答案，正常走下面的分支。
+        if st.failed_cites and not st.answer_text:
+            reason = f"{reason}；且引用核验一直没过（{len(st.failed_cites)} 条坏引用）"
+            st.abstain_reason = reason
+            r = tb.abstain(reason)
+            act = Action(A_ABSTAIN, reason)
+            st.mark_tried(act.action, act.arg, r.ok, f"[刹车] {reason}")
+            st.step = len(trace)
+            trace.append(f"[刹车] {reason} → {act.action}（{r.note}）")
+            return
         if st.evidence:
             r = tb.answer(st)
             st.answer_text = r.payload or ""
@@ -299,6 +370,31 @@ def _corpus_drugs(retriever) -> List[str]:
     if not chunks:
         return []
     return sorted({c.drug for c in chunks if getattr(c, "drug", "")})
+
+
+def _corpus_keys(retriever) -> set:
+    """
+    语料里**全部** (setid#loinc) 引用键 —— E9 的引用核验要拿它判 not_in_corpus。
+
+    ⚠️ 为什么必须传它：不传的话，"引用一个语料里根本没有的章节"会被降级成
+       `not_retrieved`（因为"不在证据里"包含了"语料里也没有"）。
+       两者**补救动作完全不同**：
+         not_retrieved  → 再检索一次就行
+         not_in_corpus  → 模型在编，检索一百次也变不出来
+       把这两个混成一个，策略会白白重试。
+    """
+    chunks = getattr(retriever, "chunks", None)
+    if not chunks:
+        return set()
+    return {f"{c.doc_id}#{c.loinc}" for c in chunks if getattr(c, "loinc", None)}
+
+
+def _drug_by_setid(retriever) -> Dict[str, str]:
+    """setid → 药名。E9 的定向补检索要用（见 AgentState.drug_by_setid 的注释）。"""
+    chunks = getattr(retriever, "chunks", None)
+    if not chunks:
+        return {}
+    return {c.doc_id: c.drug for c in chunks if getattr(c, "drug", "")}
 
 
 # ---------------------------------------------------------------- 打印

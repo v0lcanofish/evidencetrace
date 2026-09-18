@@ -26,6 +26,15 @@
 
 from __future__ import annotations
 
+import sys
+
+# ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
+#    → **判据崩在半路，红绿一个字都读不到**（2026-09-18 实测 eval_retrieval.py）。
+#    errors="replace"：宁可显示问号，也不许判据跑到一半死掉。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import json
 import sys
 from pathlib import Path
@@ -34,11 +43,12 @@ from typing import Dict, List
 PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 
+
 from ledger.ledger import Ledger, LedgerError, ACTIONS                      # noqa: E402
 from agent.mocks import MockLLM, MockRetriever, GroundedMockLLM             # noqa: E402
 from agent.state import AgentState, A_SEARCH, A_ASK, A_ANSWER, A_ABSTAIN    # noqa: E402
 from agent.tools import ToolBox, ScriptedUser                               # noqa: E402
-from retrieval import BM25Retriever                                         # noqa: E402
+from retrieval import make_retriever                                         # noqa: E402
 
 LABELS = PROJECT / "data" / "labels.json"
 RET_SET = PROJECT / "data" / "eval" / "retrieval_set.json"
@@ -63,7 +73,7 @@ def _new_box(retriever, question="test", user=None, llm=None):
 def part_locate(labels) -> Dict:
     print("\n① locate —— 问题 → 该查哪一节（本项目相对通用 RAG 的结构先验）")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     lg, tb = _new_box(r)
 
     res = tb.locate("Can I take metformin if I have kidney disease?")
@@ -97,7 +107,7 @@ def hit_rank(docs, drug, loincs, k=5):
 def part_restrict(labels, rows) -> Dict:
     print("\n② search 的 restrict —— 「先卡章节再排序」 vs 「先排序再过滤」")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=False)      # 关掉加权，只看限定本身
+    r = make_retriever(labels, use_locator=False)      # 关掉加权，只看限定本身
 
     n = hit_restrict = hit_filter = 0
     example = None
@@ -146,7 +156,7 @@ def part_restrict(labels, rows) -> Dict:
 def part_dedup(labels) -> Dict:
     print("\n③ search 的去重 —— 「这次到底有没有拿到新东西」")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     lg, tb = _new_box(r, "Can I take warfarin with ibuprofen?")
 
     q = "warfarin interaction"
@@ -238,7 +248,7 @@ def part_answer_abstain() -> Dict:
 def part_cost() -> Dict:
     print("\n⑥ 成本计量 —— 「自主决策」成立的前提是动作代价可比")
     print("-" * 78)
-    lg, tb = _new_box(BM25Retriever(json.loads(LABELS.read_text(encoding="utf-8"))["labels"]))
+    lg, tb = _new_box(make_retriever(json.loads(LABELS.read_text(encoding="utf-8"))["labels"]))
     plan = [("locate", 1), ("search", 2), ("ask", 2), ("answer", 1), ("abstain", 0)]
     for tool, want in plan:
         check(tb.cost(tool) == want, f"{tool:<8} 成本 {tb.cost(tool)}")
@@ -262,7 +272,7 @@ def _mk_loop(retriever, llm=None, policy=None, cfg=None):
 def part_loop_e2e(labels) -> Dict:
     print("\n⑦ AgentLoop · 端到端 —— agent 自己走完一整轮")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     loop = _mk_loop(r)
     q = "Can I take metformin if I have kidney disease?"
     lg = loop.run(q, run_id="e2e", user=ScriptedUser({"conditions": ["chronic kidney disease"]}))
@@ -286,7 +296,7 @@ def part_loop_brakes(labels) -> Dict:
     print("\n⑧ AgentLoop · 三个刹车（不显式就会早停或烧光预算）")
     print("-" * 78)
     from agent.loop import LoopConfig
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     q = "Can I take warfarin with ibuprofen?"
 
     # ① 经济刹车：买不起下一个动作
@@ -328,7 +338,7 @@ OOD_Q = "What is the price of tea in China?"        # 域外问题：语料里�
 def part_loop_abstain(labels) -> Dict:
     print("\n⑨ AgentLoop · 域外问题与拒答路径（该说不知道时必须敢说）")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
 
     # ⭐ 先验「查不到」这个信号本身是可信的 —— 这是上一段修停用词才买来的
     check(len(r(OOD_Q, 5)) == 0,
@@ -370,7 +380,7 @@ def part_loop_abstain(labels) -> Dict:
 def part_loop_ask(labels) -> Dict:
     print("\n⑩ AgentLoop · 问用户路径（第二个信息源）")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     loop = _mk_loop(r)
     lg = loop.run(OOD_Q, run_id="ask",
                   user=ScriptedUser({"conditions": ["peptic ulcer"]}))
@@ -405,7 +415,7 @@ def part_rule_pathology(labels) -> Dict:
     """
     print("\n⑩b 规则策略的病 + 闭包检查的边界（两件事一起暴露）")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     loop = _mk_loop(r)
     q = "Can I take aspirin if I have a stomach ulcer?"      # aspirin 不在语料里
     lg = loop.run(q, run_id="patho")
@@ -441,23 +451,81 @@ def part_rule_pathology(labels) -> Dict:
 # ================================================================ ⑪ 坏引用
 
 def part_loop_closure(labels) -> Dict:
-    print("\n⑪ AgentLoop · 闭包断言是活的（坏引用必须被拦）")
+    """
+    E9 之后这条测的是**新契约**：坏引用在循环内就被拦下，不留到最后。
+
+    ⚠️ 为什么是"改写"而不是"放宽"：
+       E9 之前坏引用是「先采纳 → 最后 check_closure 抛异常」——
+       **发现问题时循环已经结束，没有补救机会**。
+       E9 按设计 v7 第 137 行改成「追不到 → 回到 ②③」，
+       于是坏引用**根本进不了账本**，LedgerError 自然不再抛。
+       旧断言（"必须抛 LedgerError"）测的是**旧行为**，留着它等于把设计改回去。
+
+       但**闭包断言本身不能因此被架空** —— 下面单独验它仍然是活的。
+    """
+    print("\n⑪ AgentLoop · 引用核验（E9：坏引用在**循环内**被拦，不留到最后）")
     print("-" * 78)
     from agent.loop import LoopConfig
-    r = BM25Retriever(labels, use_locator=True)
+    from agent.policy import CoveragePolicy
+    from ledger.ledger import Ledger, Claim
+    r = make_retriever(labels, use_locator=True)
+    Q = "Can I take warfarin with ibuprofen?"
+
+    # —— ① 循环级：核验拦下 + 答案不被采纳（策略无关）
     loop = _mk_loop(r, llm=MockLLM(bad_citation=True),
                     cfg=LoopConfig(budget=8, strict_closure=True))
-    try:
-        loop.run("Can I take warfarin with ibuprofen?", run_id="bad")
-        check(False, "坏引用应该被拦住", "闭包断言是摆设")
-    except LedgerError as e:
-        check(True, "故意给追不到出处的引用 → 闭包拦住了", str(e).splitlines()[0][:44])
+    lg = loop.run(Q, run_id="bad")
+    st = loop.last_state
 
-    # 放宽时不炸，但必须**标记** malformed（批量跑批用）
+    check(bool(st.failed_cites), "坏引用被核验器当场拦下",
+          f"抓到 {[c['kind'] for c in st.failed_cites][:2]}")
+    check(not st.answer_text,
+          "⭐ 被打回的答案**没有被采纳**（answer_text 为空）",
+          "旧行为=先采纳后 raise；新行为=没通过就不采纳")
+    check(any("[verify]" in ln for ln in loop.last_trace),
+          "循环把核验失败**显式记进了 trace**（反馈链存在）",
+          "只写日志不给策略看 = 没有反馈；这里两样都做了")
+    ev_keys = st.evidence_keys()
+    bad = [k for c in lg.claims for k in c.cite if k not in ev_keys]
+    check(not bad, "最终账本里没有任何一条追不到出处的引用", f"坏引用 {len(bad)} 条")
+    n_answer_rule = sum(1 for t in loop.last_trace if t.startswith("answer"))
+
+    # —— ② 策略级：**会读状态的策略**拿着反馈去补检索（E9 的算法本体）
+    loop_cov = _mk_loop(r, llm=MockLLM(bad_citation=True), policy=CoveragePolicy(),
+                        cfg=LoopConfig(budget=8))
+    lg_cov = loop_cov.run(Q, run_id="bad-cov")
+    trace_cov = loop_cov.last_trace
+    check(any("引用被打回" in ln for ln in trace_cov),
+          "⭐ 会读状态的策略**拿着反馈改了下一步**（设计 v7：追不到 → 回到 ②③）",
+          "这就是 E9 的算法本体：核验结果反过来决定下一步")
+    n_answer_cov = sum(1 for t in trace_cov if t.startswith("answer"))
+    check(n_answer_cov < n_answer_rule,
+          "⭐ 会读状态的策略**答得更少**就收敛到拒答",
+          f"CoveragePolicy 答 {n_answer_cov} 次 vs RulePolicy {n_answer_rule} 次"
+          f"（后者读不到反馈，只会重复答到踩刹车）")
+    ev_cov = loop_cov.last_state.evidence_keys()
+    bad_cov = [k for c in lg_cov.claims for k in c.cite if k not in ev_cov]
+    check(not bad_cov and not loop_cov.last_state.answer_text,
+          "会读状态的策略最终也**没有交出坏答案**（走的是拒答）",
+          f"abstain 理由：{loop_cov.last_state.abstain_reason[:40]}")
+
+    # —— 闭包断言**仍然是活的**：不能因为 E9 在前面拦了，就把它架空
+    lg2 = Ledger(run_id="direct", question="q")
+    lg2.add_claim(Claim(claim_id="c1", text="t", cite=["deadbeef-0000#99999-9"]))
+    try:
+        lg2.check_closure()
+        check(False, "闭包断言仍然是活的", "绕过核验直接塞坏 claim 也拦不住 → 被架空了")
+    except LedgerError as e:
+        check(True, "闭包断言仍然是活的（绕过核验直接塞坏 claim → 拦住）",
+              str(e).splitlines()[0][:40])
+
+    # 放宽模式下同样不炸，且账本依然干净
     loop = _mk_loop(r, llm=MockLLM(bad_citation=True),
                     cfg=LoopConfig(budget=8, strict_closure=False))
-    lg = loop.run("Can I take warfarin with ibuprofen?", run_id="bad-lenient")
-    check(lg.malformed, "放宽模式下不炸，但这轮被标记 malformed（不进统计）")
+    lg3 = loop.run("Can I take warfarin with ibuprofen?", run_id="bad-lenient")
+    ev3 = loop.last_state.evidence_keys()
+    bad3 = [k for c in lg3.claims for k in c.cite if k not in ev3]
+    check(not bad3, "放宽模式下：不炸，且账本依然干净", f"坏引用 {len(bad3)} 条")
     return {}
 
 
@@ -466,7 +534,7 @@ def part_loop_closure(labels) -> Dict:
 def part_loop_repro(labels) -> Dict:
     print("\n⑫ AgentLoop · 可复现（同 seed 两次账本逐字节一致）")
     print("-" * 78)
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     q = "Can I take metformin if I have kidney disease?"
     a = _mk_loop(r).run(q, run_id="rep", seed=42).to_dict()
     b = _mk_loop(r).run(q, run_id="rep", seed=42).to_dict()

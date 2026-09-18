@@ -33,6 +33,27 @@ from retrieval.chunker import Chunk, build_chunks, to_doc
 
 _TOK = re.compile(r"[a-z0-9]+")
 
+# ⚠️ 缩写要**在切词之前**剥掉 —— 这是 E7 那个洞的**同一族**，2026-09-18 第二次咬人。
+#
+#   E7 修的是「整词停用词」：`in/of/the/is` 在每个 chunk 里都有 → 假命中。
+#   但 `[a-z0-9]+` 遇到撇号会**从撇号处切断**：
+#
+#       "What's the stock price of Apple?"  →  ['what', 's', 'the', 'stock', ...]
+#                                              ↑ what 被停用词表丢了，**'s' 的残渣漏了进来**
+#
+#   而 `s` 是所有格残渣（`patient's` / `drug's`），**几乎每个 chunk 里都有**。
+#   实测后果：域外问题 `What's the stock price of Apple?` 返回 **46 条证据**，
+#   而且 `bm25_confidence` = 0.244 **不为 0**（被 stock/price/apple 抬起来了）
+#   → 弃权门限失效 → agent 又答域外问题。
+#
+#   ⇒ 修法不是在停用词表里加一个 `'s'`（那治不了 `patient's → patient`——
+#     我们**希望** `patient` 留下），而是**先把缩写后缀从词干上摘掉**。
+#
+#   ⚠️ 不顺手把「单字符 token」全删掉：`5 / 1 / 2` 这些是 SPL 的**章节编号**，
+#     是正文里的真内容（`( 5.14)`），删了会丢信号。
+_CLITIC = re.compile(r"['’](s|re|ve|ll|d|m)\b")     # what's → what ｜ I'd → I
+_NOT = re.compile(r"n['’]t\b")                       # don't → do（do 是停用词）
+
 # ⚠️ 停用词必须去掉（块 E7 接 agent 时才暴露的真缺陷）。
 #
 # 原来不过滤，于是查询 "What is the price of tea in China?" 会被切成
@@ -56,7 +77,10 @@ have has had having not no nor so such only own same too very
 
 
 def tokenize(s: str, drop_stop: bool = True) -> List[str]:
-    out = _TOK.findall((s or "").lower())
+    s = (s or "").lower()
+    s = _NOT.sub("", s)        # 先处理 n't（don't → do，do 是停用词会被丢掉）
+    s = _CLITIC.sub("", s)     # 再摘所有格/缩写后缀（what's → what，patient's → patient）
+    out = _TOK.findall(s)
     return [w for w in out if w not in STOPWORDS] if drop_stop else out
 
 

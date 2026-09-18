@@ -6,6 +6,15 @@
 （先跑 scripts/eval_coverage.py 生成 reports/coverage_eval.json）
 """
 
+
+import sys
+
+# ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
+#    → **判据崩在半路，红绿一个字都读不到**（2026-09-18 实测 eval_retrieval.py）。
+#    errors="replace"：宁可显示问号，也不许判据跑到一半死掉。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 import json
 import sys
 from pathlib import Path

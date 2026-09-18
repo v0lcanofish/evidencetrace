@@ -165,10 +165,6 @@ class CoveragePolicy(Policy):
         cov = self._coverage(state)
         note = cov.describe()
 
-        # R0 预算见底
-        if state.budget <= 0:
-            return self._finish(state, cov, "预算耗尽")
-
         # R1 定位（这一步没有争议，和规则策略一致）
         if state.has_locator and not state.has_tried(A_LOCATE, q):
             return Action(A_LOCATE, q, note=note + "  ｜先定位该查哪一节")
@@ -178,6 +174,40 @@ class CoveragePolicy(Policy):
         #      （不做这一步的话，`side`/`effects` 这类到处都有的词会把分数抬起来。）
         if cov.hard_fail:
             return Action(A_ABSTAIN, cov.hard_fail, note=note)
+
+        # R2.5 ⭐ E9：上一份答案的引用**被打回来了** → 先补检索；补不了就拒答。
+        #
+        #      ⚠️⚠️ 这条**必须排在 R0(预算见底) 前面** —— 2026-09-18 实测踩过：
+        #          预算耗尽后 R0 先命中 → 走 `_finish` → **而 `_finish` 是作答的**，
+        #          于是策略又答了一遍同样的坏答案。R2.5 排在它后面等于形同虚设。
+        #          教训：**"不许作答"这类硬约束，优先级必须高于所有"该不该作答"的常规判断。**
+        #
+        #      ⚠️ 也不能放行到 R2：R2 只看覆盖度，而核验失败后覆盖度可能依然够高。
+        if state.has_bad_cites:
+            if state.budget >= 2:                       # 还买得起一次 search
+                for key in state.failed_cite_keys():
+                    sid, _, loinc = key.partition("#")
+                    drug = state.drug_by_setid.get(sid)  # 编造的 setid 查不到药名
+                    if not (drug and loinc):
+                        continue
+                    arg = {"query": q, "restrict": {"drug": drug, "loincs": [loinc]}}
+                    if not state.has_tried(A_SEARCH, arg):
+                        return Action(A_SEARCH, arg,
+                                      note=note + f"  ｜⭐引用被打回 → 定向补查 {drug}/{loinc}")
+                # 定向线索用不上（引的是语料里没有的东西）→ 至少把检索面铺开一次
+                if not state.has_tried(A_SEARCH, {"query": q}):
+                    return Action(A_SEARCH, {"query": q},
+                                  note=note + "  ｜⭐引用被打回 → 铺开检索")
+            # 补也补过了（或买不起了）、还是过不了核验 → **拒答**。
+            # 给一条引用过不了的答案撞的是本项目的红线："不给无出处的用药建议"。
+            kinds = sorted({c.get("kind", "") for c in state.failed_cites})
+            return Action(A_ABSTAIN,
+                          f"引用核验未通过且补不到证据：{','.join(kinds) or '未知'}",
+                          note=note + "  ｜⭐引用被打回且补不到 → 拒答")
+
+        # R0 预算见底
+        if state.budget <= 0:
+            return self._finish(state, cov, "预算耗尽")
 
         # R2 ⭐ 停：覆盖度够高才答
         if state.evidence and cov.score >= self.theta_high:

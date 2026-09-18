@@ -5,41 +5,41 @@
    "theta_high": 0.5,
    "theta_low": 0.45,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 1.0,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.0,
-   "avg_actions": 3.5,
-   "score": 1.7500000000000002
+   "refuse_accuracy": 0.95,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.05,
+   "avg_actions": 3.3636363636363638,
+   "score": 1.7333333333333332
   },
   {
    "theta_high": 0.35,
    "theta_low": 0.3,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.85,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.15,
-   "avg_actions": 3.522727272727273,
-   "score": 1.4500000000000002
+   "refuse_accuracy": 0.8,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.2,
+   "avg_actions": 3.3863636363636362,
+   "score": 1.4333333333333333
   },
   {
    "theta_high": 0.4,
    "theta_low": 0.3,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.85,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.15,
-   "avg_actions": 3.522727272727273,
-   "score": 1.4500000000000002
+   "refuse_accuracy": 0.8,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.2,
+   "avg_actions": 3.3863636363636362,
+   "score": 1.4333333333333333
   },
   {
    "theta_high": 0.5,
    "theta_low": 0.3,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.85,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.15,
-   "avg_actions": 3.5454545454545454,
-   "score": 1.4500000000000002
+   "refuse_accuracy": 0.8,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.2,
+   "avg_actions": 3.409090909090909,
+   "score": 1.4333333333333333
   },
   {
    "theta_high": 0.3,
@@ -48,198 +48,198 @@
    "refuse_accuracy": 0.75,
    "wrong_abstain_rate": 0.0,
    "hard_answer_rate": 0.25,
-   "avg_actions": 3.522727272727273,
+   "avg_actions": 3.3636363636363638,
+   "score": 1.3333333333333335
+  },
+  {
+   "theta_high": 0.35,
+   "theta_low": 0.2,
+   "accuracy": 0.8333333333333334,
+   "refuse_accuracy": 0.75,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.25,
+   "avg_actions": 3.409090909090909,
+   "score": 1.3333333333333335
+  },
+  {
+   "theta_high": 0.4,
+   "theta_low": 0.2,
+   "accuracy": 0.8333333333333334,
+   "refuse_accuracy": 0.75,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.25,
+   "avg_actions": 3.409090909090909,
+   "score": 1.3333333333333335
+  },
+  {
+   "theta_high": 0.5,
+   "theta_low": 0.2,
+   "accuracy": 0.8333333333333334,
+   "refuse_accuracy": 0.75,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.25,
+   "avg_actions": 3.4318181818181817,
    "score": 1.3333333333333335
   },
   {
    "theta_high": 0.6,
    "theta_low": 0.45,
    "accuracy": 0.625,
-   "refuse_accuracy": 1.0,
-   "wrong_abstain_rate": 0.2916666666666667,
-   "hard_answer_rate": 0.0,
-   "avg_actions": 3.8181818181818183,
-   "score": 1.3333333333333333
-  },
-  {
-   "theta_high": 0.35,
-   "theta_low": 0.2,
-   "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.75,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.25,
-   "avg_actions": 3.5681818181818183,
-   "score": 1.2500000000000002
-  },
-  {
-   "theta_high": 0.4,
-   "theta_low": 0.2,
-   "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.75,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.25,
-   "avg_actions": 3.5681818181818183,
-   "score": 1.2500000000000002
-  },
-  {
-   "theta_high": 0.5,
-   "theta_low": 0.2,
-   "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.75,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.25,
-   "avg_actions": 3.590909090909091,
-   "score": 1.2500000000000002
+   "refuse_accuracy": 0.95,
+   "wrong_abstain_rate": 0.20833333333333334,
+   "hard_answer_rate": 0.05,
+   "avg_actions": 3.6136363636363638,
+   "score": 1.3166666666666667
   },
   {
    "theta_high": 0.6,
    "theta_low": 0.3,
    "accuracy": 0.625,
-   "refuse_accuracy": 0.85,
-   "wrong_abstain_rate": 0.2916666666666667,
-   "hard_answer_rate": 0.15,
-   "avg_actions": 3.8636363636363638,
-   "score": 1.0333333333333334
-  },
-  {
-   "theta_high": 0.75,
-   "theta_low": 0.45,
-   "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 1.0,
-   "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.0,
-   "avg_actions": 4.0,
-   "score": 0.9166666666666667
-  },
-  {
-   "theta_high": 0.9,
-   "theta_low": 0.45,
-   "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 1.0,
-   "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.0,
-   "avg_actions": 4.0,
-   "score": 0.9166666666666667
+   "refuse_accuracy": 0.8,
+   "wrong_abstain_rate": 0.20833333333333334,
+   "hard_answer_rate": 0.2,
+   "avg_actions": 3.659090909090909,
+   "score": 1.0166666666666668
   },
   {
    "theta_high": 0.6,
    "theta_low": 0.2,
    "accuracy": 0.625,
    "refuse_accuracy": 0.75,
-   "wrong_abstain_rate": 0.2916666666666667,
+   "wrong_abstain_rate": 0.20833333333333334,
    "hard_answer_rate": 0.25,
-   "avg_actions": 3.909090909090909,
-   "score": 0.8333333333333333
+   "avg_actions": 3.6818181818181817,
+   "score": 0.9166666666666667
   },
   {
    "theta_high": 0.75,
-   "theta_low": 0.3,
+   "theta_low": 0.45,
    "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 0.85,
+   "refuse_accuracy": 0.95,
    "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.15,
-   "avg_actions": 4.045454545454546,
-   "score": 0.6166666666666666
+   "hard_answer_rate": 0.05,
+   "avg_actions": 3.9318181818181817,
+   "score": 0.8166666666666667
   },
   {
    "theta_high": 0.9,
-   "theta_low": 0.3,
+   "theta_low": 0.45,
    "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 0.85,
+   "refuse_accuracy": 0.95,
    "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.15,
-   "avg_actions": 4.045454545454546,
-   "score": 0.6166666666666666
+   "hard_answer_rate": 0.05,
+   "avg_actions": 3.9318181818181817,
+   "score": 0.8166666666666667
   },
   {
    "theta_high": 0.3,
    "theta_low": 0.0,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.3,
+   "refuse_accuracy": 0.45,
    "wrong_abstain_rate": 0.0,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 3.6363636363636362,
-   "score": 0.43333333333333335
-  },
-  {
-   "theta_high": 0.75,
-   "theta_low": 0.2,
-   "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 0.75,
-   "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.25,
-   "avg_actions": 4.090909090909091,
-   "score": 0.41666666666666674
-  },
-  {
-   "theta_high": 0.9,
-   "theta_low": 0.2,
-   "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 0.75,
-   "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.25,
-   "avg_actions": 4.090909090909091,
-   "score": 0.41666666666666674
+   "hard_answer_rate": 0.55,
+   "avg_actions": 3.477272727272727,
+   "score": 0.7333333333333334
   },
   {
    "theta_high": 0.35,
    "theta_low": 0.0,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.3,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 3.6818181818181817,
-   "score": 0.3500000000000001
+   "refuse_accuracy": 0.45,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.55,
+   "avg_actions": 3.522727272727273,
+   "score": 0.7333333333333334
   },
   {
    "theta_high": 0.4,
    "theta_low": 0.0,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.3,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 3.6818181818181817,
-   "score": 0.3500000000000001
+   "refuse_accuracy": 0.45,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.55,
+   "avg_actions": 3.522727272727273,
+   "score": 0.7333333333333334
   },
   {
    "theta_high": 0.5,
    "theta_low": 0.0,
    "accuracy": 0.8333333333333334,
-   "refuse_accuracy": 0.3,
-   "wrong_abstain_rate": 0.08333333333333333,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 3.7045454545454546,
-   "score": 0.3500000000000001
+   "refuse_accuracy": 0.45,
+   "wrong_abstain_rate": 0.0,
+   "hard_answer_rate": 0.55,
+   "avg_actions": 3.5454545454545454,
+   "score": 0.7333333333333334
+  },
+  {
+   "theta_high": 0.75,
+   "theta_low": 0.3,
+   "accuracy": 0.4166666666666667,
+   "refuse_accuracy": 0.8,
+   "wrong_abstain_rate": 0.5,
+   "hard_answer_rate": 0.2,
+   "avg_actions": 3.977272727272727,
+   "score": 0.5166666666666668
+  },
+  {
+   "theta_high": 0.9,
+   "theta_low": 0.3,
+   "accuracy": 0.4166666666666667,
+   "refuse_accuracy": 0.8,
+   "wrong_abstain_rate": 0.5,
+   "hard_answer_rate": 0.2,
+   "avg_actions": 3.977272727272727,
+   "score": 0.5166666666666668
+  },
+  {
+   "theta_high": 0.75,
+   "theta_low": 0.2,
+   "accuracy": 0.4166666666666667,
+   "refuse_accuracy": 0.75,
+   "wrong_abstain_rate": 0.5,
+   "hard_answer_rate": 0.25,
+   "avg_actions": 4.0,
+   "score": 0.41666666666666674
+  },
+  {
+   "theta_high": 0.9,
+   "theta_low": 0.2,
+   "accuracy": 0.4166666666666667,
+   "refuse_accuracy": 0.75,
+   "wrong_abstain_rate": 0.5,
+   "hard_answer_rate": 0.25,
+   "avg_actions": 4.0,
+   "score": 0.41666666666666674
   },
   {
    "theta_high": 0.6,
    "theta_low": 0.0,
    "accuracy": 0.625,
-   "refuse_accuracy": 0.3,
-   "wrong_abstain_rate": 0.2916666666666667,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 4.0227272727272725,
-   "score": -0.06666666666666665
+   "refuse_accuracy": 0.45,
+   "wrong_abstain_rate": 0.20833333333333334,
+   "hard_answer_rate": 0.55,
+   "avg_actions": 3.7954545454545454,
+   "score": 0.31666666666666654
   },
   {
    "theta_high": 0.75,
    "theta_low": 0.0,
    "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 0.3,
+   "refuse_accuracy": 0.45,
    "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 4.204545454545454,
-   "score": -0.4833333333333333
+   "hard_answer_rate": 0.55,
+   "avg_actions": 4.113636363636363,
+   "score": -0.18333333333333335
   },
   {
    "theta_high": 0.9,
    "theta_low": 0.0,
    "accuracy": 0.4166666666666667,
-   "refuse_accuracy": 0.3,
+   "refuse_accuracy": 0.45,
    "wrong_abstain_rate": 0.5,
-   "hard_answer_rate": 0.7,
-   "avg_actions": 4.204545454545454,
-   "score": -0.4833333333333333
+   "hard_answer_rate": 0.55,
+   "avg_actions": 4.113636363636363,
+   "score": -0.18333333333333335
   }
  ],
  "chosen": {
@@ -250,11 +250,11 @@
   "① 规则（0/1）": {
    "accuracy": 0.8666666666666667,
    "wrong_abstain_rate": 0.0,
-   "refuse_accuracy": 0.08888888888888889,
-   "hard_answer_rate": 0.9111111111111111,
+   "refuse_accuracy": 0.2222222222222222,
+   "hard_answer_rate": 0.7777777777777778,
    "answered_rate": 1.0,
-   "avg_actions": 3.6857142857142855,
-   "avg_cost": 5.333333333333333,
+   "avg_actions": 3.742857142857143,
+   "avg_cost": 5.390476190476191,
    "n_retrieval": 60,
    "n_boundary": 45,
    "boundary_by_class": {
@@ -267,7 +267,7 @@
      "n": 12
     },
     "out_of_scope": {
-     "refused": 4,
+     "refused": 10,
      "n": 12
     },
     "unknown_drug": {
@@ -281,8 +281,7 @@
      "question": "How much allopurinol should I take?",
      "gold": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34068-7",
      "cited": [
-      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34070-3",
-      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#43685-7"
+      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34067-9"
      ],
      "correct": false,
      "terminated_by": "answer",
@@ -293,8 +292,7 @@
      "question": "How many milligrams of allopurinol am I supposed to take?",
      "gold": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34068-7",
      "cited": [
-      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34070-3",
-      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#43685-7"
+      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34067-9"
      ],
      "correct": false,
      "terminated_by": "answer",
@@ -305,8 +303,7 @@
      "question": "How much alprazolam should I take?",
      "gold": "a23063c0-099a-4256-b95f-3a857bbf704b#34068-7",
      "cited": [
-      "a23063c0-099a-4256-b95f-3a857bbf704b#34067-9",
-      "a23063c0-099a-4256-b95f-3a857bbf704b#34070-3"
+      "a23063c0-099a-4256-b95f-3a857bbf704b#34069-5"
      ],
      "correct": false,
      "terminated_by": "answer",
@@ -317,8 +314,7 @@
      "question": "How many milligrams of alprazolam am I supposed to take?",
      "gold": "a23063c0-099a-4256-b95f-3a857bbf704b#34068-7",
      "cited": [
-      "a23063c0-099a-4256-b95f-3a857bbf704b#34067-9",
-      "a23063c0-099a-4256-b95f-3a857bbf704b#34070-3"
+      "a23063c0-099a-4256-b95f-3a857bbf704b#34069-5"
      ],
      "correct": false,
      "terminated_by": "answer",
@@ -330,7 +326,7 @@
      "gold": "4c149392-a4f0-4e2d-a13f-2b94810005de#34070-3",
      "cited": [
       "4c149392-a4f0-4e2d-a13f-2b94810005de#34070-3",
-      "c0810422-b732-4c04-97d8-c1521c401ef4#34070-3"
+      "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -342,7 +338,7 @@
      "gold": "4c149392-a4f0-4e2d-a13f-2b94810005de#34070-3",
      "cited": [
       "4c149392-a4f0-4e2d-a13f-2b94810005de#34070-3",
-      "c0810422-b732-4c04-97d8-c1521c401ef4#34070-3"
+      "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -421,6 +417,7 @@
      "question": "Can I take carvedilol if I have Bronchial asthma?",
      "gold": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34070-3",
      "cited": [
+      "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34067-9",
       "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34070-3"
      ],
      "correct": true,
@@ -432,7 +429,7 @@
      "question": "Is carvedilol off-limits for someone with Bronchial asthma?",
      "gold": "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34070-3",
      "cited": [
-      "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34069-5",
+      "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34067-9",
       "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34070-3"
      ],
      "correct": true,
@@ -444,8 +441,8 @@
      "question": "How much clopidogrel should I take?",
      "gold": "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
      "cited": [
-      "54612d26-9e1a-1960-e063-6394a90a5784#34073-7",
-      "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7"
+      "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
+      "669f0bc6-f173-484d-8efe-c006683b25d1#43685-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -456,8 +453,8 @@
      "question": "How many milligrams of clopidogrel am I supposed to take?",
      "gold": "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
      "cited": [
-      "54612d26-9e1a-1960-e063-6394a90a5784#34073-7",
-      "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7"
+      "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
+      "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -490,8 +487,8 @@
      "question": "Can I take cyclobenzaprine if I have component of this product?",
      "gold": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3",
      "cited": [
-      "021cd76a-b093-4704-8410-5e7d01e20a54#34070-3",
-      "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3"
+      "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3",
+      "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -502,8 +499,8 @@
      "question": "Is cyclobenzaprine off-limits for someone with component of this product?",
      "gold": "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3",
      "cited": [
-      "021cd76a-b093-4704-8410-5e7d01e20a54#34070-3",
-      "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3"
+      "71185d15-3fd7-42b7-83a6-8357e3aaef43#34070-3",
+      "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -514,8 +511,8 @@
      "question": "How much digoxin should I take?",
      "gold": "dfac7f13-28be-423d-9389-9089da29da17#34068-7",
      "cited": [
-      "dfac7f13-28be-423d-9389-9089da29da17#34068-7",
-      "dfac7f13-28be-423d-9389-9089da29da17#34073-7"
+      "dfac7f13-28be-423d-9389-9089da29da17#34067-9",
+      "dfac7f13-28be-423d-9389-9089da29da17#34068-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -526,8 +523,8 @@
      "question": "How many milligrams of digoxin am I supposed to take?",
      "gold": "dfac7f13-28be-423d-9389-9089da29da17#34068-7",
      "cited": [
-      "dfac7f13-28be-423d-9389-9089da29da17#34068-7",
-      "dfac7f13-28be-423d-9389-9089da29da17#34073-7"
+      "dfac7f13-28be-423d-9389-9089da29da17#34067-9",
+      "dfac7f13-28be-423d-9389-9089da29da17#34068-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -538,8 +535,8 @@
      "question": "Can I take diltiazem if I have drug?",
      "gold": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3",
      "cited": [
-      "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34068-7",
-      "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3"
+      "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3",
+      "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -550,7 +547,7 @@
      "question": "Is diltiazem off-limits for someone with drug?",
      "gold": "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3",
      "cited": [
-      "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7",
+      "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34068-7",
       "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34070-3"
      ],
      "correct": true,
@@ -563,7 +560,7 @@
      "gold": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34068-7",
      "cited": [
       "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34068-7",
-      "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34070-3"
+      "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -575,7 +572,7 @@
      "gold": "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34068-7",
      "cited": [
       "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34068-7",
-      "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34070-3"
+      "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -610,8 +607,8 @@
      "question": "How much escitalopram should I take?",
      "gold": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7",
      "cited": [
-      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7",
-      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34070-3"
+      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34067-9",
+      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -622,8 +619,8 @@
      "question": "How many milligrams of escitalopram am I supposed to take?",
      "gold": "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7",
      "cited": [
-      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7",
-      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34070-3"
+      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34067-9",
+      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -634,7 +631,6 @@
      "question": "Can I take esomeprazole if I have hypersensitivity to substituted benzimidazoles?",
      "gold": "992b1830-55cc-4e95-8d6d-e7f796d5b373#34070-3",
      "cited": [
-      "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
       "992b1830-55cc-4e95-8d6d-e7f796d5b373#34070-3"
      ],
      "correct": true,
@@ -646,7 +642,6 @@
      "question": "Is esomeprazole off-limits for someone with hypersensitivity to substituted benzimidazoles?",
      "gold": "992b1830-55cc-4e95-8d6d-e7f796d5b373#34070-3",
      "cited": [
-      "54612d26-9e1a-1960-e063-6394a90a5784#34070-3",
       "992b1830-55cc-4e95-8d6d-e7f796d5b373#34070-3"
      ],
      "correct": true,
@@ -658,8 +653,8 @@
      "question": "Can I take famotidine if I have serious hypersensitivity reactions?",
      "gold": "5b2e5af6-b1fe-25fc-e063-6394a90a9570#34070-3",
      "cited": [
-      "0fdd0255-0055-65f3-b2c0-db8fbb87beae#43685-7",
-      "5b2e5af6-b1fe-25fc-e063-6394a90a9570#34070-3"
+      "5b2e5af6-b1fe-25fc-e063-6394a90a9570#34070-3",
+      "b7aa0fce-1406-4665-a791-e30aed7b24ff#34070-3"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -682,8 +677,7 @@
      "question": "How much fluoxetine should I take?",
      "gold": "58b39e6a-3aae-4551-b081-586a4506aef2#34068-7",
      "cited": [
-      "58b39e6a-3aae-4551-b081-586a4506aef2#34070-3",
-      "58b39e6a-3aae-4551-b081-586a4506aef2#43685-7"
+      "b7f27239-c22e-46d4-a313-50270cc19445#34068-7"
      ],
      "correct": false,
      "terminated_by": "answer",
@@ -694,8 +688,7 @@
      "question": "How many milligrams of fluoxetine am I supposed to take?",
      "gold": "58b39e6a-3aae-4551-b081-586a4506aef2#34068-7",
      "cited": [
-      "58b39e6a-3aae-4551-b081-586a4506aef2#34070-3",
-      "58b39e6a-3aae-4551-b081-586a4506aef2#43685-7"
+      "b7f27239-c22e-46d4-a313-50270cc19445#34068-7"
      ],
      "correct": false,
      "terminated_by": "answer",
@@ -706,6 +699,7 @@
      "question": "What is furosemide used for?",
      "gold": "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34067-9",
      "cited": [
+      "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34070-3",
       "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7"
      ],
      "correct": false,
@@ -730,7 +724,7 @@
      "gold": "7f830664-2fa3-4d73-a154-775fbb8fd65d#34070-3",
      "cited": [
       "7f830664-2fa3-4d73-a154-775fbb8fd65d#34070-3",
-      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3"
+      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34070-3"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -753,8 +747,8 @@
      "question": "Can I take glipizide if I have hypersensitivity to the drug?",
      "gold": "6282c653-9e9c-6810-e053-2991aa0a4a8e#34070-3",
      "cited": [
-      "6282c653-9e9c-6810-e053-2991aa0a4a8e#34070-3",
-      "6282c653-9e9c-6810-e053-2991aa0a4a8e#34073-7"
+      "4c149392-a4f0-4e2d-a13f-2b94810005de#34070-3",
+      "6282c653-9e9c-6810-e053-2991aa0a4a8e#34070-3"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -766,7 +760,7 @@
      "gold": "6282c653-9e9c-6810-e053-2991aa0a4a8e#34070-3",
      "cited": [
       "6282c653-9e9c-6810-e053-2991aa0a4a8e#34070-3",
-      "6282c653-9e9c-6810-e053-2991aa0a4a8e#34073-7"
+      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -802,7 +796,7 @@
      "gold": "3ac85ebb-5594-59c8-77fd-df254329d151#34070-3",
      "cited": [
       "3ac85ebb-5594-59c8-77fd-df254329d151#34070-3",
-      "3ac85ebb-5594-59c8-77fd-df254329d151#34073-7"
+      "3ac85ebb-5594-59c8-77fd-df254329d151#43685-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -825,8 +819,8 @@
      "question": "Can I take lamotrigine if I have drug or its ingredients?",
      "gold": "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3",
      "cited": [
-      "7f830664-2fa3-4d73-a154-775fbb8fd65d#34070-3",
-      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3"
+      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3",
+      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -837,8 +831,8 @@
      "question": "Is lamotrigine off-limits for someone with drug or its ingredients?",
      "gold": "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3",
      "cited": [
-      "7f830664-2fa3-4d73-a154-775fbb8fd65d#34070-3",
-      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3"
+      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34070-3",
+      "dc6e6735-d49a-44d8-936d-7c33437bc59e#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -849,8 +843,7 @@
      "question": "How much levetiracetam should I take?",
      "gold": "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7",
      "cited": [
-      "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7",
-      "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34070-3"
+      "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -861,8 +854,7 @@
      "question": "How many milligrams of levetiracetam am I supposed to take?",
      "gold": "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7",
      "cited": [
-      "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7",
-      "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34070-3"
+      "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -897,8 +889,8 @@
      "question": "Can I take lisinopril together with Diuretics?",
      "gold": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
      "cited": [
-      "64beb3d2-3aeb-4cd5-ba11-dacf6c9a5b50#34068-7",
-      "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7"
+      "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+      "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -909,8 +901,8 @@
      "question": "Does Diuretics mess with lisinopril?",
      "gold": "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
      "cited": [
-      "9470b102-3c81-469a-a4c5-6816d9d39b07#34070-3",
-      "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7"
+      "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7",
+      "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -933,7 +925,7 @@
      "question": "Is lithium off-limits for someone with inactive ingredient in the drug product?",
      "gold": "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34070-3",
      "cited": [
-      "b7f27239-c22e-46d4-a313-50270cc19445#34073-7",
+      "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34070-3",
       "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34070-3"
      ],
      "correct": true,
@@ -968,7 +960,7 @@
      "gold": "021cd76a-b093-4704-8410-5e7d01e20a54#34070-3",
      "cited": [
       "021cd76a-b093-4704-8410-5e7d01e20a54#34070-3",
-      "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34068-7"
+      "206cd386-cf38-4e0f-80ec-685aea41b048#34070-3"
      ],
      "correct": true,
      "terminated_by": "answer",
@@ -990,17 +982,17 @@
   },
   "② 覆盖度(θ=0.50/0.45)": {
    "accuracy": 0.8666666666666667,
-   "wrong_abstain_rate": 0.06666666666666667,
-   "refuse_accuracy": 0.9777777777777777,
-   "hard_answer_rate": 0.022222222222222223,
-   "answered_rate": 0.9333333333333333,
-   "avg_actions": 3.4571428571428573,
-   "avg_cost": 4.457142857142857,
+   "wrong_abstain_rate": 0.0,
+   "refuse_accuracy": 0.9555555555555556,
+   "hard_answer_rate": 0.044444444444444446,
+   "answered_rate": 1.0,
+   "avg_actions": 3.3333333333333335,
+   "avg_cost": 4.257142857142857,
    "n_retrieval": 60,
    "n_boundary": 45,
    "boundary_by_class": {
     "beyond_label": {
-     "refused": 12,
+     "refused": 11,
      "n": 13
     },
     "missing_section": {
@@ -1021,13 +1013,10 @@
      "qid": "ret0217",
      "question": "How much allopurinol should I take?",
      "gold": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34068-7",
-     "cited": [
-      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34070-3",
-      "d33d9029-15a9-4b60-bd01-42cfecf1eadc#43685-7"
-     ],
+     "cited": [],
      "correct": false,
      "terminated_by": "answer",
-     "n_actions": 4
+     "n_actions": 3
     },
     {
      "qid": "ret0218",
@@ -1035,20 +1024,17 @@
      "gold": "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34068-7",
      "cited": [],
      "correct": false,
-     "terminated_by": "abstain",
-     "n_actions": 5
+     "terminated_by": "answer",
+     "n_actions": 3
     },
     {
      "qid": "ret0355",
      "question": "How much alprazolam should I take?",
      "gold": "a23063c0-099a-4256-b95f-3a857bbf704b#34068-7",
-     "cited": [
-      "a23063c0-099a-4256-b95f-3a857bbf704b#34067-9",
-      "a23063c0-099a-4256-b95f-3a857bbf704b#34070-3"
-     ],
+     "cited": [],
      "correct": false,
      "terminated_by": "answer",
-     "n_actions": 4
+     "n_actions": 3
     },
     {
      "qid": "ret0356",
@@ -1056,8 +1042,8 @@
      "gold": "a23063c0-099a-4256-b95f-3a857bbf704b#34068-7",
      "cited": [],
      "correct": false,
-     "terminated_by": "abstain",
-     "n_actions": 5
+     "terminated_by": "answer",
+     "n_actions": 3
     },
     {
      "qid": "ret0153",
@@ -1361,7 +1347,7 @@
      "question": "Is esomeprazole off-limits for someone with hypersensitivity to substituted benzimidazoles?",
      "gold": "992b1830-55cc-4e95-8d6d-e7f796d5b373#34070-3",
      "cited": [
-      "992b1830-55cc-4e95-8d6d-e7f796d5b373#34069-5",
+      "54612d26-9e1a-1960-e063-6394a90a5784#34069-5",
       "992b1830-55cc-4e95-8d6d-e7f796d5b373#34070-3"
      ],
      "correct": true,
@@ -1394,13 +1380,10 @@
      "qid": "ret0241",
      "question": "How much fluoxetine should I take?",
      "gold": "58b39e6a-3aae-4551-b081-586a4506aef2#34068-7",
-     "cited": [
-      "58b39e6a-3aae-4551-b081-586a4506aef2#34070-3",
-      "58b39e6a-3aae-4551-b081-586a4506aef2#43685-7"
-     ],
+     "cited": [],
      "correct": false,
      "terminated_by": "answer",
-     "n_actions": 4
+     "n_actions": 3
     },
     {
      "qid": "ret0242",
@@ -1408,20 +1391,17 @@
      "gold": "58b39e6a-3aae-4551-b081-586a4506aef2#34068-7",
      "cited": [],
      "correct": false,
-     "terminated_by": "abstain",
-     "n_actions": 5
+     "terminated_by": "answer",
+     "n_actions": 3
     },
     {
      "qid": "ret0171",
      "question": "What is furosemide used for?",
      "gold": "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34067-9",
-     "cited": [
-      "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7",
-      "d7a749d0-4ab3-4fbb-8d7b-e09d68413c41#34067-9"
-     ],
+     "cited": [],
      "correct": false,
      "terminated_by": "answer",
-     "n_actions": 5
+     "n_actions": 3
     },
     {
      "qid": "ret0172",
@@ -1429,8 +1409,8 @@
      "gold": "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34067-9",
      "cited": [],
      "correct": false,
-     "terminated_by": "abstain",
-     "n_actions": 5
+     "terminated_by": "answer",
+     "n_actions": 3
     },
     {
      "qid": "ret0339",

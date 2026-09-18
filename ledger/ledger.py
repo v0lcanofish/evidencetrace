@@ -25,6 +25,15 @@
 
 from __future__ import annotations
 
+import sys
+
+# ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
+#    → **判据崩在半路，红绿一个字都读不到**（2026-09-18 实测 eval_retrieval.py）。
+#    errors="replace"：宁可显示问号，也不许判据跑到一半死掉。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import json
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
@@ -56,6 +65,12 @@ DROP_LOW_AUTHORITY = "low_authority"
 DROP_REASONS = (DROP_CONTEXT_BUDGET, DROP_IRRELEVANT, DROP_DUPLICATE, DROP_LOW_AUTHORITY)
 
 SOURCE_TYPES = ("dailymed_spl", "pubmed", "openfda", "other")
+
+# ⭐ E10：`first_retrieved_at_step` 取这个值 = **这条引用来自上一轮**，不是本轮检索的。
+#    ⚠️ 用一个**显式的负数哨兵**而不是 None，是因为两者含义完全相反：
+#       None = 压根追不到出处（该报错）｜ CARRIED_STEP = 追得到，只是上一轮（合法）。
+#       合并的话，闭包就分不清"多轮继承"和"凭空编造"了。
+CARRIED_STEP = -1
 
 
 class LedgerError(ValueError):
@@ -155,6 +170,26 @@ class Ledger:
         self.truncated: bool = False
         self.malformed: bool = False
         self._doc_index: Dict[str, Doc] = {}        # doc_id -> 第一次出现的 Doc
+        # ⭐ E10：跨轮继承来的证据（多轮会话里上一轮查到的）。
+        #
+        #    **为什么闭包必须认它们**：E10 让第 2 轮继承第 1 轮的证据，
+        #    于是第 2 轮**不会重查**，账本里自然没有那一步 —— 闭包一查就失败。
+        #    而那会把 E9 刚立的"核验不放松"变成"核验把正常情况也拦了"。
+        #
+        #    ⚠️ **但也不能默默放行**：所以用 `CARRIED_STEP` 这个**显式哨兵值**
+        #       标记"来自上一轮"，让它在报告里看得见 ——
+        #       而不是让它长得像本轮检索的，那才是静默失真。
+        self.carried: List[Doc] = []
+
+    def mark_carried(self, docs) -> int:
+        """登记跨轮继承的证据，返回**真正新增**的条数。"""
+        have = {d.cite_key for d in self.carried}
+        fresh = [d for d in docs if d.cite_key not in have]
+        self.carried.extend(fresh)
+        return len(fresh)
+
+    def carried_keys(self) -> set:
+        return {d.cite_key for d in self.carried}
 
     # ------------------------------------------------------------ 写
 
@@ -195,22 +230,67 @@ class Ledger:
              导致同一份药的第二、三节全被过滤掉；顺着查才发现闭包也没验章节。）
         """
         doc_id, _, loinc = cite_key.partition("#")
+
+        def matches(d) -> bool:
+            if d.doc_id != doc_id:
+                return False
+            # 药对了但章节不对 → 不算找到（引入 LOINC 的全部意义就在这）
+            return not (loinc and d.loinc and d.loinc != loinc)
+
         for s in self.steps:
             for d in s.retrieved:
-                if d.doc_id != doc_id:
-                    continue
-                if loinc and d.loinc and d.loinc != loinc:
-                    continue          # 药对了但章节不对 → 不算找到
-                return s.step
+                if matches(d):
+                    return s.step
+        # ⭐ E10：本轮没有 → 查**上一轮继承来的**。返回哨兵值，不是 None
+        #    （None 的含义是"压根追不到"，两者绝不能混）。
+        for d in self.carried:
+            if matches(d):
+                return CARRIED_STEP
         return None
 
+    def retrieved_keys(self) -> set:
+        """
+        本轮检索到的**完整引用键**（`setid#LOINC`）。
+
+        ⚠️⚠️ 归因必须用它，**不能用只比 doc_id 的版本**。
+            一份说明书有多节共用同一个 setid：
+
+                5a709591-...#34073-7  ← Drug Interactions
+                5a709591-...#34070-3  ← Contraindications
+
+            只比 doc_id 的话，「引了 A 药但**章节写错**」会被判成"召回到过"，
+            于是归因会把病根指到**推理层**（"证据齐了还错"），
+            **而真实原因是引错了章节 —— 归因指错层，建议就指错方向。**
+
+            这个洞 E2 在 `_first_step_of` 里修过一次（引入 LOINC 的意义就在这），
+            **但 `attribute` 这条路漏了** —— 2026-09-18 做 E13 接归因时才发现，
+            是**同型复发**。
+        """
+        out = set()
+        for s in self.steps:
+            out.update(d.cite_key for d in s.retrieved if d.loinc)
+        return out
+
+    def cited_keys(self) -> set:
+        """回答里引用的**完整引用键**（带 LOINC）。**不许把 loinc 丢掉。**"""
+        out = set()
+        for c in self.claims:
+            out.update(k for k in c.cite if "#" in k)
+        return out
+
+    def carried_keys_all(self) -> set:
+        """跨轮继承来的引用键（E10）。归因时也要算"召回到过"。"""
+        return self.carried_keys()
+
     def retrieved_doc_ids(self) -> set:
+        """⚠️ 只到 doc_id 粒度 —— **归因不要用它**，用 `retrieved_keys()`。"""
         out = set()
         for s in self.steps:
             out.update(d.doc_id for d in s.retrieved)
         return out
 
     def cited_doc_ids(self) -> set:
+        """⚠️ 只到 doc_id 粒度（**会丢掉 LOINC**）—— 归因不要用它。"""
         out = set()
         for c in self.claims:
             out.update(k.split("#", 1)[0] for k in c.cite)
@@ -250,19 +330,25 @@ class Ledger:
 
     # ------------------------------------------------------------ 归因（三层，链式）
 
-    def attribute(self, gold_doc_ids, correct: bool) -> Dict[str, Any]:
+    def attribute(self, gold_cite_keys, correct: bool) -> Dict[str, Any]:
         """
         对一条回答做三层归因。**链式判定，第一个不达标的层就是病根。**
 
         Args:
-            gold_doc_ids: 这道题的 gold 证据集（doc_id 集合）
-            correct:      这条回答是否正确
+            gold_cite_keys: 这道题的 gold 证据集，**完整引用键**（`setid#LOINC`）集合。
+                            ⚠️ 不接受 doc_id 粒度 —— 见 `retrieved_keys()` 的注释。
+            correct:        这条回答是否正确
         Returns:
-            {"layer": "retrieval"|"utilization"|"reasoning"|"none", "evidence": ..., ...}
+            {"layer": "retrieval"|"utilization"|"reasoning"|"none", ...}
+
+        ⭐ **链式顺序不能乱**：检索层最早，其次是利用层，最后才是推理层。
+           "检索缺一条 **且** 引用也缺一条"的错题，病根是**检索** ——
+           后面那层的缺失是它的**后果**，不是独立的问题。
         """
-        gold = set(gold_doc_ids)
-        got = self.retrieved_doc_ids() & gold
-        cited = self.cited_doc_ids() & gold
+        gold = set(gold_cite_keys)
+        retrieved = self.retrieved_keys() | self.carried_keys_all()
+        got = retrieved & gold
+        cited = self.cited_keys() & gold
 
         recall = len(got) / len(gold) if gold else 1.0
         utilization = len(cited) / len(got) if got else 0.0
@@ -272,16 +358,16 @@ class Ledger:
                     "evidence": "回答正确"}
 
         # ① 检索层：gold 证据没被找到
-        if not gold.issubset(self.retrieved_doc_ids()):
-            missing = sorted(gold - self.retrieved_doc_ids())
+        if not gold.issubset(retrieved):
+            missing = sorted(gold - retrieved)
             return {"layer": "retrieval", "recall": recall, "utilization": utilization,
                     "evidence": f"gold {len(gold)} 条，只召回了 {len(got)} 条；"
                                 f"缺 {missing}",
                     "suggestion": "改 query 生成 / 扩召回"}
 
         # ② 利用层：找到了但没进回答
-        if not gold.issubset(self.cited_doc_ids()):
-            missing = sorted(gold - self.cited_doc_ids())
+        if not gold.issubset(cited):
+            missing = sorted(gold - cited)
             reasons = {s.reason_dropped for s in self.dropped()}
             return {"layer": "utilization", "recall": recall, "utilization": utilization,
                     "evidence": f"召回了全套 gold，但只有 {len(cited)} 条进了回答；"
@@ -357,7 +443,8 @@ def _selftest() -> int:
     lg.check_closure()
 
     # ---- 4. 三层归因：gold 全召回但只用了 1 条 → 利用层
-    r = lg.attribute({"aaaa-1111", "bbbb-2222"}, correct=False)
+    GOLD = {d1.cite_key, d2.cite_key}      # ⚠️ 用 cite_key，不用 doc_id
+    r = lg.attribute(GOLD, correct=False)
     assert r["layer"] == "utilization", r
     assert "context_budget" in r["evidence"], r["evidence"]
 
@@ -366,7 +453,7 @@ def _selftest() -> int:
     lg2.record(Step(step=1, action="retrieve", query="x", retrieved=[d1],
                     used_in_report=True))
     lg2.add_claim(Claim(claim_id="c1", text="t", cite=[d1.cite_key]))
-    r2 = lg2.attribute({"aaaa-1111", "bbbb-2222"}, correct=False)
+    r2 = lg2.attribute(GOLD, correct=False)
     assert r2["layer"] == "retrieval", r2
 
     # ---- 6. 推理层：证据全齐还是错
@@ -374,8 +461,27 @@ def _selftest() -> int:
     lg3.record(Step(step=1, action="retrieve", query="x", retrieved=[d1, d2],
                     used_in_report=True))
     lg3.add_claim(Claim(claim_id="c1", text="t", cite=[d1.cite_key, d2.cite_key]))
-    r3 = lg3.attribute({"aaaa-1111", "bbbb-2222"}, correct=False)
+    r3 = lg3.attribute(GOLD, correct=False)
     assert r3["layer"] == "reasoning", r3
+
+    # ---- 6b. ⭐⭐ **引了同一个药的错误章节** → 必须报 retrieval，不是 reasoning
+    #      （这个洞 E2 在闭包那边修过一次，`attribute` 这条路上漏了 —— 2026-09-18 同型复发）
+    #      gold 是 34070-3 那一节，agent 引的是 34073-7 那一节 —— 同一个药、错的章节
+    d_wrong = Doc(doc_id="aaaa-1111", section="Drug Interactions", loinc="34073-7", text="...")
+    lg6 = Ledger("run-6", "q", seed=0)
+    lg6.record(Step(step=1, action="retrieve", query="x", retrieved=[d_wrong],
+                    used_in_report=True))
+    lg6.add_claim(Claim(claim_id="c1", text="t", cite=[d_wrong.cite_key]))
+    r6 = lg6.attribute({d2.cite_key}, correct=False)      # gold = 34070-3
+    assert r6["layer"] == "retrieval", \
+        f"引错章节该报 retrieval（gold 章节没被召回），实际 {r6['layer']} —— " \
+        f"只比 doc_id 的话这里会误报成 reasoning，**归因指错层**"
+    # 反过来：引对了章节，就不该报 retrieval
+    lg7 = Ledger("run-7", "q", seed=0)
+    lg7.record(Step(step=1, action="retrieve", query="x", retrieved=[d2],
+                    used_in_report=True))
+    lg7.add_claim(Claim(claim_id="c1", text="t", cite=[d2.cite_key]))
+    assert lg7.attribute({d2.cite_key}, correct=True)["layer"] == "none"
 
     # ---- 7. 闭包必须能抓出「引用追不到出处」
     lg4 = Ledger("run-4", "q", seed=0)

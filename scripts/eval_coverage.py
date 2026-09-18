@@ -32,6 +32,15 @@
 
 from __future__ import annotations
 
+import sys
+
+# ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
+#    → **判据崩在半路，红绿一个字都读不到**（2026-09-18 实测 eval_retrieval.py）。
+#    errors="replace"：宁可显示问号，也不许判据跑到一半死掉。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import json
 import sys
 from collections import defaultdict
@@ -41,11 +50,12 @@ from typing import Any, Dict, List, Optional, Tuple
 PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 
+
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory       # noqa: E402
 from agent.mocks import GroundedMockLLM                                  # noqa: E402
 from agent.policy import CoveragePolicy, RulePolicy                      # noqa: E402
 from agent.tools import ScriptedUser                                     # noqa: E402
-from retrieval import BM25Retriever                                      # noqa: E402
+from retrieval import make_retriever                                      # noqa: E402
 
 LABELS = PROJECT / "data" / "labels.json"
 RET_SET = PROJECT / "data" / "eval" / "retrieval_set.json"
@@ -180,7 +190,7 @@ def main() -> int:
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
     ret_rows = json.loads(RET_SET.read_text(encoding="utf-8"))["rows"]
     bnd_rows = json.loads(BND_SET.read_text(encoding="utf-8"))["rows"]
-    r = BM25Retriever(labels, use_locator=True)
+    r = make_retriever(labels, use_locator=True)
     print(f"\n语料 {len(labels)} 份药 ｜ 检索集 {len(ret_rows)} 条 ｜ 边界集 {len(bnd_rows)} 条")
     print(f"预算 {BUDGET} ｜ 用户模拟器已接（可 ask）\n")
 
