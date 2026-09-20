@@ -13,7 +13,7 @@
        ⇒ 检索集上**再往上已经没有可量的余量**，后续改进只能看探针集。
        ⇒ 这不是系统到顶了，是**尺子到顶了**。
 
-→ C:\Users\20298\Desktop\shixi\代码库\projects\EvidenceTrace\reports\retrieval_eval.json
+→ reports\retrieval_eval.json
 
 ⑦ 失败样例（检索集，top-5 一条都没命中）
    （检索集上已经没有了 —— 但见上面的饱和报警，这不代表检索已经做好）
@@ -64,7 +64,7 @@
    [OK] 答对率不显著变差（0.867 → 0.867）  —— ⚠️ 靠「多拒答」换来的拒答率不算赢 —— 这条判据就是防这个
    [OK] 平均动作数不暴涨（3.74 → 3.33）
 
-→ C:\Users\20298\Desktop\shixi\代码库\projects\EvidenceTrace\reports\coverage_eval.json
+→ reports\coverage_eval.json
 
 ==============================================================================
 ✅ E8 判据全过
