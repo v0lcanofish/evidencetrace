@@ -1,0 +1,5 @@
+# shell 脚本一律 LF —— 这些脚本要上传到 Linux 跑，
+# CRLF 会让 `set -euo pipefail\r` 报 $'\r': command not found，
+# 而且 heredoc 的结束符会永远匹配不上。
+*.sh   text eol=lf
+*.bash text eol=lf
