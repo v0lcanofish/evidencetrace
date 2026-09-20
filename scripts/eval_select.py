@@ -35,7 +35,7 @@ sys.path.insert(0, str(_PROJECT))
 
 from agent.coverage import compute_coverage, corpus_drugs_from          # noqa: E402
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory      # noqa: E402
-from agent.mocks import GroundedMockLLM                                 # noqa: E402
+from agent.generator import generator_name, make_generator, real_enabled   # noqa: E402
 from agent.policy import CoveragePolicy                                 # noqa: E402
 from agent.report import looks_like_abstention                          # noqa: E402
 from agent.select import (select_evidence, focus_drugs, struct_rank,    # noqa: E402
@@ -45,6 +45,10 @@ from retrieval import make_retriever                                    # noqa: 
 
 LABELS = _PROJECT / "data" / "labels.json"
 R_SET = _PROJECT / "data" / "eval" / "retrieval_set.json"
+SETS = {
+    "base": R_SET,                                                  # 原有 60 题，单 gold
+    "hard": _PROJECT / "data" / "eval" / "hard_set.json",           # 133 题，每题 gold=2
+}
 N = 60
 
 # 扫描网格：**故意两端都放极端值** ——
@@ -54,15 +58,12 @@ GRID = [1, 2, 3, 4, 5, 6, 8, None]
 
 FAILS: list = []
 
-
 def check(name: str, ok: bool, detail: str = "") -> None:
     print(f"   {'✓' if ok else '✗'} {name}" + (f"　{detail}" if detail else ""))
     if not ok:
         FAILS.append(name)
 
-
 # ---------------------------------------------------------------- ① 合同测试
-
 
 def t_contract(known, rows) -> None:
     """选择层的「焦点药」必须和覆盖度的「药品槽位」**逐字一致**。
@@ -72,7 +73,7 @@ def t_contract(known, rows) -> None:
        ——**不报错**，只是排序依据悄悄变了。本项目在闭包/归因那条路上
        已经因为"两套实现"栽过一次（E13 的粒度洞），这是第二次设防。
     """
-    print("\n① 合同测试：select.focus_drugs ≡ coverage 药品槽位")
+    print(f"\n① 合同测试：select.focus_drugs ≡ coverage 药品槽位")
     bad = []
     for r in rows:
         q = r["question"]
@@ -85,17 +86,14 @@ def t_contract(known, rows) -> None:
     check(f"60 题逐题一致", not bad,
           f"不一致 {len(bad)} 条" + (f"　例：{bad[0]}" if bad else ""))
 
-
 # ---------------------------------------------------------------- ② 单元断言
-
 
 def _doc(drug, loinc, auth=0.5, key=None) -> Doc:
     return Doc(doc_id=key or "aaaaaaaa-1111-2222-3333-444444444444",
                section="S", loinc=loinc, drug=drug, text="t", authority=auth)
 
-
 def t_units() -> None:
-    print("\n② 单元断言：结构档位 / 排序 / 截断边界")
+    print(f"\n② 单元断言：结构档位 / 排序 / 截断边界")
     scope, lo = {"a"}, {"1111-1"}
     check("定位章节 ∩ 焦点药 = 3", struct_rank(_doc("a", "1111-1"), scope, lo) == R_BOTH)
     check("只对章节 = 2（E11 的跨药出处落在这档，**不许当垃圾扔**）",
@@ -128,19 +126,20 @@ def t_units() -> None:
     s3 = select_evidence(pool, None, ["a"], "a q", budget=1)
     check("每条被丢的都有理由", all(x.reason for x in s3.dropped))
 
-
 # ---------------------------------------------------------------- ③ K 扫描
-
 
 def run_pass(r, known, rows, budget, order="struct"):
     """跑一遍 60 题，返回统计 + 每条题的明细（供 gold 保留率用）。"""
     stats = {"correct": 0, "util": 0, "abstain": 0, "kept": [], "other": [],
-             "gold_kept": 0, "gold_pos": [], "n": 0}
+             "gold_kept": 0, "gold_total": 0, "gold_pos": [], "n": 0}
     details = []
     for row in rows:
-        q, gold = row["question"], {row["gold_cite_key"]}
+        # ⭐ 多 gold 支持：`hard_set` 每题 gold=2（见 scripts/build_hard_set.py）。
+        #    老题集只有单值 `gold_cite_key` → 退回单元素集合，行为逐字节不变。
+        gks = row.get("gold_cite_keys") or [row["gold_cite_key"]]
+        q, gold = row["question"], set(gks)
         holder = {}
-        base = make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5,
+        base = make_toolbox_factory(r, llm=make_generator(), top_k=5,
                                     evidence_budget=budget, select_order=order)
 
         def factory(lg, user, _b=base, _h=holder):
@@ -161,31 +160,46 @@ def run_pass(r, known, rows, budget, order="struct"):
         stats["correct"] += int(ok)
         stats["util"] += int(layer == "utilization")
         stats["abstain"] += int(abst)
+        stats["gold_total"] += len(gks)
         if sel:
             stats["kept"].append(sel.n_kept)
             stats["other"].append(sel.n_other_drug)
-            gk = row["gold_cite_key"]
-            stats["gold_kept"] += int(any(d.cite_key == gk for d in sel.kept))
+            stats["gold_kept"] += sum(1 for k in gks
+                                      if any(d.cite_key == k for d in sel.kept))
         details.append((row["question"], ok, layer, abst, sel, cited, gold))
     return stats, details
-
 
 def report(name, s) -> str:
     n = s["n"] or 1
     return (f"   {name:<16} 答对 {s['correct']:>2}/{n}"
             f"  util {s['util']:>2}"
             f"  拒答 {s['abstain']:>2}"
-            f"  gold保留 {s['gold_kept']:>2}/{n}"
+            # ⚠️ 分母是 **gold 总条数**，不是题数 —— hard_set 每题 2 条。
+            #    老题集每条题只有 1 条 gold ⇒ 分母=n，输出和以前逐字节一样。
+            f"  gold保留 {s['gold_kept']:>2}/{s['gold_total'] or n}"
             f"  平均保留 {sum(s['kept'])/max(1,len(s['kept'])):>4.1f} 条"
             f"  其中异药 {sum(s['other'])/max(1,len(s['other'])):>4.1f}")
 
-
 def main() -> int:
     quick = "--quick" in sys.argv
+    # ---- 选哪套题：base（原有 60 题，单 gold）｜ hard（133 题，每题 gold=2）
+    #      ⭐ hard 存在的理由见 scripts/build_hard_set.py 顶部：
+    #         base 那套答对 60/60，K 扫描**结构上**没有分辨力。
+    which = "base"
+    for i, a in enumerate(sys.argv):
+        if a == "--set" and i + 1 < len(sys.argv):
+            which = sys.argv[i + 1]
+        elif a.startswith("--set="):
+            which = a.split("=", 1)[1]
+    set_path = SETS.get(which)
+    if set_path is None:
+        raise SystemExit(f"未知的 --set {which!r}；可选：{sorted(SETS)}")
+    print(f"[题集] {which} → {set_path.name}")
+
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
     r = make_retriever(labels, use_locator=True)
     known = corpus_drugs_from(r)
-    rows = json.loads(R_SET.read_text(encoding="utf-8"))["rows"][:N]
+    rows = json.loads(set_path.read_text(encoding="utf-8"))["rows"][:N]
     if quick:
         rows = rows[:12]
         print(f"⚠️ --quick：只跑前 {len(rows)} 条")
@@ -194,8 +208,8 @@ def main() -> int:
     t_units()
 
     # ---- ③ K 扫描 + ⑤ 对抗档
-    print(f"\n③ K 扫描（策略=CoveragePolicy｜生成器=GroundedMockLLM｜{len(rows)} 题）")
-    print("   " + "-" * 92)
+    print(f"\n③ K 扫描（策略=CoveragePolicy｜生成器={generator_name(real_enabled())}｜{len(rows)} 题）")
+    print(f"   " + "-" * 92)
     results = {}
     for k in ([None] if quick else GRID):
         s, det = run_pass(r, known, rows, k)
@@ -207,20 +221,20 @@ def main() -> int:
     print(f"\n   ⇒ 答对率最高：K={best_k}")
 
     # ---- ④ 反向用例：暴力剪裁必须有代价
-    print("\n④ 反向用例（防「池子越小越好」）")
+    print(f"\n④ 反向用例（防「池子越小越好」）")
     s1 = results[1][0] if 1 in results else None
     sN = results[None][0]
     if s1 is None:
-        print("   （--quick 跳过）")
+        print(f"   （--quick 跳过）")
     else:
         check("K=1 的答对率**必须**低于 K=None（否则这把尺子量不出暴力剪裁的代价）",
               s1["correct"] < sN["correct"],
               f"K=1 {s1['correct']} vs K=None {sN['correct']}")
 
     # ---- ⑤ 对抗档：倒序池子
-    print("\n⑤ 对抗档：把池子倒过来（拆穿「提升是不是靠 mock 同分取靠前」）")
+    print(f"\n⑤ 对抗档：把池子倒过来（拆穿「提升是不是靠 mock 同分取靠前」）")
     if quick:
-        print("   （--quick 跳过）")
+        print(f"   （--quick 跳过）")
     else:
         s_rev_full, _ = run_pass(r, known, rows, None, order="reverse")
         print(report("reverse/全池", s_rev_full))
@@ -232,21 +246,20 @@ def main() -> int:
         gain_fwd, gain_rev = fwd - base, revb - revf
         print(f"\n   ⇒ 正序提升 {gain_fwd:+d} ｜ 倒序提升 {gain_rev:+d}")
         if gain_fwd > 0 and gain_rev >= gain_fwd:
-            print("   ⇒ 倒序后提升**没有消失** → 提升不是 tie-break 造的，"
+            print(f"   ⇒ 倒序后提升**没有消失** → 提升不是 tie-break 造的，"
                   "可以报成结构排序的贡献")
         elif gain_fwd > 0:
             print(f"   ⇒ ⚠️ 倒序后提升从 {gain_fwd:+d} 掉到 {gain_rev:+d} ——"
                   "**提升里有一部分是 mock 同分取靠前给的**，不能全记在结构排序头上")
 
-    print("\n" + "=" * 92)
+    print(f"\n" + "=" * 92)
     if FAILS:
         print(f"❌ {len(FAILS)} 条断言没过：")
         for f in FAILS:
             print(f"   · {f}")
     else:
-        print("✅ 全部断言通过")
+        print(f"✅ 全部断言通过")
     return 1 if FAILS else 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

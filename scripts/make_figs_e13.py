@@ -13,7 +13,6 @@
 跑法：PYTHONIOENCODING=utf-8 python scripts/make_figs_e13.py
 """
 
-
 import sys
 
 # ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
@@ -44,23 +43,21 @@ FIGS = PROJECT / "reports" / "figs"
 FIGS.mkdir(parents=True, exist_ok=True)
 
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory   # noqa: E402
-from agent.mocks import GroundedMockLLM                               # noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.policy import CoveragePolicy                               # noqa: E402
 from retrieval.retriever import BM25Retriever                         # noqa: E402
 
 C_OK, C_RED, C_GREY = "#7FB77E", "#C44E52", "#B0B7C3"
 
-
 def run_dist(r, rows):
     dist = Counter()
     for row in rows:
-        lp = AgentLoop(make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5),
+        lp = AgentLoop(make_toolbox_factory(r, llm=make_generator(), top_k=5),
                        CoveragePolicy(), LoopConfig(budget=8))
         lg = lp.run(row["question"], run_id=row["qid"])
         gold = {row["gold_cite_key"]}
         dist[lg.attribute(gold, correct=gold.issubset(lg.cited_keys()))["layer"]] += 1
     return dist
-
 
 def main() -> int:
     labels = json.loads((PROJECT / "data" / "labels.json").read_text(encoding="utf-8"))["labels"]
@@ -178,7 +175,6 @@ def main() -> int:
     print(f"→ {out}")
     print(f"  归因分布：{dict(dist)}  （共 {n} 条）")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

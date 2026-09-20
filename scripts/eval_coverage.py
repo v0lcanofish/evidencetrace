@@ -50,9 +50,8 @@ from typing import Any, Dict, List, Optional, Tuple
 PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 
-
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory       # noqa: E402
-from agent.mocks import GroundedMockLLM                                  # noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.policy import CoveragePolicy, RulePolicy                      # noqa: E402
 from agent.tools import ScriptedUser                                     # noqa: E402
 from retrieval import make_retriever                                      # noqa: E402
@@ -67,29 +66,25 @@ USER = ScriptedUser({"conditions": ["hypertension"]})
 
 _fails: List[str] = []
 
-
 def check(cond, label, detail=""):
     print(f"   {'[OK]' if cond else '[!!]'} {label}" + (f"  —— {detail}" if detail else ""))
     if not cond:
         _fails.append(label)
     return cond
 
-
 # ---------------------------------------------------------------- 跑一轮
 
 def run_one(retriever, question: str, policy) -> Tuple[Any, Any]:
-    loop = AgentLoop(make_toolbox_factory(retriever, llm=GroundedMockLLM(), top_k=5),
+    loop = AgentLoop(make_toolbox_factory(retriever, llm=make_generator(), top_k=5),
                      policy, LoopConfig(budget=BUDGET))
     lg = loop.run(question, run_id="cov", user=USER)
     return loop.last_stats, lg
-
 
 def cited_keys(lg) -> set:
     out = set()
     for c in lg.claims:
         out.update(c.cite)
     return out
-
 
 # ---------------------------------------------------------------- 指标
 
@@ -145,7 +140,6 @@ def evaluate(retriever, policy, ret_rows, bnd_rows, collect: bool = False) -> Di
         "per_row": per_row,
     }
 
-
 # ---------------------------------------------------------------- θ 标定
 
 def calibrate(retriever, ret_rows, bnd_rows,
@@ -178,7 +172,6 @@ def calibrate(retriever, ret_rows, bnd_rows,
                          "score": (m["accuracy"] + m["refuse_accuracy"]
                                    - m["wrong_abstain_rate"] - m["hard_answer_rate"])})
     return rows
-
 
 # ---------------------------------------------------------------- 主
 
@@ -275,7 +268,6 @@ def main() -> int:
     print("✅ E8 判据全过")
     print("=" * 78)
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

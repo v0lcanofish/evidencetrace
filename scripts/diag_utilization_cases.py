@@ -34,7 +34,7 @@ _PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_PROJECT))
 
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory   # noqa: E402
-from agent.mocks import GroundedMockLLM                              # noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.policy import CoveragePolicy, RulePolicy                  # noqa: E402
 from agent.report import looks_like_abstention                       # noqa: E402
 from retrieval import make_retriever                                 # noqa: E402
@@ -45,11 +45,9 @@ N = 60
 
 import json
 
-
 def mk(r, pol):
-    return AgentLoop(make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5),
+    return AgentLoop(make_toolbox_factory(r, llm=make_generator(), top_k=5),
                      pol, LoopConfig(budget=8))
-
 
 def main() -> int:
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
@@ -113,7 +111,6 @@ def main() -> int:
         print()
 
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -24,3 +24,8 @@ data/cache/
 # ---- 运行产物 ----
 data/runs/
 *.log
+
+# ---- 临时备份（换生成器/换题集时脚本自己备的对照，别入库）----
+#   例：decisions.mock.bak.jsonl（mock 那批）、coverage_eval.mock.bak.json
+*.bak
+*.bak.*

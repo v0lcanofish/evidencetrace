@@ -38,18 +38,17 @@ if str(_PROJECT) not in sys.path:
     sys.path.insert(0, str(_PROJECT))
 
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory   # noqa: E402
-from agent.mocks import GroundedMockLLM, MockLLM                      # noqa: E402
+from agent.mocks import MockLLM# noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.policy import CoveragePolicy, RulePolicy                   # noqa: E402
 from agent.session import Session                                     # noqa: E402
 from retrieval import make_retriever                                 # noqa: E402
 
 LABELS = _PROJECT / "data" / "labels.json"
 
-
 def _mk_loop(r, llm=None, policy=None, cfg=None):
-    return AgentLoop(make_toolbox_factory(r, llm=llm or GroundedMockLLM(), top_k=5),
+    return AgentLoop(make_toolbox_factory(r, llm=llm or make_generator(), top_k=5),
                      policy or CoveragePolicy(), cfg or LoopConfig(budget=8))
-
 
 def main() -> int:
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
@@ -185,7 +184,6 @@ def main() -> int:
     print("✅ E10 判据全过：指代消解准、跨轮复用生效、核验不放松、换药不串味")
     print("=" * 78)
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

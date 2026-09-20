@@ -150,8 +150,25 @@ class Claim:
     claim_id: str
     text: str
     cite: List[str] = field(default_factory=list)   # 引用键列表
-    first_retrieved_at_step: Optional[int] = None   # ⭐ 归因的直接判据
+    # ⭐ **每条引用各自**的首次检索步：{cite_key: step}。
+    #
+    # ⚠️⚠️ 9/19 之前这里是**单个 int**，只记"第一个 key"的步号，
+    #    而 check_closure 却拿它去和**每一个** key 比 ——
+    #    于是「一条论断引了来自**不同检索步**的证据」必挂。
+    #
+    #    为什么藏了两周没被发现：**mock 生成器的答案只引同一个检索步的键**
+    #    （它是照着一份上下文抄的），恰好绕开了这个情形；
+    #    自检 `_selftest` 也只引了一个 key。
+    #    → 9/19 换成真模型（deepseek-chat）第一次跑，**5 个评测脚本崩了 4 个**。
+    #    这是"绝对数字/断言必须先跑真数据"的一个实例：
+    #    **mock 跑得过 ≠ 系统对**。
+    first_step_by_key: Dict[str, int] = field(default_factory=dict)
     verifiable: Optional[bool] = None
+
+    @property
+    def first_retrieved_at_step(self) -> Optional[int]:
+        """最早的那一步（保留旧名字 —— 报告和自检还在用它）。没有引用则 None。"""
+        return min(self.first_step_by_key.values()) if self.first_step_by_key else None
 
 
 # ---------------------------------------------------------------- 账本
@@ -203,12 +220,17 @@ class Ledger:
         return step
 
     def add_claim(self, claim: Claim) -> Claim:
-        """写一条回答论断。自动回填 first_retrieved_at_step —— 这是归因的判据，不能靠人手填。"""
+        """
+        写一条回答论断，**逐条引用**自动回填首次检索步 —— 不能靠人手填。
+
+        ⚠️ 是"逐条"，不是"取第一条的步号填一个数就完事" —— 见 `Claim.first_step_by_key`
+           的注释：一条论断完全可能引用来自不同检索步的证据（真模型就这么答）。
+        """
         for key in claim.cite:
-            if claim.first_retrieved_at_step is None:
+            if key not in claim.first_step_by_key:
                 s = self._first_step_of(key)
                 if s is not None:
-                    claim.first_retrieved_at_step = s
+                    claim.first_step_by_key[key] = s
         self.claims.append(claim)
         return claim
 
@@ -321,10 +343,11 @@ class Ledger:
                     problems.append(
                         f"claim {c.claim_id}: 引用 {key} 在账本里【追不到】出处"
                         f"（注意：药对了但章节不对也算追不到）")
-                elif c.first_retrieved_at_step != s:
+                elif c.first_step_by_key.get(key) != s:
+                    # ⚠️ 比对**这一条 key 自己的**步号，不是拿一个全局值去套所有 key。
                     problems.append(
-                        f"claim {c.claim_id}: first_retrieved_at_step={c.first_retrieved_at_step} "
-                        f"与实际首次检索步 {s} 不一致")
+                        f"claim {c.claim_id}: 引用 {key} 记录的首次检索步="
+                        f"{c.first_step_by_key.get(key)}，与实际首次检索步 {s} 不一致")
         if problems:
             raise LedgerError("闭包检查失败：\n  - " + "\n  - ".join(problems))
 
@@ -441,6 +464,22 @@ def _selftest() -> int:
 
     # ---- 3. 闭包通过
     lg.check_closure()
+
+    # ---- 3b. ⭐ 回归：一条论断引**不同检索步**的证据，闭包必须**仍然通过**
+    #      （9/19 换真模型跑出来的 bug —— 5 个评测脚本崩了 4 个。
+    #       旧实现把 first_retrieved_at_step 存成**单个 int**（只记第一个 key 的步号），
+    #       却拿它去和**每一个** key 比 ⇒ 只要有跨步引用就必挂。
+    #       mock 生成器只引同一个检索步的键（照一份上下文抄），**恰好绕开了这个情形**；
+    #       上面第 3 条也只引了一个 key —— 所以这个洞藏了两周。
+    #       ⚠️ 下面这个用例就是那天崩出来的形状，不许删。）
+    lg3 = Ledger("run-3", "q", seed=0)
+    lg3.record(Step(step=1, action="retrieve", query="q1", retrieved=[d1], used_in_report=True))
+    lg3.record(Step(step=2, action="retrieve", query="q2", retrieved=[d2], used_in_report=True))
+    lg3.add_claim(Claim(claim_id="c1", text="t", cite=[d1.cite_key, d2.cite_key]))
+    assert lg3.claims[0].first_step_by_key == {d1.cite_key: 1, d2.cite_key: 2}, \
+        lg3.claims[0].first_step_by_key
+    assert lg3.claims[0].first_retrieved_at_step == 1        # 兼容旧名字：取最早
+    lg3.check_closure()          # ← 旧实现在这里抛 LedgerError
 
     # ---- 4. 三层归因：gold 全召回但只用了 1 条 → 利用层
     GOLD = {d1.cite_key, d2.cite_key}      # ⚠️ 用 cite_key，不用 doc_id

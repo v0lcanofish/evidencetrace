@@ -1,0 +1,45 @@
+==============================================================================
+E11 判据 · 引用偏不偏（跨药一致性核验）
+==============================================================================
+  语料：50 份说明书
+
+① 不对称可检测（甲警告、乙沉默）
+
+   [OK] amiodarone → digoxin  —— ⚠️ 不对称：**amiodarone** 警告了，而 **digoxin** 的说明书没提
+   [OK] 　└ 抓到的是**强警告原句**  —— 「Reduce digoxin by half or discontinue.」
+   [OK] amiodarone → warfarin  —— ⚠️ 不对称：**amiodarone** 警告了，而 **warfarin** 的说明书没提
+   [OK] furosemide → lithium  —— ⚠️ 不对称：**furosemide** 警告了，而 **lithium** 的说明书没提
+   [OK] bupropion → phenytoin  —— ⚠️ 不对称：**bupropion** 警告了，而 **phenytoin** 的说明书没提
+   [OK] amlodipine → simvastatin  —— ⚠️ 不对称：**amlodipine** 警告了，而 **simvastatin** 的说明书没提
+   [OK] sitagliptin → metformin  —— ⚠️ 不对称：**sitagliptin** 警告了，而 **metformin** 的说明书没提
+   [OK] empagliflozin → metformin  —— ⚠️ 不对称：**empagliflozin** 警告了，而 **metformin** 的说明书没提
+
+② 不误报：双方一致的不许判成不对称
+
+   [OK] clopidogrel ↔ omeprazole 判为一致  —— 双方都警告（一致）
+   [OK] clopidogrel ↔ esomeprazole 判为一致  —— 双方都警告（一致）
+   [OK] allopurinol ↔ colchicine 判为一致  —— 双方都只是提及（一致）
+   [OK] 反向查（digoxin, amiodarone）方向仍然正确  —— speaker=amiodarone silent=digoxin
+
+③ ⭐ 不许选择性引用（一方说了、另一方也说了，只引一边）
+
+   [OK] （前置）这一对是双方都警告  —— both_warn
+   [OK] 只引一边 → 判为**选择性引用**  —— selective_citation
+   [OK] 两边都引 → 通过  —— 引用不偏：涉及多药的问题，双方说明书都表态了或都如实标注了
+
+④ ⭐ 对方沉默时：不是选择性引用，但必须**如实标注**
+
+   [OK] 只引警告方 → 报的是 `silent_unstated`（而不是 selective_citation）  —— kinds = ['silent_unstated']
+   [OK] ⭐ 且**没有**误报成选择性引用 —— 两者的正确动作不同  —— 前者要加说明，后者要去补检索；混成一个 agent 会白白重试
+
+⑤ 边界
+
+   [OK] 域外药（aspirin 不在库里）→ 双方都 absent  —— both_absent
+   [OK] 域外药当主语时不崩  —— both_absent
+   [OK] ⭐ 全量扫描的单向强警告数锁定为 20  —— 实测 20 —— 对不上说明 WARN_RE 或语料变了，**别直接改这个常量**，先查清楚
+
+   人工核对过原句的 7 对：7/7 全中（它们是上面 20 对里最教科书的那个子集）
+
+==============================================================================
+✅ E11 判据全过：不对称检得出、一致的不误报、选择性引用拦得住、沉默要标注
+==============================================================================

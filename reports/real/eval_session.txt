@@ -1,0 +1,43 @@
+[生成层] deepseek-chat(真模型)  {'model': 'deepseek-chat', 'temperature': 0.0}
+==============================================================================
+E10 判据 · 多轮一致
+==============================================================================
+  语料：50 份药 ｜ 本轮对话主角：allopurinol → alprazolam → amiodarone
+
+① 指代消解（纯规则，零成本，先把消解本身打准）
+
+   [OK] What does allopurinol interact with?  —— 点名了药、无线索词 → 全新问题 ｜ 实测 explicit ['allopurinol']
+   [OK] What about taking it with alprazolam?  —— ⭐ 点名新药+线索词 → 焦点药也要带上（不然用户真正在问的药会丢） ｜ 实测 from_context ['allopurinol', 'alprazolam']
+   [OK] Is it safe during pregnancy?  —— 纯指代 → 用焦点药 ｜ 实测 from_context ['alprazolam']
+   [OK] Tell me about amiodarone.  —— ⭐ 换药：点名了另一个药 → 只取新的，**绝不掺上一轮的**（防串味） ｜ 实测 explicit ['amiodarone']
+   [OK] What is the price of tea in China?  —— 域外问题、无线索词 → 不猜 ｜ 实测 none []
+   [OK] ⭐ 焦点只被『点名的药』更新（域外问题不改焦点）  —— 焦点 = ['amiodarone']
+   [OK] ⭐ 不串味：从 allopurinol 换到 alprazolam 时不带旧药  —— 实测 ['alprazolam']
+
+② 跨轮复用（同药同节不重查 → 动作数下降）
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 14373.95it/s]
+   [OK] ⭐ 带着上一轮证据再问同一题 → **动作数下降**  —— 单轮 3 → 多轮第 2 轮 2
+   [OK] ⭐ 第 2 轮**几乎没有新证据**（复用生效，不是重查）  —— 第 1 轮拿到 3 条，第 2 轮新增 0 条
+
+③ 核验标准不放松（多轮下坏引用照样抓）
+
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights:   1%|          | 2/201 [00:00<00:55,  3.61it/s]Loading weights:  20%|█▉        | 40/201 [00:00<00:02, 80.26it/s]Loading weights:  38%|███▊      | 76/201 [00:00<00:00, 142.95it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 240.66it/s]
+   [OK] （前置）策略走到了 answer —— 这一步才验得到核验  —— 没走到的话下面的断言没有意义
+   [OK] 多轮第 1 轮里坏引用照样被拦  —— 抓到 ['not_in_corpus']
+   [OK] 被打回的答案没有被采纳
+   [OK] 第 2 轮同样没有交出坏答案  —— 坏引用 0 条 ｜ 第2轮抓到的类型 ['not_in_corpus']
+
+④ 端到端：三轮真实追问，全程可追溯
+
+   轮1  explicit     药=['allopurinol']  动作=3  证据=3
+   轮2  from_context 药=['allopurinol', 'alprazolam']  动作=3  证据=7
+   轮3  from_context 药=['alprazolam']  动作=4  证据=15
+   [OK] 第 2 轮解析出**两个**药  —— ['allopurinol', 'alprazolam']
+   [OK] 第 3 轮解析出第 2 轮点名的那个药  —— ['alprazolam']
+   [OK] 三轮都没有 malformed
+   [OK] 证据**跨轮累积**（不是每轮清零）  —— [3, 7, 15]
+
+==============================================================================
+✅ E10 判据全过：指代消解准、跨轮复用生效、核验不放松、换药不串味
+==============================================================================

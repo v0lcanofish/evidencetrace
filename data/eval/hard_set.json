@@ -1,0 +1,1839 @@
+{
+ "n": 133,
+ "note": "有分辨力的补充评测集。每题 gold=2，从标签机械抽取（setid#loinc），不用 LLM 生成。目的：让 K 扫描重新有分辨力 —— 见 scripts/build_hard_set.py 顶部。",
+ "loinc": {
+  "dosage": "34068-7",
+  "interactions": "34073-7"
+ },
+ "rows": [
+  {
+   "qid": "hardA-allopurinol",
+   "kind": "multi_section",
+   "question": "I'm taking allopurinol. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34068-7",
+    "d33d9029-15a9-4b60-bd01-42cfecf1eadc#34073-7"
+   ],
+   "drugs": [
+    "allopurinol"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-alprazolam-fluoxetine",
+   "kind": "cross_drug",
+   "question": "Both alprazolam and fluoxetine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "a23063c0-099a-4256-b95f-3a857bbf704b#34073-7",
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7"
+   ],
+   "drugs": [
+    "alprazolam",
+    "fluoxetine"
+   ],
+   "note": "实测：fluoxetine 的相互作用节提到 alprazolam；alprazolam 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-alprazolam",
+   "kind": "multi_section",
+   "question": "I'm taking alprazolam. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "a23063c0-099a-4256-b95f-3a857bbf704b#34068-7",
+    "a23063c0-099a-4256-b95f-3a857bbf704b#34073-7"
+   ],
+   "drugs": [
+    "alprazolam"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-amiodarone-carvedilol",
+   "kind": "cross_drug",
+   "question": "Both amiodarone and carvedilol are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7",
+    "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7"
+   ],
+   "drugs": [
+    "amiodarone",
+    "carvedilol"
+   ],
+   "note": "实测：carvedilol 的相互作用节提到 amiodarone；amiodarone 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-amiodarone",
+   "kind": "multi_section",
+   "question": "I'm taking amiodarone. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34068-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "amiodarone"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-atorvastatin-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both atorvastatin and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "atorvastatin",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 atorvastatin；atorvastatin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-amlodipine",
+   "kind": "multi_section",
+   "question": "I'm taking amlodipine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34068-7",
+    "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34073-7"
+   ],
+   "drugs": [
+    "amlodipine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-atorvastatin-colchicine",
+   "kind": "cross_drug",
+   "question": "Both atorvastatin and colchicine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7",
+    "5a0b4246-e7dd-29e5-e063-6294a90a2871#34073-7"
+   ],
+   "drugs": [
+    "atorvastatin",
+    "colchicine"
+   ],
+   "note": "实测：colchicine 的相互作用节提到 atorvastatin；atorvastatin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-atorvastatin",
+   "kind": "multi_section",
+   "question": "I'm taking atorvastatin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34068-7",
+    "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7"
+   ],
+   "drugs": [
+    "atorvastatin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-bupropion-cyclobenzaprine",
+   "kind": "cross_drug",
+   "question": "Both bupropion and cyclobenzaprine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7",
+    "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7"
+   ],
+   "drugs": [
+    "bupropion",
+    "cyclobenzaprine"
+   ],
+   "note": "实测：cyclobenzaprine 的相互作用节提到 bupropion；bupropion 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-bupropion",
+   "kind": "multi_section",
+   "question": "I'm taking bupropion. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "82872e51-3349-40fe-8ea3-496751955fed#34068-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "bupropion"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-clopidogrel-esomeprazole",
+   "kind": "cross_drug",
+   "question": "Both clopidogrel and esomeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7",
+    "992b1830-55cc-4e95-8d6d-e7f796d5b373#34073-7"
+   ],
+   "drugs": [
+    "clopidogrel",
+    "esomeprazole"
+   ],
+   "note": "实测：esomeprazole 的相互作用节提到 clopidogrel；clopidogrel 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-carvedilol",
+   "kind": "multi_section",
+   "question": "I'm taking carvedilol. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34068-7",
+    "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7"
+   ],
+   "drugs": [
+    "carvedilol"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-clopidogrel-omeprazole",
+   "kind": "cross_drug",
+   "question": "Both clopidogrel and omeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7",
+    "54612d26-9e1a-1960-e063-6394a90a5784#34073-7"
+   ],
+   "drugs": [
+    "clopidogrel",
+    "omeprazole"
+   ],
+   "note": "实测：omeprazole 的相互作用节提到 clopidogrel；clopidogrel 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-clopidogrel",
+   "kind": "multi_section",
+   "question": "I'm taking clopidogrel. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "669f0bc6-f173-484d-8efe-c006683b25d1#34068-7",
+    "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7"
+   ],
+   "drugs": [
+    "clopidogrel"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-clopidogrel-pantoprazole",
+   "kind": "cross_drug",
+   "question": "Both clopidogrel and pantoprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7",
+    "1bb94d3c-8bc3-4193-9dd8-e9a22066707c#34073-7"
+   ],
+   "drugs": [
+    "clopidogrel",
+    "pantoprazole"
+   ],
+   "note": "实测：pantoprazole 的相互作用节提到 clopidogrel；clopidogrel 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-colchicine",
+   "kind": "multi_section",
+   "question": "I'm taking colchicine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "5a0b4246-e7dd-29e5-e063-6294a90a2871#34068-7",
+    "5a0b4246-e7dd-29e5-e063-6294a90a2871#34073-7"
+   ],
+   "drugs": [
+    "colchicine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-alprazolam",
+   "kind": "cross_drug",
+   "question": "Both digoxin and alprazolam are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "a23063c0-099a-4256-b95f-3a857bbf704b#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "alprazolam"
+   ],
+   "note": "实测：alprazolam 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-cyclobenzaprine",
+   "kind": "multi_section",
+   "question": "I'm taking cyclobenzaprine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "71185d15-3fd7-42b7-83a6-8357e3aaef43#34068-7",
+    "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7"
+   ],
+   "drugs": [
+    "cyclobenzaprine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both digoxin and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-diltiazem",
+   "kind": "multi_section",
+   "question": "I'm taking diltiazem. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34068-7",
+    "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34073-7"
+   ],
+   "drugs": [
+    "diltiazem"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-atorvastatin",
+   "kind": "cross_drug",
+   "question": "Both digoxin and atorvastatin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "61c29f52-7dcd-44ac-a8aa-4f54f0901f04#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "atorvastatin"
+   ],
+   "note": "实测：atorvastatin 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-duloxetine",
+   "kind": "multi_section",
+   "question": "I'm taking duloxetine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34068-7",
+    "79bfd6be-a1ff-4786-b4e2-abbd0a3e3932#34073-7"
+   ],
+   "drugs": [
+    "duloxetine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-carvedilol",
+   "kind": "cross_drug",
+   "question": "Both digoxin and carvedilol are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "carvedilol"
+   ],
+   "note": "实测：carvedilol 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-empagliflozin",
+   "kind": "multi_section",
+   "question": "I'm taking empagliflozin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34068-7",
+    "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34073-7"
+   ],
+   "drugs": [
+    "empagliflozin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-colchicine",
+   "kind": "cross_drug",
+   "question": "Both digoxin and colchicine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "5a0b4246-e7dd-29e5-e063-6294a90a2871#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "colchicine"
+   ],
+   "note": "实测：colchicine 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-escitalopram",
+   "kind": "multi_section",
+   "question": "I'm taking escitalopram. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34068-7",
+    "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34073-7"
+   ],
+   "drugs": [
+    "escitalopram"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-esomeprazole",
+   "kind": "cross_drug",
+   "question": "Both digoxin and esomeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "992b1830-55cc-4e95-8d6d-e7f796d5b373#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "esomeprazole"
+   ],
+   "note": "实测：esomeprazole 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-esomeprazole",
+   "kind": "multi_section",
+   "question": "I'm taking esomeprazole. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "992b1830-55cc-4e95-8d6d-e7f796d5b373#34068-7",
+    "992b1830-55cc-4e95-8d6d-e7f796d5b373#34073-7"
+   ],
+   "drugs": [
+    "esomeprazole"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-levetiracetam",
+   "kind": "cross_drug",
+   "question": "Both digoxin and levetiracetam are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "levetiracetam"
+   ],
+   "note": "实测：levetiracetam 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-famotidine",
+   "kind": "multi_section",
+   "question": "I'm taking famotidine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "5b2e5af6-b1fe-25fc-e063-6394a90a9570#34068-7",
+    "5b2e5af6-b1fe-25fc-e063-6394a90a9570#34073-7"
+   ],
+   "drugs": [
+    "famotidine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-metformin",
+   "kind": "cross_drug",
+   "question": "Both digoxin and metformin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "metformin"
+   ],
+   "note": "实测：metformin 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-fluoxetine",
+   "kind": "multi_section",
+   "question": "I'm taking fluoxetine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34068-7",
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7"
+   ],
+   "drugs": [
+    "fluoxetine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-simvastatin",
+   "kind": "cross_drug",
+   "question": "Both digoxin and simvastatin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "3f6fad0b-0278-433f-86db-761b673a5803#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "simvastatin"
+   ],
+   "note": "实测：simvastatin 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-glipizide",
+   "kind": "multi_section",
+   "question": "I'm taking glipizide. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "6282c653-9e9c-6810-e053-2991aa0a4a8e#34068-7",
+    "6282c653-9e9c-6810-e053-2991aa0a4a8e#34073-7"
+   ],
+   "drugs": [
+    "glipizide"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-spironolactone",
+   "kind": "cross_drug",
+   "question": "Both digoxin and spironolactone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "8b76a904-6c99-485a-a05f-13a36c5f720c#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "spironolactone"
+   ],
+   "note": "实测：spironolactone 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-hydrochlorothiazide",
+   "kind": "multi_section",
+   "question": "I'm taking hydrochlorothiazide. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "206cd386-cf38-4e0f-80ec-685aea41b048#34068-7",
+    "206cd386-cf38-4e0f-80ec-685aea41b048#34073-7"
+   ],
+   "drugs": [
+    "hydrochlorothiazide"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-digoxin-trazodone",
+   "kind": "cross_drug",
+   "question": "Both digoxin and trazodone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dfac7f13-28be-423d-9389-9089da29da17#34073-7",
+    "614f2c6e-0bb7-43e0-85d8-5eef8eeae208#34073-7"
+   ],
+   "drugs": [
+    "digoxin",
+    "trazodone"
+   ],
+   "note": "实测：trazodone 的相互作用节提到 digoxin；digoxin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-insulin glargine",
+   "kind": "multi_section",
+   "question": "I'm taking insulin glargine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "3ac85ebb-5594-59c8-77fd-df254329d151#34068-7",
+    "3ac85ebb-5594-59c8-77fd-df254329d151#34073-7"
+   ],
+   "drugs": [
+    "insulin glargine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-diltiazem-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both diltiazem and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "diltiazem",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 diltiazem；diltiazem 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-lamotrigine",
+   "kind": "multi_section",
+   "question": "I'm taking lamotrigine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "dc6e6735-d49a-44d8-936d-7c33437bc59e#34068-7",
+    "dc6e6735-d49a-44d8-936d-7c33437bc59e#34073-7"
+   ],
+   "drugs": [
+    "lamotrigine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-diltiazem-carvedilol",
+   "kind": "cross_drug",
+   "question": "Both diltiazem and carvedilol are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "e8c8dd18-9d95-4068-9762-bec1eb1bc25c#34073-7",
+    "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7"
+   ],
+   "drugs": [
+    "diltiazem",
+    "carvedilol"
+   ],
+   "note": "实测：carvedilol 的相互作用节提到 diltiazem；diltiazem 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-levetiracetam",
+   "kind": "multi_section",
+   "question": "I'm taking levetiracetam. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34068-7",
+    "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34073-7"
+   ],
+   "drugs": [
+    "levetiracetam"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-fluoxetine-bupropion",
+   "kind": "cross_drug",
+   "question": "Both fluoxetine and bupropion are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "fluoxetine",
+    "bupropion"
+   ],
+   "note": "实测：bupropion 的相互作用节提到 fluoxetine；fluoxetine 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-levothyroxine",
+   "kind": "multi_section",
+   "question": "I'm taking levothyroxine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34068-7",
+    "6f4bc4be-17a7-4273-a8d9-a1ff036dea0e#34073-7"
+   ],
+   "drugs": [
+    "levothyroxine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-fluoxetine-insulin glargine",
+   "kind": "cross_drug",
+   "question": "Both fluoxetine and insulin glargine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7",
+    "3ac85ebb-5594-59c8-77fd-df254329d151#34073-7"
+   ],
+   "drugs": [
+    "fluoxetine",
+    "insulin glargine"
+   ],
+   "note": "实测：insulin glargine 的相互作用节提到 fluoxetine；fluoxetine 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-lisinopril",
+   "kind": "multi_section",
+   "question": "I'm taking lisinopril. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "9470b102-3c81-469a-a4c5-6816d9d39b07#34068-7",
+    "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7"
+   ],
+   "drugs": [
+    "lisinopril"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-fluoxetine-olanzapine",
+   "kind": "cross_drug",
+   "question": "Both fluoxetine and olanzapine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7",
+    "b7f27239-c22e-46d4-a313-50270cc19445#34073-7"
+   ],
+   "drugs": [
+    "fluoxetine",
+    "olanzapine"
+   ],
+   "note": "实测：olanzapine 的相互作用节提到 fluoxetine；fluoxetine 那边也提到 ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-lithium",
+   "kind": "multi_section",
+   "question": "I'm taking lithium. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34068-7",
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7"
+   ],
+   "drugs": [
+    "lithium"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-fluoxetine-risperidone",
+   "kind": "cross_drug",
+   "question": "Both fluoxetine and risperidone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7",
+    "3261e8cf-cc6e-4011-9246-aee623ad8971#34073-7"
+   ],
+   "drugs": [
+    "fluoxetine",
+    "risperidone"
+   ],
+   "note": "实测：risperidone 的相互作用节提到 fluoxetine；fluoxetine 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-lorazepam",
+   "kind": "multi_section",
+   "question": "I'm taking lorazepam. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "c0810422-b732-4c04-97d8-c1521c401ef4#34068-7",
+    "c0810422-b732-4c04-97d8-c1521c401ef4#34073-7"
+   ],
+   "drugs": [
+    "lorazepam"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-furosemide-metformin",
+   "kind": "cross_drug",
+   "question": "Both furosemide and metformin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7",
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7"
+   ],
+   "drugs": [
+    "furosemide",
+    "metformin"
+   ],
+   "note": "实测：metformin 的相互作用节提到 furosemide；furosemide 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-losartan",
+   "kind": "multi_section",
+   "question": "I'm taking losartan. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "021cd76a-b093-4704-8410-5e7d01e20a54#34068-7",
+    "021cd76a-b093-4704-8410-5e7d01e20a54#34073-7"
+   ],
+   "drugs": [
+    "losartan"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lamotrigine-valproic acid",
+   "kind": "cross_drug",
+   "question": "Both lamotrigine and valproic acid are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dc6e6735-d49a-44d8-936d-7c33437bc59e#34073-7",
+    "1edd220d-d151-4177-9a29-9fee36489fb7#34073-7"
+   ],
+   "drugs": [
+    "lamotrigine",
+    "valproic acid"
+   ],
+   "note": "实测：valproic acid 的相互作用节提到 lamotrigine；lamotrigine 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-metformin",
+   "kind": "multi_section",
+   "question": "I'm taking metformin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34068-7",
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7"
+   ],
+   "drugs": [
+    "metformin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both lithium and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-methotrexate",
+   "kind": "multi_section",
+   "question": "I'm taking methotrexate. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34068-7",
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34073-7"
+   ],
+   "drugs": [
+    "methotrexate"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-amlodipine",
+   "kind": "cross_drug",
+   "question": "Both lithium and amlodipine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "amlodipine"
+   ],
+   "note": "实测：amlodipine 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-metoprolol",
+   "kind": "multi_section",
+   "question": "I'm taking metoprolol. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "151079c5-6360-45ed-8118-885543d6a4ad#34068-7",
+    "151079c5-6360-45ed-8118-885543d6a4ad#34073-7"
+   ],
+   "drugs": [
+    "metoprolol"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-empagliflozin",
+   "kind": "cross_drug",
+   "question": "Both lithium and empagliflozin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "empagliflozin"
+   ],
+   "note": "实测：empagliflozin 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-olanzapine",
+   "kind": "multi_section",
+   "question": "I'm taking olanzapine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "b7f27239-c22e-46d4-a313-50270cc19445#34068-7",
+    "b7f27239-c22e-46d4-a313-50270cc19445#34073-7"
+   ],
+   "drugs": [
+    "olanzapine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-escitalopram",
+   "kind": "cross_drug",
+   "question": "Both lithium and escitalopram are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "escitalopram"
+   ],
+   "note": "实测：escitalopram 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-omeprazole",
+   "kind": "multi_section",
+   "question": "I'm taking omeprazole. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "54612d26-9e1a-1960-e063-6394a90a5784#34068-7",
+    "54612d26-9e1a-1960-e063-6394a90a5784#34073-7"
+   ],
+   "drugs": [
+    "omeprazole"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-furosemide",
+   "kind": "cross_drug",
+   "question": "Both lithium and furosemide are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "furosemide"
+   ],
+   "note": "实测：furosemide 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-pantoprazole",
+   "kind": "multi_section",
+   "question": "I'm taking pantoprazole. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "1bb94d3c-8bc3-4193-9dd8-e9a22066707c#34068-7",
+    "1bb94d3c-8bc3-4193-9dd8-e9a22066707c#34073-7"
+   ],
+   "drugs": [
+    "pantoprazole"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-hydrochlorothiazide",
+   "kind": "cross_drug",
+   "question": "Both lithium and hydrochlorothiazide are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "206cd386-cf38-4e0f-80ec-685aea41b048#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "hydrochlorothiazide"
+   ],
+   "note": "实测：hydrochlorothiazide 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-phenytoin",
+   "kind": "multi_section",
+   "question": "I'm taking phenytoin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34068-7",
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7"
+   ],
+   "drugs": [
+    "phenytoin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-insulin glargine",
+   "kind": "cross_drug",
+   "question": "Both lithium and insulin glargine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "3ac85ebb-5594-59c8-77fd-df254329d151#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "insulin glargine"
+   ],
+   "note": "实测：insulin glargine 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-quetiapine",
+   "kind": "multi_section",
+   "question": "I'm taking quetiapine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "b7aa0fce-1406-4665-a791-e30aed7b24ff#34068-7",
+    "b7aa0fce-1406-4665-a791-e30aed7b24ff#34073-7"
+   ],
+   "drugs": [
+    "quetiapine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-lisinopril",
+   "kind": "cross_drug",
+   "question": "Both lithium and lisinopril are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "9470b102-3c81-469a-a4c5-6816d9d39b07#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "lisinopril"
+   ],
+   "note": "实测：lisinopril 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-risperidone",
+   "kind": "multi_section",
+   "question": "I'm taking risperidone. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "3261e8cf-cc6e-4011-9246-aee623ad8971#34068-7",
+    "3261e8cf-cc6e-4011-9246-aee623ad8971#34073-7"
+   ],
+   "drugs": [
+    "risperidone"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-losartan",
+   "kind": "cross_drug",
+   "question": "Both lithium and losartan are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "021cd76a-b093-4704-8410-5e7d01e20a54#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "losartan"
+   ],
+   "note": "实测：losartan 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-rosuvastatin",
+   "kind": "multi_section",
+   "question": "I'm taking rosuvastatin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "cb942007-6ef1-4445-8dbd-6f4972148bf1#34068-7",
+    "cb942007-6ef1-4445-8dbd-6f4972148bf1#34073-7"
+   ],
+   "drugs": [
+    "rosuvastatin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-olanzapine",
+   "kind": "cross_drug",
+   "question": "Both lithium and olanzapine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "b7f27239-c22e-46d4-a313-50270cc19445#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "olanzapine"
+   ],
+   "note": "实测：olanzapine 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-sertraline",
+   "kind": "multi_section",
+   "question": "I'm taking sertraline. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "7efc1dd5-8671-4bed-9c16-ef6b9f36afc4#34068-7",
+    "7efc1dd5-8671-4bed-9c16-ef6b9f36afc4#34073-7"
+   ],
+   "drugs": [
+    "sertraline"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-spironolactone",
+   "kind": "cross_drug",
+   "question": "Both lithium and spironolactone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "8b76a904-6c99-485a-a05f-13a36c5f720c#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "spironolactone"
+   ],
+   "note": "实测：spironolactone 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-simvastatin",
+   "kind": "multi_section",
+   "question": "I'm taking simvastatin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "3f6fad0b-0278-433f-86db-761b673a5803#34068-7",
+    "3f6fad0b-0278-433f-86db-761b673a5803#34073-7"
+   ],
+   "drugs": [
+    "simvastatin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-lithium-venlafaxine",
+   "kind": "cross_drug",
+   "question": "Both lithium and venlafaxine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ff9baf45-830f-4a8a-8986-5caeaa1b38cf#34073-7",
+    "4b23e4bd-b6ab-42f2-b389-0be0b7e11b92#34073-7"
+   ],
+   "drugs": [
+    "lithium",
+    "venlafaxine"
+   ],
+   "note": "实测：venlafaxine 的相互作用节提到 lithium；lithium 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-sitagliptin",
+   "kind": "multi_section",
+   "question": "I'm taking sitagliptin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "64beb3d2-3aeb-4cd5-ba11-dacf6c9a5b50#34068-7",
+    "64beb3d2-3aeb-4cd5-ba11-dacf6c9a5b50#34073-7"
+   ],
+   "drugs": [
+    "sitagliptin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-metformin-empagliflozin",
+   "kind": "cross_drug",
+   "question": "Both metformin and empagliflozin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+    "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34073-7"
+   ],
+   "drugs": [
+    "metformin",
+    "empagliflozin"
+   ],
+   "note": "实测：empagliflozin 的相互作用节提到 metformin；metformin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-spironolactone",
+   "kind": "multi_section",
+   "question": "I'm taking spironolactone. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "8b76a904-6c99-485a-a05f-13a36c5f720c#34068-7",
+    "8b76a904-6c99-485a-a05f-13a36c5f720c#34073-7"
+   ],
+   "drugs": [
+    "spironolactone"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-metformin-sitagliptin",
+   "kind": "cross_drug",
+   "question": "Both metformin and sitagliptin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7",
+    "64beb3d2-3aeb-4cd5-ba11-dacf6c9a5b50#34073-7"
+   ],
+   "drugs": [
+    "metformin",
+    "sitagliptin"
+   ],
+   "note": "实测：sitagliptin 的相互作用节提到 metformin；metformin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-trazodone",
+   "kind": "multi_section",
+   "question": "I'm taking trazodone. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "614f2c6e-0bb7-43e0-85d8-5eef8eeae208#34068-7",
+    "614f2c6e-0bb7-43e0-85d8-5eef8eeae208#34073-7"
+   ],
+   "drugs": [
+    "trazodone"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-methotrexate-esomeprazole",
+   "kind": "cross_drug",
+   "question": "Both methotrexate and esomeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34073-7",
+    "992b1830-55cc-4e95-8d6d-e7f796d5b373#34073-7"
+   ],
+   "drugs": [
+    "methotrexate",
+    "esomeprazole"
+   ],
+   "note": "实测：esomeprazole 的相互作用节提到 methotrexate；methotrexate 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-valproic acid",
+   "kind": "multi_section",
+   "question": "I'm taking valproic acid. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "1edd220d-d151-4177-9a29-9fee36489fb7#34068-7",
+    "1edd220d-d151-4177-9a29-9fee36489fb7#34073-7"
+   ],
+   "drugs": [
+    "valproic acid"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-methotrexate-furosemide",
+   "kind": "cross_drug",
+   "question": "Both methotrexate and furosemide are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34073-7",
+    "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7"
+   ],
+   "drugs": [
+    "methotrexate",
+    "furosemide"
+   ],
+   "note": "实测：furosemide 的相互作用节提到 methotrexate；methotrexate 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-venlafaxine",
+   "kind": "multi_section",
+   "question": "I'm taking venlafaxine. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "4b23e4bd-b6ab-42f2-b389-0be0b7e11b92#34068-7",
+    "4b23e4bd-b6ab-42f2-b389-0be0b7e11b92#34073-7"
+   ],
+   "drugs": [
+    "venlafaxine"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-methotrexate-omeprazole",
+   "kind": "cross_drug",
+   "question": "Both methotrexate and omeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34073-7",
+    "54612d26-9e1a-1960-e063-6394a90a5784#34073-7"
+   ],
+   "drugs": [
+    "methotrexate",
+    "omeprazole"
+   ],
+   "note": "实测：omeprazole 的相互作用节提到 methotrexate；methotrexate 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-verapamil",
+   "kind": "multi_section",
+   "question": "I'm taking verapamil. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "d7a749d0-4ab3-4fbb-8d7b-e09d68413c41#34068-7",
+    "d7a749d0-4ab3-4fbb-8d7b-e09d68413c41#34073-7"
+   ],
+   "drugs": [
+    "verapamil"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-methotrexate-pantoprazole",
+   "kind": "cross_drug",
+   "question": "Both methotrexate and pantoprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34073-7",
+    "1bb94d3c-8bc3-4193-9dd8-e9a22066707c#34073-7"
+   ],
+   "drugs": [
+    "methotrexate",
+    "pantoprazole"
+   ],
+   "note": "实测：pantoprazole 的相互作用节提到 methotrexate；methotrexate 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-warfarin",
+   "kind": "multi_section",
+   "question": "I'm taking warfarin. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34068-7",
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7"
+   ],
+   "drugs": [
+    "warfarin"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-metoprolol-bupropion",
+   "kind": "cross_drug",
+   "question": "Both metoprolol and bupropion are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "151079c5-6360-45ed-8118-885543d6a4ad#34073-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "metoprolol",
+    "bupropion"
+   ],
+   "note": "实测：bupropion 的相互作用节提到 metoprolol；metoprolol 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardA-zolpidem",
+   "kind": "multi_section",
+   "question": "I'm taking zolpidem. What's the usual dose, and what other medicines should I avoid taking with it?",
+   "gold_cite_keys": [
+    "59cc61da-838e-4add-b2d6-42b2b283a000#34068-7",
+    "59cc61da-838e-4add-b2d6-42b2b283a000#34073-7"
+   ],
+   "drugs": [
+    "zolpidem"
+   ],
+   "note": "剂量 + 相互作用两节；答全必须引两条，K=1 必然缺一条"
+  },
+  {
+   "qid": "hardB-metoprolol-venlafaxine",
+   "kind": "cross_drug",
+   "question": "Both metoprolol and venlafaxine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "151079c5-6360-45ed-8118-885543d6a4ad#34073-7",
+    "4b23e4bd-b6ab-42f2-b389-0be0b7e11b92#34073-7"
+   ],
+   "drugs": [
+    "metoprolol",
+    "venlafaxine"
+   ],
+   "note": "实测：venlafaxine 的相互作用节提到 metoprolol；metoprolol 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-olanzapine-fluoxetine",
+   "kind": "cross_drug",
+   "question": "Both olanzapine and fluoxetine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "b7f27239-c22e-46d4-a313-50270cc19445#34073-7",
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7"
+   ],
+   "drugs": [
+    "olanzapine",
+    "fluoxetine"
+   ],
+   "note": "实测：fluoxetine 的相互作用节提到 olanzapine；olanzapine 那边也提到 ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-olanzapine-insulin glargine",
+   "kind": "cross_drug",
+   "question": "Both olanzapine and insulin glargine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "b7f27239-c22e-46d4-a313-50270cc19445#34073-7",
+    "3ac85ebb-5594-59c8-77fd-df254329d151#34073-7"
+   ],
+   "drugs": [
+    "olanzapine",
+    "insulin glargine"
+   ],
+   "note": "实测：insulin glargine 的相互作用节提到 olanzapine；olanzapine 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-bupropion",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and bupropion are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "bupropion"
+   ],
+   "note": "实测：bupropion 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-empagliflozin",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and empagliflozin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "0fdd0255-0055-65f3-b2c0-db8fbb87beae#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "empagliflozin"
+   ],
+   "note": "实测：empagliflozin 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-fluoxetine",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and fluoxetine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "fluoxetine"
+   ],
+   "note": "实测：fluoxetine 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-furosemide",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and furosemide are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "ab1a7e16-f746-41af-8faf-b69d3ffd62ba#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "furosemide"
+   ],
+   "note": "实测：furosemide 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-glipizide",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and glipizide are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "6282c653-9e9c-6810-e053-2991aa0a4a8e#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "glipizide"
+   ],
+   "note": "实测：glipizide 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-lamotrigine",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and lamotrigine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "dc6e6735-d49a-44d8-936d-7c33437bc59e#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "lamotrigine"
+   ],
+   "note": "实测：lamotrigine 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-levetiracetam",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and levetiracetam are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "levetiracetam"
+   ],
+   "note": "实测：levetiracetam 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-metformin",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and metformin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "ded33248-44ef-45f6-a461-24b35772a1b2#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "metformin"
+   ],
+   "note": "实测：metformin 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-methotrexate",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and methotrexate are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "dd035a9f-cd40-4314-b9d8-2294b8a924e2#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "methotrexate"
+   ],
+   "note": "实测：methotrexate 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-omeprazole",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and omeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "54612d26-9e1a-1960-e063-6394a90a5784#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "omeprazole"
+   ],
+   "note": "实测：omeprazole 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-quetiapine",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and quetiapine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "b7aa0fce-1406-4665-a791-e30aed7b24ff#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "quetiapine"
+   ],
+   "note": "实测：quetiapine 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-sitagliptin",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and sitagliptin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "64beb3d2-3aeb-4cd5-ba11-dacf6c9a5b50#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "sitagliptin"
+   ],
+   "note": "实测：sitagliptin 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-trazodone",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and trazodone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "614f2c6e-0bb7-43e0-85d8-5eef8eeae208#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "trazodone"
+   ],
+   "note": "实测：trazodone 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-phenytoin-valproic acid",
+   "kind": "cross_drug",
+   "question": "Both phenytoin and valproic acid are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "46d5c0d1-a97b-46d9-8cf4-994780673337#34073-7",
+    "1edd220d-d151-4177-9a29-9fee36489fb7#34073-7"
+   ],
+   "drugs": [
+    "phenytoin",
+    "valproic acid"
+   ],
+   "note": "实测：valproic acid 的相互作用节提到 phenytoin；phenytoin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-risperidone-bupropion",
+   "kind": "cross_drug",
+   "question": "Both risperidone and bupropion are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "3261e8cf-cc6e-4011-9246-aee623ad8971#34073-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "risperidone",
+    "bupropion"
+   ],
+   "note": "实测：bupropion 的相互作用节提到 risperidone；risperidone 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-sertraline-bupropion",
+   "kind": "cross_drug",
+   "question": "Both sertraline and bupropion are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "7efc1dd5-8671-4bed-9c16-ef6b9f36afc4#34073-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "sertraline",
+    "bupropion"
+   ],
+   "note": "实测：bupropion 的相互作用节提到 sertraline；sertraline 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-simvastatin-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both simvastatin and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "3f6fad0b-0278-433f-86db-761b673a5803#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "simvastatin",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 simvastatin；simvastatin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-simvastatin-amlodipine",
+   "kind": "cross_drug",
+   "question": "Both simvastatin and amlodipine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "3f6fad0b-0278-433f-86db-761b673a5803#34073-7",
+    "13ecf91f-dce8-4262-a54a-7bef2b1591c3#34073-7"
+   ],
+   "drugs": [
+    "simvastatin",
+    "amlodipine"
+   ],
+   "note": "实测：amlodipine 的相互作用节提到 simvastatin；simvastatin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-simvastatin-colchicine",
+   "kind": "cross_drug",
+   "question": "Both simvastatin and colchicine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "3f6fad0b-0278-433f-86db-761b673a5803#34073-7",
+    "5a0b4246-e7dd-29e5-e063-6294a90a2871#34073-7"
+   ],
+   "drugs": [
+    "simvastatin",
+    "colchicine"
+   ],
+   "note": "实测：colchicine 的相互作用节提到 simvastatin；simvastatin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-valproic acid-levetiracetam",
+   "kind": "cross_drug",
+   "question": "Both valproic acid and levetiracetam are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "1edd220d-d151-4177-9a29-9fee36489fb7#34073-7",
+    "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34073-7"
+   ],
+   "drugs": [
+    "valproic acid",
+    "levetiracetam"
+   ],
+   "note": "实测：levetiracetam 的相互作用节提到 valproic acid；valproic acid 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-venlafaxine-bupropion",
+   "kind": "cross_drug",
+   "question": "Both venlafaxine and bupropion are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "4b23e4bd-b6ab-42f2-b389-0be0b7e11b92#34073-7",
+    "82872e51-3349-40fe-8ea3-496751955fed#34073-7"
+   ],
+   "drugs": [
+    "venlafaxine",
+    "bupropion"
+   ],
+   "note": "实测：bupropion 的相互作用节提到 venlafaxine；venlafaxine 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-verapamil-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both verapamil and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "d7a749d0-4ab3-4fbb-8d7b-e09d68413c41#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "verapamil",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 verapamil；verapamil 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-verapamil-carvedilol",
+   "kind": "cross_drug",
+   "question": "Both verapamil and carvedilol are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "d7a749d0-4ab3-4fbb-8d7b-e09d68413c41#34073-7",
+    "d7d6bfff-fbb6-4a1f-aa13-babbb9a1e878#34073-7"
+   ],
+   "drugs": [
+    "verapamil",
+    "carvedilol"
+   ],
+   "note": "实测：carvedilol 的相互作用节提到 verapamil；verapamil 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-verapamil-cyclobenzaprine",
+   "kind": "cross_drug",
+   "question": "Both verapamil and cyclobenzaprine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "d7a749d0-4ab3-4fbb-8d7b-e09d68413c41#34073-7",
+    "71185d15-3fd7-42b7-83a6-8357e3aaef43#34073-7"
+   ],
+   "drugs": [
+    "verapamil",
+    "cyclobenzaprine"
+   ],
+   "note": "实测：cyclobenzaprine 的相互作用节提到 verapamil；verapamil 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-amiodarone",
+   "kind": "cross_drug",
+   "question": "Both warfarin and amiodarone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "4c149392-a4f0-4e2d-a13f-2b94810005de#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "amiodarone"
+   ],
+   "note": "实测：amiodarone 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-clopidogrel",
+   "kind": "cross_drug",
+   "question": "Both warfarin and clopidogrel are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "669f0bc6-f173-484d-8efe-c006683b25d1#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "clopidogrel"
+   ],
+   "note": "实测：clopidogrel 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-escitalopram",
+   "kind": "cross_drug",
+   "question": "Both warfarin and escitalopram are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "d75e3b97-1ead-4e7b-9ae3-3626aede1efd#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "escitalopram"
+   ],
+   "note": "实测：escitalopram 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-esomeprazole",
+   "kind": "cross_drug",
+   "question": "Both warfarin and esomeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "992b1830-55cc-4e95-8d6d-e7f796d5b373#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "esomeprazole"
+   ],
+   "note": "实测：esomeprazole 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-fluoxetine",
+   "kind": "cross_drug",
+   "question": "Both warfarin and fluoxetine are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "58b39e6a-3aae-4551-b081-586a4506aef2#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "fluoxetine"
+   ],
+   "note": "实测：fluoxetine 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-levetiracetam",
+   "kind": "cross_drug",
+   "question": "Both warfarin and levetiracetam are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "8bf7c1ce-dfc4-457f-8a8b-365f82aa8512#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "levetiracetam"
+   ],
+   "note": "实测：levetiracetam 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-omeprazole",
+   "kind": "cross_drug",
+   "question": "Both warfarin and omeprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "54612d26-9e1a-1960-e063-6394a90a5784#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "omeprazole"
+   ],
+   "note": "实测：omeprazole 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-pantoprazole",
+   "kind": "cross_drug",
+   "question": "Both warfarin and pantoprazole are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "1bb94d3c-8bc3-4193-9dd8-e9a22066707c#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "pantoprazole"
+   ],
+   "note": "实测：pantoprazole 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-rosuvastatin",
+   "kind": "cross_drug",
+   "question": "Both warfarin and rosuvastatin are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "cb942007-6ef1-4445-8dbd-6f4972148bf1#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "rosuvastatin"
+   ],
+   "note": "实测：rosuvastatin 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-sertraline",
+   "kind": "cross_drug",
+   "question": "Both warfarin and sertraline are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "7efc1dd5-8671-4bed-9c16-ef6b9f36afc4#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "sertraline"
+   ],
+   "note": "实测：sertraline 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-trazodone",
+   "kind": "cross_drug",
+   "question": "Both warfarin and trazodone are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "614f2c6e-0bb7-43e0-85d8-5eef8eeae208#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "trazodone"
+   ],
+   "note": "实测：trazodone 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  },
+  {
+   "qid": "hardB-warfarin-valproic acid",
+   "kind": "cross_drug",
+   "question": "Both warfarin and valproic acid are on my medicine list. Does each label warn about the other one?",
+   "gold_cite_keys": [
+    "ecd271ad-765e-4ac5-99f4-2e9c6e466336#34073-7",
+    "1edd220d-d151-4177-9a29-9fee36489fb7#34073-7"
+   ],
+   "drugs": [
+    "warfarin",
+    "valproic acid"
+   ],
+   "note": "实测：valproic acid 的相互作用节提到 warfarin；warfarin 那边**没提到** ⇒ 不对称"
+  }
+ ],
+ "_dropped": [
+  [
+   "A:digoxin",
+   "剂量节太短或缺"
+  ],
+  [
+   "A:furosemide",
+   "剂量节太短或缺"
+  ],
+  [
+   "A:gabapentin",
+   "相互作用节太短或缺"
+  ]
+ ]
+}

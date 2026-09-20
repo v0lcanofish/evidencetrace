@@ -228,12 +228,45 @@ class HybridRetriever:
         #        agent 会收到"这节没东西"的**错误信号**。E7 的 docstring 警告过这个坑，
         #        但当时只改了排序、没改候选丢失。）
         if restrict:
-            allow = self._allowed_indices(restrict)
-            sub = [i for i in allow]
+            # ⭐⭐ 9/19 改：**drug 维度保持硬过滤，loincs 维度从硬过滤改成加权**
+            #
+            # 为什么改（实测，隔离了 agent 只测检索本身）：
+            #   ① 不限定            → gold 命中 2/2
+            #   ② 限定 drug+loincs  → gold 命中 **1/2**  ← 限定反而更差
+            #   ③ 只限定 drug       → gold 命中 2/2
+            #
+            # 病根：`loincs` 硬过滤会**物理挡住**定位器没识别出的章节。
+            #   例："I'm taking allopurinol. What's the usual dose, and what other
+            #        medicines should I avoid taking with it?"
+            #   → 关键词表只有 "take it with"，这句是 "taking with it"，没命中 interaction
+            #   → loincs = [禁忌, 剂量]，**相互作用节整个被挡在池子外**
+            #   → 而它正是 gold 之一。排序、K、模型能力，全都救不回来。
+            #
+            # 定位器不可能覆盖所有自然问法 ⇒ 硬过滤**天生脆弱**：漏一个意图就永久失联。
+            # 改成加权后：定位到的章节**排在前面**（保留结构先验的价值），
+            # 但其它章节仍可达 —— 漏判的代价从"gold 永远拿不到"降到"排得靠后一点"。
+            #
+            # ⚠️ base 那 60 题从没暴露这个洞：它的 direct/paraphrase **都是同一批模板的变体**，
+            #    问法刚好全在关键词表覆盖内。**换评测集 = 换了一次压力测试。**
+            # drug 允许是**字符串或列表**：跨药问题（"我在吃 A 和 B"）要把两边的块都留下，
+            # 只留一个药会把它自己的 gold 硬过滤掉（实测 cross_drug 那批 gold 进池率 41%）。
+            _d = restrict.get("drug")
+            drugs = ({_d.lower()} if isinstance(_d, str) else {str(x).lower() for x in (_d or [])})
+            loincs = set(restrict.get("loincs") or [])
+            sub = [i for i, c in enumerate(self.chunks)
+                   if (not drugs or (c.drug or "").lower() in drugs)]
+            if not sub:                       # drug 限定到空 → 退回原来的硬口径，别凭空造候选
+                sub = list(self._allowed_indices(restrict))
             dsc = self._dense_scores(query) if self.dense else {}
             bsc = self.bm25.score_all(query)
-            ordered = sorted(sub, key=lambda i: (-dsc.get(i, 0.0), -bsc.get(i, 0.0), i))
-            self.last_trace = {"query": query, "mode": "restrict", "locate": loc,
+
+            def _soft_key(i: int):
+                c = self.chunks[i]
+                return (0 if (loincs and c.loinc in loincs) else 1,   # 定位章节优先
+                        -dsc.get(i, 0.0), -bsc.get(i, 0.0), i)        # 同档再按相关度，最后保持原序
+
+            ordered = sorted(sub, key=_soft_key)
+            self.last_trace = {"query": query, "mode": "restrict_soft", "locate": loc,
                                "restrict": restrict, "n_candidates": len(ordered), "k": k}
             return [self.chunks[i] for i in ordered[:k]], self.last_trace
 

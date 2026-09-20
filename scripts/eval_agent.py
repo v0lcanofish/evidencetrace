@@ -43,9 +43,9 @@ from typing import Dict, List
 PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 
-
 from ledger.ledger import Ledger, LedgerError, ACTIONS                      # noqa: E402
-from agent.mocks import MockLLM, MockRetriever, GroundedMockLLM             # noqa: E402
+from agent.mocks import MockLLM, MockRetriever# noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.state import AgentState, A_SEARCH, A_ASK, A_ANSWER, A_ABSTAIN    # noqa: E402
 from agent.tools import ToolBox, ScriptedUser                               # noqa: E402
 from retrieval import make_retriever                                         # noqa: E402
@@ -55,18 +55,15 @@ RET_SET = PROJECT / "data" / "eval" / "retrieval_set.json"
 
 _fails: List[str] = []
 
-
 def check(cond, label, detail=""):
     print(f"   {'[OK]' if cond else '[!!]'} {label}" + (f"  —— {detail}" if detail else ""))
     if not cond:
         _fails.append(label)
     return cond
 
-
 def _new_box(retriever, question="test", user=None, llm=None):
     lg = Ledger("test", question, seed=0)
     return lg, ToolBox(retriever=retriever, ledger=lg, user=user, llm=llm)
-
 
 # ================================================================ ① 定位
 
@@ -94,7 +91,6 @@ def part_locate(labels) -> Dict:
           f"warfarin 妊娠问题落在 {r3.payload.get('loincs')}")
     return {"locate_rate": None}
 
-
 # ================================================================ ② 限定检索
 
 def hit_rank(docs, drug, loincs, k=5):
@@ -102,7 +98,6 @@ def hit_rank(docs, drug, loincs, k=5):
         if d.drug == drug and d.loinc in loincs:
             return d.rank
     return 0
-
 
 def part_restrict(labels, rows) -> Dict:
     print("\n② search 的 restrict —— 「先卡章节再排序」 vs 「先排序再过滤」")
@@ -136,20 +131,30 @@ def part_restrict(labels, rows) -> Dict:
         print(f"   一个实例：{example[0][:60]}")
         print(f"       限定 {example[1]} 的 {example[2]} → 找得到；先排后滤 → 被 top-k 截没了")
 
-    # ⭐ 限定要真的**限定**：返回的每一条都得在候选集里
+    # ⭐ 限定要真的**限定** —— 但两个维度的力度不同（9/19 改，见 retrieval/hybrid.py）：
+    #      drug  ：**硬过滤**，返回的每一条都得是这个药
+    #      loincs：**加权**，定位章节排最前，但**不再把其它章节挡在外面**
+    #
+    # ⚠️ 旧断言是"5 条全都得在 metformin/34070-3"，编码的是硬过滤语义。
+    #    改成软约束的理由是**实测的**：loincs 硬过滤会把定位器**没识别出的**章节
+    #    物理挡在池子外 —— 而那些章节里可能就是 gold，排序、K、模型全都救不回来。
+    #    （hard_set 的 cross_drug 那批：gold 进池率 硬过滤 41% → 软约束 55%。）
     lg, tb = _new_box(r)
     res = tb.search("metformin kidney disease",
                     restrict={"drug": "metformin", "loincs": ["34070-3"]})
-    check(res.ok and all(d.drug == "metformin" and d.loinc == "34070-3"
-                         for d in res.payload),
-          f"限定后返回 {len(res.payload)} 条，全部落在 metformin/34070-3")
+    paid = res.payload or []
+    check(res.ok and paid and all(d.drug == "metformin" for d in paid),
+          f"限定后返回 {len(paid)} 条，**全部是 metformin**（drug 维度仍是硬过滤）")
+    check(bool(paid) and paid[0].loinc == "34070-3",
+          f"定位章节 34070-3 排在**最前面**（实测第 1 条 = "
+          f"{paid[0].loinc if paid else '—'}）",
+          "软约束：定位章节优先，但不把其它章节挡在外面")
 
     res_other = tb.search("metformin kidney disease",
                           restrict={"drug": "ibuprofen", "loincs": ["34073-7"]})
     check(not any(d.drug == "ibuprofen" for d in (res_other.payload or [])),
           "限定到 ibuprofen 时不会漏出 metformin 的章节", res_other.note)
     return {"restrict": ra, "filter_after": rb, "n_rows": n}
-
 
 # ================================================================ ③ 去重
 
@@ -175,7 +180,6 @@ def part_dedup(labels) -> Dict:
     print(f"   换 query 再查：{c.note}")
 
     return {"dup_note": b.note}
-
 
 # ================================================================ ④ 问用户
 
@@ -205,7 +209,6 @@ def part_ask() -> Dict:
     check(lg.steps[0].action == "ask" and lg.steps[0].query == "Do you have any kidney conditions?",
           "账本记下了问了什么")
     return {}
-
 
 # ================================================================ ⑤ 作答 / 拒答
 
@@ -242,7 +245,6 @@ def part_answer_abstain() -> Dict:
         check(True, f"拒答不写理由被拦住了", str(e)[:46])
     return {}
 
-
 # ================================================================ ⑥ 成本
 
 def part_cost() -> Dict:
@@ -259,15 +261,13 @@ def part_cost() -> Dict:
           "问用户和检索一样贵（打扰用户 = 一次真实代价）")
     return {"cost_table": dict(tb.cost_map)}
 
-
 # ================================================================ ⑦ 循环
 
 def _mk_loop(retriever, llm=None, policy=None, cfg=None):
     from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory
     from agent.policy import RulePolicy
-    return AgentLoop(make_toolbox_factory(retriever, llm=llm or GroundedMockLLM(), top_k=5),
+    return AgentLoop(make_toolbox_factory(retriever, llm=llm or make_generator(), top_k=5),
                      policy or RulePolicy(), cfg or LoopConfig(budget=8))
-
 
 def part_loop_e2e(labels) -> Dict:
     print("\n⑦ AgentLoop · 端到端 —— agent 自己走完一整轮")
@@ -288,7 +288,6 @@ def part_loop_e2e(labels) -> Dict:
     check(st.cost_spent == 8 - loop.last_state.budget,
           f"预算账对得上：花了 {st.cost_spent}")
     return {"e2e_actions": st.n_actions, "claims": st.n_claims}
-
 
 # ================================================================ ⑧ 刹车
 
@@ -329,11 +328,9 @@ def part_loop_brakes(labels) -> Dict:
           "刹车收尾照样写进账本（「为什么会停」本身是数据）")
     return {}
 
-
 # ================================================================ ⑨ 域外 / 拒答
 
 OOD_Q = "What is the price of tea in China?"        # 域外问题：语料里一个字都不沾
-
 
 def part_loop_abstain(labels) -> Dict:
     print("\n⑨ AgentLoop · 域外问题与拒答路径（该说不知道时必须敢说）")
@@ -374,7 +371,6 @@ def part_loop_abstain(labels) -> Dict:
         check(False, "拒答路径闭包检查异常", str(e)[:50])
     return {}
 
-
 # ================================================================ ⑩ 问用户
 
 def part_loop_ask(labels) -> Dict:
@@ -401,7 +397,6 @@ def part_loop_ask(labels) -> Dict:
           "用户口述**没有**混进 evidence（口述没有出处，不能当引用）")
     print(f"       账本动作序列：{acts}")
     return {"n_ask": st.n_ask}
-
 
 # ================================================================ ⑩b 规则策略的病
 
@@ -446,7 +441,6 @@ def part_rule_pathology(labels) -> Dict:
     print("       规则策略做不到 —— 它的状态里**没有「药品对不对」这一项**。")
     print("       → E8 的证据槽位要补的正是这个（槽位 = 药品 / 条件 / 关系）")
     return {"pathology": "rule-cannot-check-drug-identity"}
-
 
 # ================================================================ ⑪ 坏引用
 
@@ -528,7 +522,6 @@ def part_loop_closure(labels) -> Dict:
     check(not bad3, "放宽模式下：不炸，且账本依然干净", f"坏引用 {len(bad3)} 条")
     return {}
 
-
 # ================================================================ ⑫ 可复现
 
 def part_loop_repro(labels) -> Dict:
@@ -541,7 +534,6 @@ def part_loop_repro(labels) -> Dict:
     check(a == b, "两次跑完全一致（整条循环是确定性的）",
           "不确定的循环没法做三档对照实验")
     return {}
-
 
 # ================================================================ 主
 
@@ -586,7 +578,6 @@ def main() -> int:
     print(f"   · 动作空间（封闭）：{ACTIONS}")
     print("=" * 78)
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

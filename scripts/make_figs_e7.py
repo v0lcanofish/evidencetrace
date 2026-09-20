@@ -21,7 +21,6 @@
     一句话：上面板说明**基线的病**，下面板说明**机制是真的**。
 """
 
-
 import sys
 
 # ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
@@ -49,10 +48,9 @@ FIGS = PROJECT / "reports" / "figs"
 FIGS.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(PROJECT))
 
-
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory       # noqa: E402
 from agent.policy import RulePolicy                                      # noqa: E402
-from agent.mocks import GroundedMockLLM                                  # noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.state import Action, A_SEARCH                                 # noqa: E402
 from agent.tools import ScriptedUser                                     # noqa: E402
 from retrieval import BM25Retriever                                      # noqa: E402
@@ -72,7 +70,6 @@ LABEL_CN = {
 }
 OOD_Q = "What is the price of tea in China?"
 
-
 class StuckPolicy:
     """故意写坏的策略：永远提同一个动作。用来验打转刹车是真的。"""
     name = "stuck"
@@ -80,15 +77,13 @@ class StuckPolicy:
     def __call__(self, state):
         return Action(A_SEARCH, {"query": "warfarin interaction"})
 
-
 # ---------------------------------------------------------------- 跑数据
 
 def run_one(retriever, question, policy=None, cfg=None, user=None):
-    loop = AgentLoop(make_toolbox_factory(retriever, llm=GroundedMockLLM(), top_k=5),
+    loop = AgentLoop(make_toolbox_factory(retriever, llm=make_generator(), top_k=5),
                      policy or RulePolicy(), cfg or LoopConfig(budget=8))
     loop.run(question, run_id="fig", user=user)
     return [t.action for t in loop.last_state.tried], loop.last_stats
-
 
 def collect(retriever, questions):
     rows = []
@@ -100,7 +95,6 @@ def collect(retriever, questions):
                      "n_evidence": st.n_evidence, "n_claims": st.n_claims,
                      "malformed": st.malformed})
     return rows
-
 
 def collect_configs(retriever, q0):
     """同一批题/同一个循环，只换策略或预算 —— 行为立刻不同。"""
@@ -126,7 +120,6 @@ def collect_configs(retriever, q0):
                        ScriptedUser({"conditions": ["peptic ulcer"]}))
     outs.append(("域外问题 · 有用户", acts, st.terminated_by, "问了也补不上证据 → 仍拒答"))
     return outs
-
 
 # ---------------------------------------------------------------- 画
 
@@ -159,7 +152,6 @@ def draw_strip(ax, labels, seqs, term_by, title, notes=None, row_h=1.0):
     ax.set_title(title, fontsize=10.5, fontweight="bold", loc="left", pad=8)
     for s in ("top", "right", "left"):
         ax.spines[s].set_visible(False)
-
 
 def main() -> int:
     labels = json.loads((PROJECT / "data" / "labels.json").read_text(encoding="utf-8"))["labels"]
@@ -227,7 +219,6 @@ def main() -> int:
     for c in cfgs:
         print(f"   {c[0]:<24} 终止={c[2]:<11} {c[3]}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

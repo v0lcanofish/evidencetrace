@@ -89,7 +89,7 @@ class RulePolicy(Policy):
         # R2 限定检索：只在定位到的那份药的、那几个章节里查
         loc = state.located or {}
         if loc.get("loincs"):
-            arg = {"query": q, "restrict": {"drug": loc.get("drug"),
+            arg = {"query": q, "restrict": {"drug": loc.get("drugs") or loc.get("drug"),
                                             "loincs": list(loc["loincs"])}}
             if not state.has_tried(A_SEARCH, arg):
                 return Action(A_SEARCH, arg)
@@ -218,7 +218,7 @@ class CoveragePolicy(Policy):
 
         # R3 还没有证据 → 用定位到的章节做**精确检索**（精度最高的一步）
         if not state.evidence and loc.get("loincs"):
-            arg = {"query": q, "restrict": {"drug": loc.get("drug"),
+            arg = {"query": q, "restrict": {"drug": loc.get("drugs") or loc.get("drug"),
                                             "loincs": list(loc["loincs"])}}
             if not state.has_tried(A_SEARCH, arg):
                 return Action(A_SEARCH, arg,
@@ -232,7 +232,7 @@ class CoveragePolicy(Policy):
 
         # R5 定位有结果但还没按它查过
         if loc.get("loincs"):
-            arg = {"query": q, "restrict": {"drug": loc.get("drug"),
+            arg = {"query": q, "restrict": {"drug": loc.get("drugs") or loc.get("drug"),
                                             "loincs": list(loc["loincs"])}}
             if not state.has_tried(A_SEARCH, arg):
                 return Action(A_SEARCH, arg, note=note + "  ｜补一次限定检索")

@@ -38,6 +38,7 @@ sys.path.insert(0, str(_PROJECT))
 from agent.coverage import compute_coverage, corpus_drugs_from, question_terms  # noqa: E402
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory             # noqa: E402
 from agent.mocks import GroundedMockLLM                                        # noqa: E402
+from agent.generator import generator_name, make_generator, real_enabled   # noqa: E402
 from agent.policy import CoveragePolicy                                        # noqa: E402
 from agent.report import build_evidence_block, looks_like_abstention           # noqa: E402
 from retrieval import make_retriever                                           # noqa: E402
@@ -45,7 +46,6 @@ from retrieval import make_retriever                                           #
 LABELS = _PROJECT / "data" / "labels.json"
 R_SET = _PROJECT / "data" / "eval" / "retrieval_set.json"
 N = 60
-
 
 def pool_row(question: str, gold: str, docs, located, known_drugs) -> dict:
     """一条题的证据池结构。**纯测量，不做任何剪裁。**"""
@@ -79,14 +79,13 @@ def pool_row(question: str, gold: str, docs, located, known_drugs) -> dict:
         "pool_secs": Counter(d.section[:26] for d in docs).most_common(),
     }
 
-
 def main() -> int:
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
     r = make_retriever(labels, use_locator=True)
     known = corpus_drugs_from(r)
     rows = json.loads(R_SET.read_text(encoding="utf-8"))["rows"][:N]
 
-    loop = AgentLoop(make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5),
+    loop = AgentLoop(make_toolbox_factory(r, llm=make_generator(), top_k=5),
                      CoveragePolicy(), LoopConfig(budget=8))
 
     bad = []
@@ -100,13 +99,13 @@ def main() -> int:
             continue
         bad.append((row, st, pool_row(q, gold, st.evidence, st.located, known)))
 
-    print("=" * 88)
-    print(f"归因非 none 的题：{len(bad)} 条（策略=CoveragePolicy, 生成器=GroundedMockLLM）")
-    print("=" * 88)
+    print(f"=" * 88)
+    print(f"归因非 none 的题：{len(bad)} 条（策略=CoveragePolicy, 生成器={generator_name(real_enabled())}）")
+    print(f"=" * 88)
 
     print(f"\n{'#':<3}{'池子':>5}{'同药':>5}{'异药':>5}{'定位节':>6}"
           f"{'gold同药':>9}{'gold定位节':>10}{'gold位置':>9}{'gold分':>7}{'最高分':>7}{'gold是argmax':>13}")
-    print("-" * 88)
+    print(f"-" * 88)
     for i, (row, st, p) in enumerate(bad, 1):
         print(f"{i:<3}{p['n_pool']:>5}{p['n_in_scope']:>5}{p['n_out_scope']:>5}"
               f"{p['n_in_located']:>6}"
@@ -114,9 +113,9 @@ def main() -> int:
               f"{str(p['gold_pos']):>9}{str(p['gold_overlap']):>7}{p['max_overlap']:>7}"
               f"{str(p['gold_is_argmax']):>13}")
 
-    print("\n" + "=" * 88)
-    print("逐条现场")
-    print("=" * 88)
+    print(f"\n" + "=" * 88)
+    print(f"逐条现场")
+    print(f"=" * 88)
     for i, (row, st, p) in enumerate(bad, 1):
         abst = looks_like_abstention(st.answer_text or "")
         print(f"\n[{i}] {p['q']}")
@@ -135,9 +134,9 @@ def main() -> int:
     n_argmax = sum(1 for _, _, p in bad if p["gold_is_argmax"])
     n_abs = sum(1 for _, st, _ in bad if looks_like_abstention(st.answer_text or ""))
 
-    print("\n" + "=" * 88)
-    print("汇总（前三条与生成器无关，是系统事实；第四条依赖生成器）")
-    print("=" * 88)
+    print(f"\n" + "=" * 88)
+    print(f"汇总（前三条与生成器无关，是系统事实；第四条依赖生成器）")
+    print(f"=" * 88)
     print(f"  · 池子里混进**别的药**的题：        {n_out}/{len(bad)}")
     print(f"  · gold 被埋在池子第 5 条以后的题：  {n_gold_lost_pos}/{len(bad)}"
           f"    ← 「只增不减」的直接后果")
@@ -148,7 +147,6 @@ def main() -> int:
     print(f"  · 其中结局是拒答的：                {n_abs}/{len(bad)}"
           f"    ← 需单独报，`attribute()` 的拒答必然落进 utilization")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

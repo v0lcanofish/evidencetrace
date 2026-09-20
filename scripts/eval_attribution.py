@@ -48,7 +48,7 @@ if str(_PROJECT) not in sys.path:
     sys.path.insert(0, str(_PROJECT))
 
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory   # noqa: E402
-from agent.mocks import GroundedMockLLM                               # noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.policy import CoveragePolicy                               # noqa: E402
 from agent.report import looks_like_abstention                        # noqa: E402
 from ledger.ledger import Ledger, Claim, Doc, Step                    # noqa: E402
@@ -58,11 +58,9 @@ LABELS = _PROJECT / "data" / "labels.json"
 R_SET = _PROJECT / "data" / "eval" / "retrieval_set.json"
 N_RUN = 60          # 跑多少条真实题（全量，几十秒内）
 
-
 def _mk_loop(r):
-    return AgentLoop(make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5),
+    return AgentLoop(make_toolbox_factory(r, llm=make_generator(), top_k=5),
                      CoveragePolicy(), LoopConfig(budget=8))
-
 
 def _run_dist(r, rows):
     """
@@ -83,7 +81,6 @@ def _run_dist(r, rows):
         if res["layer"] != "none" and looks_like_abstention(lp.last_stats.answer_text or ""):
             n_abstain += 1
     return layers, dist, n_abstain
-
 
 # ================================================================ ① 三种故障注入
 def injected_cases():
@@ -135,7 +132,6 @@ def injected_cases():
     lg.add_claim(Claim(claim_id="c1", text="t", cite=[d_other.cite_key]))
     out.append(("引错章节（同药不同节）", lg, gold, False, "retrieval"))
     return out
-
 
 def main() -> int:
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
@@ -237,7 +233,6 @@ def main() -> int:
     print("✅ E13 判据全过：三层指认准、建议不混、分布不漏题、答对不虚报")
     print("=" * 78)
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

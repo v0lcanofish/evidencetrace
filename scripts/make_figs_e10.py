@@ -11,7 +11,6 @@
 跑法：PYTHONIOENCODING=utf-8 python scripts/make_figs_e10.py
 """
 
-
 import sys
 
 # ⚠️ Windows 中文控制台默认 GBK：不设这个，print("⭐") 会抛 UnicodeEncodeError
@@ -41,7 +40,7 @@ FIGS = PROJECT / "reports" / "figs"
 FIGS.mkdir(parents=True, exist_ok=True)
 
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory   # noqa: E402
-from agent.mocks import GroundedMockLLM                               # noqa: E402
+from agent.generator import make_generator                              # noqa: E402
 from agent.policy import CoveragePolicy                               # noqa: E402
 from agent.session import Session                                     # noqa: E402
 from retrieval.retriever import BM25Retriever                         # noqa: E402
@@ -49,11 +48,9 @@ from retrieval.retriever import BM25Retriever                         # noqa: E4
 C_EXPLICIT, C_CONTEXT = "#7BAFD4", "#C44E52"
 C_BAR, C_CTX = "#B0B7C3", "#C44E52"
 
-
 def _mk_loop(r):
-    return AgentLoop(make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5),
+    return AgentLoop(make_toolbox_factory(r, llm=make_generator(), top_k=5),
                      CoveragePolicy(), LoopConfig(budget=8))
-
 
 def main() -> int:
     labels = json.loads((PROJECT / "data" / "labels.json").read_text(encoding="utf-8"))["labels"]
@@ -195,7 +192,6 @@ def main() -> int:
     print(f"  复用：单轮 {solo_actions} 动作（{solo_ev} 条证据）→ "
           f"多轮第2轮 {ctx_actions} 动作（新增 {ctx_new_ev} 条）")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

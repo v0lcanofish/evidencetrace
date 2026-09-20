@@ -132,8 +132,19 @@ LOCATE_RULES: List[Tuple[str, List[str]]] = [
     #      · 「safe to take / during pregnancy」—— 原来是 is it safe，漏了这两种搭配
     #    补词前查过语料：妊娠类问题在这些说明书里确实落在禁忌节，所以加 "pregnan"
     #    不会把答案指错节。（加词前先查语料，别凭语感加。）
+    # ⚠️ 9/19 补 **一个**词形：表里的 "take it with" 匹配不到 "taking with it"，
+    #    于是 "…what other medicines should I avoid taking with it?" 掉到
+    #    contraindication（"should i avoid"），**相互作用节整个丢了**（它是 gold 之一）。
+    #
+    #    ⛔ 我一度还加了 "other medicines / other drugs / other medications" —— **撤掉了**。
+    #       理由不是没用，是**它会打坏探针的负控**：
+    #       探针集里有 6 条故意用绕开关键词表的措辞（"Does X play nicely with other
+    #       medicines?"），补这三个词之后它们全被认出，`eval_retrieval` 的判据
+    #       「探针上的意图全部定位不出来」当场变红 —— 而那句断言的 detail 写着
+    #       「不为 0 说明探针模板撞上了关键词表 → **探针失效**」。
+    #       ⭐ 补词会**同时**提高覆盖率、削弱负控。补之前先跑探针，别顺手加。
     ("interaction", ["interact", "together with", "combine", "combining", "mix",
-                     "mixing", "take it with", "coadmin", "on top of",
+                     "mixing", "take it with", "taking with", "coadmin", "on top of",
                      "mess with", "mess up", "safe to take with"]),
     ("contraindication", ["contraindicated", "off-limits", "safe for someone",
                           "should i avoid", "if i have", "can i take", "can i still take",
@@ -195,19 +206,53 @@ class SectionLocator:
         }
         self.drugs = sorted(self.have)
 
-    def detect_intent(self, query: str) -> Optional[str]:
+    def detect_intents(self, query: str) -> List[str]:
+        """
+        ⭐ 问题里命中的**全部**意图（按 `LOCATE_RULES` 顺序，去重）。
+
+        ⚠️ 9/19 之前这里只返回**第一个**命中就收工（`detect_intent`），
+           于是「一句话问两件事」的复合问句会被压成一个意图：
+
+               "I'm taking allopurinol. What's the usual dose, and what other
+                medicines should I avoid taking with it?"
+                 → 只认了 "should i avoid" ⇒ intent=contraindication
+                 → loincs=['34070-3']（禁忌节），**剂量节 34068-7 整个丢了**
+
+           后果不是"排错序"，是**gold 压根进不了候选池** ——
+           因为策略是拿 `loc['loincs']` 去构造 `restrict` 的
+           （`agent/policy.py` 那三处）。池子里没有，后面排序怎么排都救不回来。
+
+           ⚠️ 这个洞是造 `hard_set`（每题 gold=2、一句话问两件事）才踩出来的：
+              原来那套 60 题**都是一句话一件事**，所以从没暴露。
+        """
         q = (query or "").lower()
-        for intent, kws in LOCATE_RULES:
-            if any(k in q for k in kws):
-                return intent
-        return None
+        return [intent for intent, kws in LOCATE_RULES if any(k in q for k in kws)]
+
+    def detect_intent(self, query: str) -> Optional[str]:
+        """兼容旧接口：**优先级最高**的那个意图（= `detect_intents` 的第一个）。"""
+        hits = self.detect_intents(query)
+        return hits[0] if hits else None
+
+    def find_drugs(self, query: str) -> List[str]:
+        """
+        ⭐ 问题里点名的**全部**药品（按在问句里出现的先后）。
+
+        ⚠️ 9/19 之前只有 `find_drug`，**只返回第一个**。于是
+           "Both alprazolam and fluoxetine are on my medicine list…" 这种**跨药问题**
+           只会限定到一个药，另一个药的证据被 `restrict` 硬过滤挡在池子外 ——
+           而它正是 gold 之一。
+
+           实测（硬题集 cross_drug 那 86 道）：gold 进池率只有 41%；
+           同批 multi_section（单药两节）是 91%。差距就出在这。
+        """
+        q = (query or "").lower()
+        hits = [(q.index(d), d) for d in self.drugs if d in q]
+        return [d for _, d in sorted(hits)]
 
     def find_drug(self, query: str) -> Optional[str]:
-        q = (query or "").lower()
-        for d in self.drugs:
-            if d in q:
-                return d
-        return None
+        """兼容旧接口：**最先出现**的那个药（= `find_drugs` 的第一个）。"""
+        hits = self.find_drugs(query)
+        return hits[0] if hits else None
 
     def __call__(self, query: str) -> Dict[str, Any]:
         """
@@ -215,22 +260,55 @@ class SectionLocator:
             {"drug": ..., "intent": ..., "loincs": [...], "reason": "..."}
         定位不出来时 drug/intent 为 None（交给 BM25 兜底）。
         """
-        intent = self.detect_intent(query)
-        drug = self.find_drug(query)
+        intents = self.detect_intents(query)
+        drugs = self.find_drugs(query)
+
+        # ⭐ 兜底规则：**一个意图线索都没有、但点名了 ≥2 个药** → 按相互作用处理。
+        #
+        # 为什么需要：跨药题的自然问法（"Both A and B are on my medicine list.
+        #   Does each label warn about the other one?"）**一个关键词都不命中**，
+        #   于是 loincs 为空、没有章节导向，两个药的块在 BM25 里争 top-k
+        #   —— 实测这类题 gold 进池率只有 55%。
+        #
+        # ⚠️ 为什么加 `not intents` 这个前提：**不加会误伤**。
+        #   实测有禁忌类问题句子里带第二个药名（"Can I take esomeprazole if I have
+        #   hypersensitivity to …"），裸规则会给它硬塞一个 interaction。
+        #   加上"本来就没认出任何意图"之后，影响面收敛到**只有跨药题**：
+        #     检索集/探针集/边界集/定位集/意图集/e2e  **各 0 条受影响**
+        #     只有 hard_set 的 86 条 cross_drug 触发
+        #   ⭐ 这就是"补规则之前先跑全题集量影响面"—— 上一条关键词我正是漏了这一步，
+        #     把探针的负控打红了（见 LOCATE_RULES 里的记录）。
+        #
+        # ⚠️ 另外，现在 loincs 是**加权不是硬过滤**（见 hybrid.py），
+        #   所以这条规则就算偶尔判错，代价也只是"排得靠前一点"，不会把别的章节挡在外面。
+        if not intents and len(drugs) >= 2:
+            intents = ["interaction"]
+
+        drug = drugs[0] if drugs else None
+        # 章节取**所有点名药品**的并集 —— 跨药问题两边都要查
+        pool_drugs = drugs or ([drug] if drug else [])
         loincs: List[str] = []
-        if intent:
+        # ⭐ 把**每个**命中的意图对应的章节并起来（一句话问两件事 = 两节都要查）
+        for intent in intents:
             cand = INTENT_TO_LOINC.get(intent, [])
-            if drug and drug in self.have:
-                # ⭐ 只保留这份药**实际有的**那些节
-                loincs = [x for x in cand if x in self.have[drug]]
-            else:
-                loincs = cand
+            if pool_drugs:
+                # ⭐ 只保留**这些药实际有的**那些节
+                cand = [x for x in cand
+                        if any(d in self.have and x in self.have[d] for d in pool_drugs)]
+            for x in cand:
+                if x not in loincs:
+                    loincs.append(x)
         reason = ""
-        if intent and drug and loincs:
-            reason = f"「{intent}」类问题 + 药品 {drug} → 命中章节 {loincs}"
-        elif intent:
-            reason = f"「{intent}」类问题，但{('药品 ' + drug + ' 没有对应章节') if drug else '没识别出药品'}"
-        return {"drug": drug, "intent": intent, "loincs": loincs, "reason": reason}
+        if intents and drug and loincs:
+            reason = f"「{'/'.join(intents)}」类问题 + 药品 {drug} → 命中章节 {loincs}"
+        elif intents:
+            reason = (f"「{'/'.join(intents)}」类问题，但"
+                      f"{('药品 ' + drug + ' 没有对应章节') if drug else '没识别出药品'}")
+        return {"drug": drug,                                # 兼容旧字段（最先出现的那个）
+                "drugs": drugs,                              # ⭐ 新增：全部点名药品
+                "intent": intents[0] if intents else None,   # 兼容旧字段（最高优先级那个）
+                "intents": intents,                          # ⭐ 新增：全部命中
+                "loincs": loincs, "reason": reason}
 
 
 # ---------------------------------------------------------------- 检索器

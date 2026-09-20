@@ -49,13 +49,18 @@ from agent.coverage import corpus_drugs_from                     # noqa: E402
 from agent.decisions import (DecisionPoint, ForcedPolicy,         # noqa: E402
                              LoggingPolicy, available_actions)
 from agent.loop import AgentLoop, LoopConfig, make_toolbox_factory  # noqa: E402
-from agent.mocks import GroundedMockLLM                            # noqa: E402
+from agent.generator import generator_name, make_generator, real_enabled   # noqa: E402
 from agent.policy import CoveragePolicy, RulePolicy                # noqa: E402
 from agent.report import looks_like_abstention                     # noqa: E402
 from retrieval import make_retriever                               # noqa: E402
 
 LABELS = _PROJECT / "data" / "labels.json"
 R_SET = _PROJECT / "data" / "eval" / "retrieval_set.json"
+# ⭐ `--set hard` 用有分辨力的题集（133 题、每题 gold=2）。
+#    为什么必须能切：在 base 那套上**真模型答对 98%**，错题只剩 1 道，
+#    "可救回率"的分母是 1 —— 那个闸门等于没量。
+#    见 scripts/build_hard_set.py 顶部。
+SETS = {"base": R_SET, "hard": _PROJECT / "data" / "eval" / "hard_set.json"}
 OUT = _PROJECT / "data" / "decisions.jsonl"
 N = 60
 
@@ -63,62 +68,66 @@ FAILS: list = []
 # 动作在训练集里的分布偏斜到这个程度就算"没有可学信号"
 MAJORITY_ALARM = 0.70
 
-
 def check(name: str, ok: bool, detail: str = "") -> None:
     print(f"   {'✓' if ok else '✗'} {name}" + (f"　{detail}" if detail else ""))
     if not ok:
         FAILS.append(name)
 
-
 # ---------------------------------------------------------------- 跑一轮
 
-
 def _loop(r, policy, qid, question):
-    lp = AgentLoop(make_toolbox_factory(r, llm=GroundedMockLLM(), top_k=5),
+    lp = AgentLoop(make_toolbox_factory(r, llm=make_generator(), top_k=5),
                    policy, LoopConfig(budget=8))
     lg = lp.run(question, run_id=qid)
     return lp, lg
-
 
 def baseline(r, make_policy, qid, question):
     """跑一条基线轨迹，返回 (决策点列表, 答对了没, 是不是拒答)。"""
     sink: list = []
     policy = LoggingPolicy(make_policy(), sink, qid=qid)
     lp, lg = _loop(r, policy, qid, question)
-    gold = {r_gold[qid]}
+    gold = set(r_gold[qid])          # ⭐ 多 gold：hard_set 每题 2 条
     ok = gold.issubset(lg.cited_keys())
     abst = looks_like_abstention(lp.last_state.answer_text or "")
     for p in sink:
         p.outcome, p.abstained = ok, abst
     return sink, ok, abst
 
-
 def counterfactual(r, make_policy, qid, question, i, action):
     """在第 i 个决策点强制换动作，返回结局（答对了没）。"""
     pol = ForcedPolicy(make_policy(), force_at=i, force_action=action,
                        question=question)
     _, lg = _loop(r, pol, qid, question)
-    return {r_gold[qid]}.issubset(lg.cited_keys())
-
+    return set(r_gold[qid]).issubset(lg.cited_keys())
 
 r_gold: dict = {}
 
-
 # ---------------------------------------------------------------- 主流程
-
 
 def main() -> int:
     limit = None
     if "--limit" in sys.argv:
         limit = int(sys.argv[sys.argv.index("--limit") + 1])
 
+    which = "base"
+    for i, a in enumerate(sys.argv):
+        if a == "--set" and i + 1 < len(sys.argv):
+            which = sys.argv[i + 1]
+        elif a.startswith("--set="):
+            which = a.split("=", 1)[1]
+    set_path = SETS.get(which)
+    if set_path is None:
+        raise SystemExit(f"未知的 --set {which!r}；可选：{sorted(SETS)}")
+    print(f"[题集] {which} → {set_path.name}")
+
     labels = json.loads(LABELS.read_text(encoding="utf-8"))["labels"]
     r = make_retriever(labels, use_locator=True)
-    rows = json.loads(R_SET.read_text(encoding="utf-8"))["rows"][:N]
+    rows = json.loads(set_path.read_text(encoding="utf-8"))["rows"][:N]
     if limit:
         rows = rows[:limit]
     for row in rows:
-        r_gold[row["qid"]] = row["gold_cite_key"]
+        # ⭐ 多 gold：`hard_set` 每题 2 条（老题集只有单值 `gold_cite_key` → 退回单元素集合）
+        r_gold[row["qid"]] = set(row.get("gold_cite_keys") or [row["gold_cite_key"]])
 
     makers = {
         "rule": lambda: RulePolicy(),
@@ -126,8 +135,8 @@ def main() -> int:
     }
 
     all_points: list = []
-    print(f"① 采集决策点（{len(rows)} 题 × 2 个策略，生成器=GroundedMockLLM）")
-    print("   " + "-" * 80)
+    print(f"① 采集决策点（{len(rows)} 题 × 2 个策略，生成器={generator_name(real_enabled())}）")
+    print(f"   " + "-" * 80)
     for pname, mk in makers.items():
         n_dp, n_correct = 0, 0
         pts_this = []
@@ -141,8 +150,8 @@ def main() -> int:
         print(f"   {pname:<10} 决策点 {n_dp:>4}（{per_q:.1f}/题）  答对 {n_correct}/{len(rows)}")
 
     # ---- ② 动作分布 + majority baseline
-    print("\n② 动作分布（⭐ 不报这一张，「模仿准确率」就是骗人的）")
-    print("   " + "-" * 80)
+    print(f"\n② 动作分布（⭐ 不报这一张，「模仿准确率」就是骗人的）")
+    print(f"   " + "-" * 80)
     for pname in makers:
         acts = [p.action for p in all_points if p.policy == pname]
         c = Counter(acts)
@@ -161,8 +170,8 @@ def main() -> int:
     #    拆开之后两边问的是**两个不同的问题**：
     #      答对的题：哪一步才是关键步？（有梯度 = 关键步）
     #      答错的题：换一步能救回来吗？（有梯度 = **可救**）
-    print("\n③ 反事实：在每个决策点强制换成别的动作，看结局变不变")
-    print("   " + "-" * 80)
+    print(f"\n③ 反事实：在每个决策点强制换成别的动作，看结局变不变")
+    print(f"   " + "-" * 80)
     n_cf = 0
     by_action = defaultdict(lambda: [0, 0])          # 动作 → [有更优, 总]
     stat = {"right": {"better": 0, "worse": 0, "n": 0},
@@ -191,7 +200,7 @@ def main() -> int:
               f"存在**更优**动作 {s['better']:>3} ({s['better']/max(1,s['n']):.3f}) ｜ "
               f"存在**更差**动作 {s['worse']:>3} ({s['worse']/max(1,s['n']):.3f})")
 
-    print("\n   按「当时选的动作」拆（有更优选择的比例）：")
+    print(f"\n   按「当时选的动作」拆（有更优选择的比例）：")
     for a, (g, n) in sorted(by_action.items(), key=lambda x: -x[1][1]):
         print(f"     {a:<9} {g:>3}/{n:<3} ({g/max(1,n):.2f})")
 
@@ -204,8 +213,8 @@ def main() -> int:
     #     ⭐ 它同时也是「模仿学习/策略改进的**上界**」：
     #        可救回率 = 0 ⇒ 任何策略在这批题上都不可能比现在更好，
     #        E12 训出来最好也就是打平 —— 那训它干什么。
-    print("\n③b ⭐⭐ 错题的「策略可救回率」= E12 的**提升空间上界**")
-    print("   " + "-" * 80)
+    print(f"\n③b ⭐⭐ 错题的「策略可救回率」= E12 的**提升空间上界**")
+    print(f"   " + "-" * 80)
     total_savable, total_wrong = 0, 0
     for pname in makers:
         wrong_q = [(qid, pts) for (pn, qid), pts in per_q.items()
@@ -231,15 +240,14 @@ def main() -> int:
             f.write(json.dumps(p.to_dict(), ensure_ascii=False) + "\n")
     print(f"\n   ⇒ 决策日志写入 {OUT.relative_to(_PROJECT)}（{len(all_points)} 条）")
 
-    print("\n" + "=" * 80)
+    print(f"\n" + "=" * 80)
     if FAILS:
         print(f"❌ {len(FAILS)} 条断言没过：")
         for x in FAILS:
             print(f"   · {x}")
     else:
-        print("✅ 全部断言通过")
+        print(f"✅ 全部断言通过")
     return 1 if FAILS else 0
-
 
 def available_actions_of(p: DecisionPoint) -> list:
     """从决策点的特征里反推环境支持哪些动作（决策点存的是特征，不是活状态）。"""
@@ -249,7 +257,6 @@ def available_actions_of(p: DecisionPoint) -> list:
     if p.feats.get("has_user"):
         out.append("ask")
     return out
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
